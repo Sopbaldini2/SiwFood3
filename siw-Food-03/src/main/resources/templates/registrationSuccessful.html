@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up Successful</title>
+    <link rel="stylesheet" href="/css/registerSuccessful.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="shortcut icon" href="/images/IconaSF.png" type="image/x-icon">
+    
+</head>
+<body>
+    <section id="Home">
+        <nav>
+            <div class="logo">
+                <a href="/"><img src="/images/LogoSF.png" alt="Logo"></a>
+            </div>
+            
+            <div class="login">
+                <a href="/login">Login</a>
+            </div>
+        </nav>
+        
+        <!-- Sezione di avvenuta registrazione starts -->
+
+        <div class="main">
+            <div class="main_text">
+                <h1>Congratulations you signed up!<span></span></h1>
+                
+                <div class="user_info">
+                    <div>
+                        <span>Name: </span>
+                        <span th:text="${user.name}"></span>
+                    </div>
+                    
+                    <div>
+                        <span>Surname: </span>
+                        <span th:text="${user.surname}"></span>
+                    </div>
+                    
+                    <div>
+                        <span>Email: </span>
+                        <span th:text="${user.email}"></span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="main_image">
+                <img src="/images/welcome.png" alt="Welcome Image">
+            </div>
+        </div>
+    </section>
+    
+    <!-- Sezione di avvenuta registrazione ends -->
+
+    <!-- Footer starts -->
+    
+    <footer>
+        <div class="footer_main">
+            <div class="footer_img">
+                <img src="/images/IconaSF.png" alt="Footer Icon">
+            </div>
+            
+            <div class="footer_tag">
+                <h2>Quick Link</h2>
+                <p><a href="/">Home</a></p>
+                <p><a href="#">Recipes</a></p>
+                <p><a href="#">Ingredients</a></p>
+                <p><a href="#">Community</a></p>
+                <p><a href="#">Blog</a></p>
+            </div>
+            
+            <div class="footer_tag">
+                <h2>Follows</h2>
+                <i class="fa-brands fa-facebook"></i>
+                <i class="fa-brands fa-instagram"></i>
+                <i class="fa-brands fa-snapchat"></i>
+                <i class="fa-brands fa-youtube"></i>
+                <i class="fa-brands fa-tiktok"></i>
+            </div>
+        </div>
+        
+        <p class="end">Design by <span>Sophie Baldini</span></p>
+    </footer>
+    
+    <!-- Footer ends -->
+    
+</body>
+</html>

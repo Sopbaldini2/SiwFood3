@@ -1,0 +1,161 @@
+/* Reset CSS */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+/* Body styling */
+body {
+    font-family:  sans-serif;
+    line-height: 1.6;
+    background-color: #ffff;
+    color: #333;
+}
+
+/* Section styling */
+section {
+    width: 100%;
+    height: 100vh;
+}
+
+/* Navigation styling */
+section nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    background: #fff;
+    position: fixed;
+    right: 0;
+    left: 0;
+    z-index: 1000;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
+
+section nav .logo img {
+    width: 120px;
+    margin: 20px 0;
+    position: relative;
+    left: -45%;
+    cursor: pointer;
+}
+
+section nav .login a {
+    color: #000;
+    text-decoration: none;
+    border: 2px solid rgb(0, 179, 0);
+    border-radius: 20px;
+    padding: 7px 20px;
+    transition: 0.3s;
+}
+
+section nav .login a:hover {
+    background: rgb(0, 179, 0);
+}
+
+/* Main section styling */
+section .main {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    position: relative;
+    top: 80px;
+}
+
+section .main .main_text h1 {
+    color: #000;
+    font-size: 45px;
+    position: relative;
+    top: -25px;
+    left: 5%;
+}
+
+section .main .main_text h1 span {
+    color: rgb(0, 179, 0);
+    font-family: sans-serif;
+}
+
+section .main .main_text .user_info {
+    margin-top: 20px;
+    font-size: 20px;
+    color: #000;
+    line-height: 1.5;
+}
+
+section .main .main_text .user_info div {
+    margin-bottom: 10px;
+}
+
+section .main .main_image img {
+    width: 650px;
+}
+
+/* Footer styling */
+footer {
+    margin-top: 50px;
+    width: 100%;
+    padding: 30px 0 0 20px;
+    background: #eeeeee;
+}
+
+footer .footer_main {
+    display: grid;
+    grid-template-columns:1fr 1fr 1fr;
+}
+
+footer .footer_main .footer_img {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+footer .footer_main .footer_img img {
+    max-width: 150px;
+    height: auto;
+}
+
+footer .footer_main .footer_tag {
+    text-align: center;
+}
+
+footer .footer_main .footer_tag h2 {
+    color: #000;
+    margin-bottom: 25px;
+    font-size: 30px;
+}
+
+footer .footer_main .footer_tag p {
+    margin: 10px 0;
+}
+
+footer .footer_main .footer_tag i {
+    margin: 0 5px;
+    cursor: pointer;
+}
+
+footer .footer_main .footer_tag i:hover {
+    color: crimson;
+}
+
+footer .end {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 15px 0;
+}
+
+footer .end span {
+    color: rgb(226, 152, 29);
+    margin-left: 5px;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgb(0, 179, 0);
+    border-radius: 30px;
+}
