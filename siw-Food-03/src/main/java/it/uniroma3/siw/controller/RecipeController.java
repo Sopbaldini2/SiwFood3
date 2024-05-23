@@ -1,5 +1,9 @@
 package it.uniroma3.siw.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,8 +15,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import it.uniroma3.siw.controller.validator.RecipeValidator;
+import it.uniroma3.siw.model.Ingredient;
 import it.uniroma3.siw.model.Recipe;
-//import it.uniroma3.siw.service.IngredientService;
+import it.uniroma3.siw.service.IngredientService;
 import it.uniroma3.siw.service.RecipeService;
 import jakarta.validation.Valid;
 
@@ -22,8 +27,8 @@ public class RecipeController {
 	@Autowired
 	private RecipeService recipeService;
 	
-	/*@Autowired
-	private IngredientService ingredientService;*/
+	@Autowired
+	private IngredientService ingredientService;
 	
 	@Autowired
 	private RecipeValidator recipeValidator;
@@ -86,6 +91,57 @@ public class RecipeController {
 	public String searchRecipes(Model model, @RequestParam String name) {
 		model.addAttribute("recipes", this.recipeService.findByName(name));
 		return "foundRecipes.html";
+	}
+	
+	@GetMapping("/updateIngredients/{id}")
+	public String updateIngredients(@PathVariable("id") Long id, Model model) {
+
+		List<Ingredient> ingredientsToAdd = this.ingredientsToAdd(id);
+		model.addAttribute("ingredientsToAdd", ingredientsToAdd);
+		model.addAttribute("recipe", this.recipeService.findById(id));
+
+		return "ingredientsToAdd.html";
+	}
+
+	@GetMapping("/addIngredientToRecipe/{ingredientId}/{recipeId}")
+	public String addIngredientToRecipe(@PathVariable("ingredientId") Long ingredientId, @PathVariable("recipeId") Long recipeId, Model model) {
+		Recipe recipe = this.recipeService.findById(recipeId);
+		Ingredient ingredient = this.ingredientService.findById(ingredientId);
+		Set<Ingredient> ingredients = recipe.getIngredients();
+		ingredients.add(ingredient);
+		this.recipeService.save(recipe);
+		
+		List<Ingredient> ingredientsToAdd = ingredientsToAdd(recipeId);
+		
+		model.addAttribute("recipe", recipe);
+		model.addAttribute("ingredientsToAdd", ingredientsToAdd);
+
+		return "ingredientsToAdd.html";
+	}
+	
+	@GetMapping("/removeIngredientFromRecipe/{ingredientId}/{recipeId}")
+	public String removeActorFromMovie(@PathVariable("ingredientId") Long ingredientId, @PathVariable("recipeId") Long recipeId, Model model) {
+		Recipe recipe = this.recipeService.findById(recipeId);
+		Ingredient ingredient = this.ingredientService.findById(ingredientId);
+		Set<Ingredient> ingredients = recipe.getIngredients();
+		ingredients.remove(ingredient);
+		this.recipeService.save(recipe);
+
+		List<Ingredient> ingredientsToAdd = ingredientsToAdd(recipeId);
+		
+		model.addAttribute("recipe", recipe);
+		model.addAttribute("ingredientToAdd", ingredientsToAdd);
+
+		return "ingredientsToAdd.html";
+	}
+
+	private List<Ingredient> ingredientsToAdd(Long recipeId) {
+		List<Ingredient> ingredientsToAdd = new ArrayList<>();
+
+		for (Ingredient i : ingredientService.findIngredientsNotInRecipe(recipeId)) {
+			ingredientsToAdd.add(i);
+		}
+		return ingredientsToAdd;
 	}
 	
 }
