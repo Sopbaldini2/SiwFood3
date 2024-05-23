@@ -1,5 +1,7 @@
 package it.uniroma3.siw.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -23,6 +25,10 @@ public class RecipeService {
 
 	public void save( Recipe recipe) {
 		recipeRepository.save(recipe);
+	}
+
+	public List<Recipe> findByName(String name) {
+		return recipeRepository.findByName(name);
 	}
 
 

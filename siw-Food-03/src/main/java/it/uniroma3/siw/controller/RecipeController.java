@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import it.uniroma3.siw.controller.validator.RecipeValidator;
 import it.uniroma3.siw.model.Recipe;
@@ -75,4 +76,16 @@ public class RecipeController {
 		model.addAttribute("recipe", recipeService.findById(id));
 		return "formUpdateRecipe.html";
 	}
+	
+	@GetMapping("/formSearchRecipes")
+	public String formSearchRecipes() {
+		return "formSearchRecipes.html";
+	}
+
+	@PostMapping("/searchRecipes")
+	public String searchRecipes(Model model, @RequestParam String name) {
+		model.addAttribute("recipes", this.recipeService.findByName(name));
+		return "foundRecipes.html";
+	}
+	
 }
