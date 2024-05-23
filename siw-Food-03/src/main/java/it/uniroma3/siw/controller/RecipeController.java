@@ -63,4 +63,16 @@ public class RecipeController {
 		model.addAttribute("recipes", this.recipeService.findAll());
 		return "recipess.html";
 	}
+	
+	@GetMapping("/formNewRecipe")
+	public String formNewRecipe(Model model) {
+		model.addAttribute("recipe", new Recipe());
+		return "formNewRecipe.html";
+	}
+
+	@GetMapping(value="/formUpdateRecipe/{id}")
+	public String formUpdateRecipe(@PathVariable("id") Long id, Model model) {
+		model.addAttribute("recipe", recipeService.findById(id));
+		return "formUpdateRecipe.html";
+	}
 }
