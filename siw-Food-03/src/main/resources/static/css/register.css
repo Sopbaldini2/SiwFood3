@@ -1,0 +1,124 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+.hero {
+    width: 100%;
+    height: 100vh;
+    background-image: url(/images/fondoL.png);
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hero .login_form {
+    width: 400px;
+    height: auto;
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+.hero .login_form h1 {
+    text-align: center;
+    font-size: 36px;
+    margin-bottom: 30px;
+    position: relative;
+}
+
+.hero .login_form h1::after {
+    content: '';
+    width: 20%;
+    height: 2px;
+    background-color: crimson;
+    position: absolute;
+    bottom: -10px;
+    left: 40%;
+}
+
+.hero .login_form .input_box {
+    margin-bottom: 20px;
+}
+
+.hero .login_form .field {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-bottom: 2px solid #ccc;
+    background-color: transparent;
+    font-size: 16px;
+    transition: border-bottom-color 0.3s;
+    margin-bottom: 20px; /* Aggiunto spazio inferiore */
+}
+
+.hero .login_form .field:focus {
+    border-bottom-color: crimson;
+}
+
+.hero .login_form .check_box {
+    margin-right: 5px;
+}
+
+.hero .login_form .check_box p {
+    display: inline;
+    font-size: 14px;
+    color: #666;
+}
+
+.hero .login_form .submit_btn {
+    width: 100%;
+    padding: 12px;
+    background-color:  rgb(226, 152, 29);
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-bottom: 20px; 
+    margin-top: 15px;
+}
+
+.hero .login_form .submit_btn:hover {
+    background-color: #d10000;
+}
+
+.hero .login_form .social_icon {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.hero .login_form .social_icon i {
+    font-size: 24px;
+    color: #666;
+    margin: 0 10px;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.hero .login_form .social_icon i:hover {
+    color: crimson;
+}
+
+.hero .login_form .tag {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.hero .login_form .tag span {
+    font-size: 16px;
+    color: #666;
+    margin-right: 5px; /* Aggiunto spazio a destra */
+}
+
+.hero .login_form .tag a {
+    font-size: 16px;
+    color: darkcyan;
+    text-decoration: none;
+}

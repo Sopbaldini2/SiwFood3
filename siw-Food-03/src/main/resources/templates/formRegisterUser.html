@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    <link rel="stylesheet" href="/css/register.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="shortcut icon" href="/images/IconaSF.png ">
+</head>
+<body>
+    <header>
+        <!-- Includo qui eventuali elementi dell'header come link per il login o il logout -->
+    </header>
+    <div class="hero">
+        <div class="login_form">
+            <h1>Register</h1>
+            <form th:action="@{/register}" method="POST">
+                <div>
+                    <input type="text" class="field" placeholder="Name" required th:field="${user.name}" />
+                </div>
+                <div>
+                    <input type="text" class="field" placeholder="Surname" required th:field="${user.surname}" />
+                </div>
+                <div>
+                    <input type="text" class="field" placeholder="User Name" required th:field="${credentials.username}" />
+                </div>
+                <div> 
+                    <input type="password" class="field" placeholder="Password" required th:field="${credentials.password}" />
+                </div>
+                <div>
+                    <input type="email" class="field" placeholder="Email" required th:field="${user.email}" />
+                </div>
+                <!--<div>
+                    <label>Date of Birth</label>
+                    <input type="date" class="field" placeholder="Date of Birth" required th:field="${user.dateOfBirth}" />
+                </div> -->
+                <div>
+                    <input type="checkbox" class="check_box"><label>Remember Password</label>
+                </div>
+                <button type="submit" class="submit_btn">Register</button>
+            </form>
+            <div class="social_icon">
+                <i class="fa-brands fa-facebook-f"></i>
+                <i class="fa-brands fa-google"></i>
+                <i class="fa-brands fa-apple"></i>
+            </div>
+            <div class="tag">
+                <span>New Cook?</span>
+                <a href="/login">Login</a> 
+            </div>
+        </div>
+    </div>
+</body>
+</html>
