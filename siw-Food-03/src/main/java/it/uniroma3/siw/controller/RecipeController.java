@@ -70,7 +70,7 @@ public class RecipeController {
 		return "formNewRecipe.html";
 	}
 
-	@GetMapping(value="/formUpdateRecipe/{id}")
+	@GetMapping("/formUpdateRecipe/{id}")
 	public String formUpdateRecipe(@PathVariable("id") Long id, Model model) {
 		model.addAttribute("recipe", recipeService.findById(id));
 		return "formUpdateRecipe.html";
