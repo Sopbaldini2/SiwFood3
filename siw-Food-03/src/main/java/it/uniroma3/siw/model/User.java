@@ -12,8 +12,13 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.PrePersist;
+import jakarta.persistence.PreUpdate;
 import jakarta.persistence.Table;
+import jakarta.validation.ConstraintViolationException;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Past;
 
 /*Essendo il Cooke l'utente Registrato ho deciso di chiamare la classe Cooke per semplicità nella lettura*/
 
@@ -31,11 +36,23 @@ public class User {
 	@NotBlank
 	private String email;
 	
+	@Past
 	@DateTimeFormat(pattern = "dd-MM-yyyy")
+	@NotNull
     private LocalDate dateOfBirth;
 
     @OneToMany(mappedBy = "cooke", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<Recipe> recipes = new HashSet<>();
+    
+    @PrePersist
+    @PreUpdate
+    private void validateDateOfBirth() {
+        LocalDate minDate = LocalDate.of(1900, 1, 1);
+        LocalDate maxDate = LocalDate.now().minusYears(16); // Per esempio, età minima 16 anni
+        if (dateOfBirth.isBefore(minDate) || dateOfBirth.isAfter(maxDate)) {
+            throw new ConstraintViolationException("Date of birth must be between 01-01-1900 and " + maxDate.toString(), null);
+        }
+    }
 
     //Aggiungo i metodi getter e setter
     
