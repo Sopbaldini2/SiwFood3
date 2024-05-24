@@ -431,6 +431,45 @@ section .main .main_image img{
 	margin-top: 10px;
 }
 
+.community .community_box .community_card .community_btn{
+	color: #000;
+	text-decoration: none;
+	padding: 8px 16px;
+	border: 2px solid darkgreen;
+	position: relative;
+	top: 13px;
+	z-index: 5;
+	transition: 0.3s;
+	font-size: 14px; 
+    border-radius: 4px; 
+}
+
+.community .community_box .community_card .community_btn:hover{
+	color: #fff;
+}
+
+.community .community_box .community_card .community_btn::before{
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 0;
+	height: 100%;
+	background-color: darkgreen;
+	z-index: -1;
+	transition: 0.3s;
+}
+
+.community .community_box .community_card .community_btn:hover::before{
+	top: unset;
+	bottom: 0;
+	width: 100%;
+}
+
+.community .community_box .community_card .community_btn i{
+	margin-left: 6px;
+}
+
 /* Footer */
 
 footer{
