@@ -1,9 +1,17 @@
 package it.uniroma3.siw.model;
 
+import java.time.LocalDate;
+import java.util.HashSet;
+import java.util.Set;
+
+import org.springframework.format.annotation.DateTimeFormat;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
 
@@ -22,7 +30,15 @@ public class User {
 	private String surname;
 	@NotBlank
 	private String email;
+	
+	@DateTimeFormat(pattern = "dd-MM-yyyy")
+    private LocalDate dateOfBirth;
 
+    @OneToMany(mappedBy = "cooke", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<Recipe> recipes = new HashSet<>();
+
+    //Aggiungo i metodi getter e setter
+    
     public Long getId() {
 		return id;
 	}
@@ -53,6 +69,24 @@ public class User {
 	public void setEmail(String email) {
 		this.email = email;
 	}
+	
+	public LocalDate getDateOfBirth() {
+        return dateOfBirth;
+    }
+
+    public void setDateOfBirth(LocalDate dateOfBirth) {
+        this.dateOfBirth = dateOfBirth;
+    }
+
+    public Set<Recipe> getRecipes() {
+        return recipes;
+    }
+
+    public void setRecipes(Set<Recipe> recipes) {
+        this.recipes = recipes;
+    }
+
+	//Aggiunta dei metodi hashCode ed equals
 
 	@Override
 	public int hashCode() {
