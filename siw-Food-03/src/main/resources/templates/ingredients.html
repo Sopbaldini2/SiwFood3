@@ -43,6 +43,39 @@
 		<h1>Ingre<span>dients</span></h1>
 	</div>
 	
+	<!--Ingredients starts -->
+	
+        <div class="main_ingredient">
+            <div th:if="${ingredients == null || ingredients.isEmpty()}">
+                Non ci sono ingredienti nel sistema
+            </div>
+
+            <div th:each="ingredient : ${ingredients}" class="slide_1">
+                <div class="ingredient_box">
+					
+                    <div class="ingredient_card">
+						
+                        <div class="blog_image">
+                            <img th:src="@{'/images/' + ${ingredient.image}}" alt="Immagine dell'ingrediente">
+                        </div>
+                        
+                        <div class="ingredient_tag">
+                            <h3 class="ingredient_heading" th:text="${ingredient.name}">Prezzemolo</h3>
+                            
+                            <div class="ingredient_quantity">
+                                <p th:text="${ingredient.quantita + 'g'}">500g <i class="fa-solid fa-scale-unbalanced-flip"></i></p>
+                            </div>
+                            
+                            <p class="ingredient_text" th:text="${ingredient.descrizione}">descrizione</p>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+  
+	<!--Ingredients ends -->
+	
 	<!-- Footer starts -->
 		
 		<footer>

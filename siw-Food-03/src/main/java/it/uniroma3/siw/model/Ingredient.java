@@ -18,6 +18,7 @@ public class Ingredient {
 	private Long idIngredient;
 	private String name;
 	private Float quantita;
+	private String description;
 	@ManyToMany(mappedBy="ingredients")
 	private Set<Recipe> recipes;
 	
@@ -49,6 +50,14 @@ public class Ingredient {
 
 	public void setQuantita(Float quantita) {
 		this.quantita = quantita;
+	}
+	
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
 	public Set<Recipe> getRecipes() {
