@@ -34,15 +34,15 @@ public class RecipeController {
 	private RecipeValidator recipeValidator;
 	
 	
-	@GetMapping("/indexRecipe")
+	@GetMapping("/admin/indexRecipe")
 	public String indexRecipe() {
-		return "indexRecipe.html";
+		return "admin/indexRecipe.html";
 	}
 	
-	@GetMapping("/manageRecipes")
+	@GetMapping("/admin/manageRecipes")
 	public String manageRecipes(Model model) {
 		model.addAttribute("recipes", this.recipeService.findAll());
-		return "manageRecipes.html";
+		return "admin/manageRecipes.html";
 	}
 	
 	@PostMapping("/recipe")
@@ -70,16 +70,16 @@ public class RecipeController {
 		return "recipes.html";
 	}
 	
-	@GetMapping("/formNewRecipe")
+	@GetMapping("/admin/formNewRecipe")
 	public String formNewRecipe(Model model) {
 		model.addAttribute("recipe", new Recipe());
-		return "formNewRecipe.html";
+		return "admin/formNewRecipe.html";
 	}
 
-	@GetMapping("/formUpdateRecipe/{id}")
+	@GetMapping("/admin/formUpdateRecipe/{id}")
 	public String formUpdateRecipe(@PathVariable("id") Long id, Model model) {
 		model.addAttribute("recipe", recipeService.findById(id));
-		return "formUpdateRecipe.html";
+		return "admin/formUpdateRecipe.html";
 	}
 	
 	@GetMapping("/formSearchRecipes")
@@ -93,17 +93,17 @@ public class RecipeController {
 		return "foundRecipes.html";
 	}
 	
-	@GetMapping("/updateIngredients/{id}")
+	@GetMapping("/admin/updateIngredients/{id}")
 	public String updateIngredients(@PathVariable("id") Long id, Model model) {
 
 		List<Ingredient> ingredientsToAdd = this.ingredientsToAdd(id);
 		model.addAttribute("ingredientsToAdd", ingredientsToAdd);
 		model.addAttribute("recipe", this.recipeService.findById(id));
 
-		return "ingredientsToAdd.html";
+		return "admin/ingredientsToAdd.html";
 	}
 
-	@GetMapping("/addIngredientToRecipe/{ingredientId}/{recipeId}")
+	@GetMapping("/admin/addIngredientToRecipe/{ingredientId}/{recipeId}")
 	public String addIngredientToRecipe(@PathVariable("ingredientId") Long ingredientId, @PathVariable("recipeId") Long recipeId, Model model) {
 		Recipe recipe = this.recipeService.findById(recipeId);
 		Ingredient ingredient = this.ingredientService.findById(ingredientId);
@@ -116,10 +116,10 @@ public class RecipeController {
 		model.addAttribute("recipe", recipe);
 		model.addAttribute("ingredientsToAdd", ingredientsToAdd);
 
-		return "ingredientsToAdd.html";
+		return "admin/ingredientsToAdd.html";
 	}
 	
-	@GetMapping("/removeIngredientFromRecipe/{ingredientId}/{recipeId}")
+	@GetMapping("/admin/removeIngredientFromRecipe/{ingredientId}/{recipeId}")
 	public String removeActorFromMovie(@PathVariable("ingredientId") Long ingredientId, @PathVariable("recipeId") Long recipeId, Model model) {
 		Recipe recipe = this.recipeService.findById(recipeId);
 		Ingredient ingredient = this.ingredientService.findById(ingredientId);
@@ -132,7 +132,7 @@ public class RecipeController {
 		model.addAttribute("recipe", recipe);
 		model.addAttribute("ingredientToAdd", ingredientsToAdd);
 
-		return "ingredientsToAdd.html";
+		return "admin/ingredientsToAdd.html";
 	}
 
 	private List<Ingredient> ingredientsToAdd(Long recipeId) {
