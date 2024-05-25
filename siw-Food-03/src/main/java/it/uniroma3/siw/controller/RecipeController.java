@@ -5,20 +5,26 @@ import java.util.List;
 import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+
 import it.uniroma3.siw.controller.validator.RecipeValidator;
 import it.uniroma3.siw.model.Ingredient;
 import it.uniroma3.siw.model.Recipe;
+import it.uniroma3.siw.model.User;
 import it.uniroma3.siw.service.IngredientService;
 import it.uniroma3.siw.service.RecipeService;
+import it.uniroma3.siw.service.UserService;
 import jakarta.validation.Valid;
 
 @Controller
@@ -32,6 +38,9 @@ public class RecipeController {
 	
 	@Autowired
 	private RecipeValidator recipeValidator;
+	
+	@Autowired
+	private UserService userService;
 	
 	
 	@GetMapping("/admin/indexRecipe")
@@ -81,6 +90,28 @@ public class RecipeController {
 		model.addAttribute("recipe", recipeService.findById(id));
 		return "admin/formUpdateRecipe.html";
 	}
+	
+	 // Metodo per cancellare una ricetta
+    @DeleteMapping("/admin/deleteRecipe/{recipeId}")
+    public String deleteRecipe(@PathVariable("recipeId") Long recipeId, Model model) {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String currentUserEmail = authentication.getName();
+        User currentUser = userService.findByEmail(currentUserEmail);
+        Recipe recipe = recipeService.findById(recipeId);
+        
+        if (recipe != null && currentUser != null) {
+            if (userService.isUserAdmin(currentUser) || currentUser.getId().equals(recipe.getCooke().getId())) {
+                recipeService.deleteRecipe(recipeId);
+                model.addAttribute("successMessage", "Ricetta cancellata con successo.");
+            } else {
+                model.addAttribute("errorMessage", "Non hai il permesso per cancellare questa ricetta.");
+            }
+        } else {
+            model.addAttribute("errorMessage", "Ricetta non trovata.");
+        }
+        
+        return "redirect:/admin/manageRecipes";
+    }
 	
 	@GetMapping("/formSearchRecipes")
 	public String formSearchRecipes() {

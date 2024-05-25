@@ -5,7 +5,9 @@ import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import it.uniroma3.siw.model.Credentials;
 import it.uniroma3.siw.model.User;
+import it.uniroma3.siw.repository.CredentialsRepository;
 import it.uniroma3.siw.repository.UserRepository;
 
 import java.util.ArrayList;
@@ -20,6 +22,9 @@ public class UserService {
 
     @Autowired
     protected UserRepository userRepository;
+    
+    @Autowired
+    private CredentialsRepository credentialsRepository;
 
     /**
      * This method retrieves a User from the DB based on its ID.
@@ -55,6 +60,18 @@ public class UserService {
         for(User user : iterable)
             result.add(user);
         return result;
+    }
+
+    public User findByEmail(String email) {
+        return userRepository.findByEmail(email);
+    }
+
+    public boolean isUserAdmin(User user) {
+        // Trova le credenziali dell'utente
+        Credentials credentials = credentialsRepository.findByUser(user);
+        
+        // Verifica se le credenziali sono presenti e se il ruolo è ADMIN
+        return credentials != null && credentials.getRole().equals(Credentials.ADMIN_ROLE);
     }
 }
 
