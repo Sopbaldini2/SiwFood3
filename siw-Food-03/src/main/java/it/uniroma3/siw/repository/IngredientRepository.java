@@ -1,5 +1,7 @@
 package it.uniroma3.siw.repository;
 
+import java.util.List;
+
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 
@@ -9,5 +11,8 @@ public interface IngredientRepository extends CrudRepository <Ingredient, Long>{
 
 	@Query("SELECT i FROM Ingredient i WHERE i.idIngredient NOT IN (SELECT ing.idIngredient FROM Recipe r JOIN r.ingredients ing WHERE r.id = :recipeId)")
 	Iterable<Ingredient> findIngredientsNotInRecipe(Long recipeId);
+
+	public boolean existsByName(String name);
+	public List<Ingredient> findByName(String name);
 
 }
