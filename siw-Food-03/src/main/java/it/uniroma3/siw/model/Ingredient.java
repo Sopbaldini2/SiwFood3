@@ -15,7 +15,7 @@ public class Ingredient {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long idIngredient;
+	private Long id;
 	private String name;
 	private Float quantita;
 	private String description;
@@ -28,12 +28,12 @@ public class Ingredient {
 
 	//Aggiungo i metodi Getter e Setter
 	
-	public Long getIdIngredient() {
-		return idIngredient;
+	public Long getId() {
+		return id;
 	}
 
-	public void setIdIngredient(Long idIngredient) {
-		this.idIngredient = idIngredient;
+	public void setId(Long id) {
+		this.id = id;
 	}	
 	
 	public String getName() {

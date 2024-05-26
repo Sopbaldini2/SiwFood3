@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Ingredient</title>
+	<link rel="stylesheet" href="/css/iingredient.css" />
+</head>
+
+<body>
+	<header>
+		<div th:if="${userDetails}">
+			<span th:text="${userDetails.username}"></span>
+			<a href="/logout">Logout</a>
+		</div>
+		<div th:unless="${user}">
+			<a href="/login">Login</a>
+		</div>
+	</header>
+
+	<div><a href="/"><img src="/images/logo-siw.png" width="50%"/></a></div>
+    <h1>Dettagli Ingredents</h1>
+    <div th:if="${ingredent}">
+        <span th:text="${ingredient.name}">Up!</span>
+        <span th:text="'(' + ${ingredient.quantita} + ')'">2000</span>
+
+    </div>
+    <div th:unless="${ingredient}">Non esiste</div>
+  </body>
+</html>
