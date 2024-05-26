@@ -19,6 +19,7 @@ public class Ingredient {
 	private String name;
 	private Float quantita;
 	private String description;
+	private String image;
 	@ManyToMany(mappedBy="ingredients")
 	private Set<Recipe> recipes;
 	
@@ -59,6 +60,14 @@ public class Ingredient {
 	public void setDescription(String description) {
 		this.description = description;
 	}
+	
+	public String getImage() {
+		return image;
+	}
+
+	public void setImage(String image) {
+		this.image = image;
+	}	
 
 	public Set<Recipe> getRecipes() {
 		return recipes;
