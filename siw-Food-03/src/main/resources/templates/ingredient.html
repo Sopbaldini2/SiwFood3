@@ -19,6 +19,7 @@
 	<div><a href="/"><img src="/images/logo-siw.png" width="50%"/></a></div>
     <h1>Dettagli Ingredents</h1>
     <div th:if="${ingredent}">
+        <img th:src="@{'/images/ingredients/' + ${ingredient.image}}" alt="Immagine dell'ingrediente">
         <span th:text="${ingredient.name}">Up!</span>
         <span th:text="'(' + ${ingredient.quantita} + ')'">2000</span>
 

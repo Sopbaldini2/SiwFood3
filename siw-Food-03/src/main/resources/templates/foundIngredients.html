@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+	
+	<head>
+		
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Ingredient found</title>
+		<link rel="stylesheet" href="/css/foundii.css">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+		<link rel="shortcut icon" href="/images/IconaSF.png ">
+		
+	</head>
+	
+	<!-- Navigation Bar -->
+	
+	<nav>
+		
+		<div class="logo">
+			<a href="/"><img src="images/LogoSF.png" ></a>
+		</div>
+		
+		<ul>
+					<li><a href="/" >Home</a></li>
+					<li><a href="#" >Recipes</a></li>
+					<li><a href="/ingredient" class="action" >Ingredients</a></li>
+					<li><a href="#" >Community</a></li>
+					<li><a href="#" >Blog</a></li>
+					
+		</ul>
+		
+		<div class="login">
+					<a href="/login"> Login </a>
+		</div>
+	</nav>
+	
+	<!-- Navigation Bar ends -->
+	
+	<!-- Banner starts -->
+	
+	<div class="banner_bg">
+		<h1>Ingre<span>dients</span></h1>
+	</div>
+	
+	<!-- Found Ingredients starts -->
+	
+       <body>
+		   
+		   <h1>Ingredients that meet the requirements</h1>
+		   
+		   <div th:if="${ingredients.isEmpty()}">There are no ingredients that meet the requirements</div>
+		   
+		   <ul th:if="${!ingredients.isEmpty()}">
+			   
+			   <li th:each="ingredient: ${ingredients}">
+				   
+				   <a href="ingredient.html" th:href="@{'/ingredient' + '/' + ${ingredient.id}}"
+				       th:text="${ingredient.name + ' (' + ingredient.quantita + ')'}">
+				       <img th:src="@{'/images/ingredients/' + ${ingredient.image}}" alt="Ingredient Image"> Up! (2000)</a>
+               
+               </li>
+           
+           </ul>
+       
+       </body>
+       
+	<!-- Found Ingredients ends -->
+	
+	<!-- Footer starts -->
+		
+		<footer>
+			<div class="footer_main">
+				
+				<div class="footer_img">
+						<img src="images/IconaSF.png">
+				</div>
+				
+				<div class="footer_tag">
+					<h2>Quick Link</h2>
+					<p>Home</p>
+					<p>Recipes</p>
+					<p>Ingredients</p>
+					<p>Community</p>
+					<p>Blog</p>
+					
+				</div>
+				
+				<div class="footer_tag">
+					<h2>Follows</h2>
+					<i class="fa-brands fa-facebook"></i>
+					<i class="fa-brands fa-instagram"></i>
+					<i class="fa-brands fa-snapchat"></i>
+					<i class="fa-brands fa-youtube"></i>
+					<i class="fa-brands fa-tiktok"></i>
+					
+				</div>
+			</div>
+			
+			<p class="end"> Design by <span>Sophie Baldini</span></p>
+		</footer>
+		
+		<!-- Footer ends -->
+		
+	</body>
+</html>
