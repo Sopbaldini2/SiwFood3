@@ -41,22 +41,52 @@
 	
 	<div class="banner_bg">
 		<h1>Reci<span>pes</span></h1>
+		
 		<div class="box">
+			
 			<form th:action="@{/searchRecipes}" method="post">
+				
 				<input type="text" th:value="${name}" name="name" placeholder="Search recipe...">
 				<input type="submit" value="Search">
+				
             </form>
+            
         </div>
+        
 	</div>
 	
 	<!-- Banner ends -->
 	
 	<!-- Recipes starts -->
 	
-	<!-- Recipes ends -->	
-		
-		
-		
+<div th:if="${recipes == null || recipes.isEmpty()}">Non ci sono ricette nel sistema</div>
+<div th:each="recipe : ${recipes}">
+    <div class="recipe">
+        <div class="recipe_box">
+            <div class="recipe_card">
+                <div class="recipe_img">
+                    <img th:src="@{'/images/recipes/' + ${recipe.image}}" alt="Immagine della ricetta">
+                </div>
+                <div class="recipe_text">
+                    <h2 th:text="${recipe.name}">Recipe Name</h2>
+                    <p th:text="${recipe.description}">Recipe Description</p>
+                   <!-- <div class="recipe_icon">
+                        <i class="fa-solid fa-star" th:each="i : ${#numbers.sequence(1, recipe.rating)}"></i>
+                        <i class="fa-solid fa-star-half-stroke" th:if="${recipe.rating % 1 != 0}"></i>
+                    </div> -->
+                    <div class="author">
+                        <a href="#" class="author_link">by <span th:text="${recipe.cooke}">Admin</span></a>
+                    </div>
+                    <a th:href="@{'/recipe/' + ${recipe.id}}" class="recipe_btn">Cook <i class="fa-solid fa-cookie-bite"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+	
+	
+	
+	<!-- Recipes ends -->			
 			
 		<!-- Footer starts -->
 		
