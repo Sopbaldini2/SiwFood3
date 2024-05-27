@@ -6,8 +6,8 @@
 		<meta charset="UTF-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>Ingredient found</title>
-		<link rel="stylesheet" href="/css/foundii.css">
+		<title>List of recipes</title>
+		<link rel="stylesheet" href="/css/recipess.css">
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 		<link rel="shortcut icon" href="/images/IconaSF.png ">
 		
@@ -23,8 +23,8 @@
 		
 		<ul>
 					<li><a href="/" >Home</a></li>
-					<li><a href="/recipe" >Recipes</a></li>
-					<li><a href="/ingredient" class="action" >Ingredients</a></li>
+					<li><a href="/recipe" class="action">Recipes</a></li>
+					<li><a href="/ingredient" >Ingredients</a></li>
 					<li><a href="#" >Community</a></li>
 					<li><a href="#" >Blog</a></li>
 					
@@ -40,34 +40,25 @@
 	<!-- Banner starts -->
 	
 	<div class="banner_bg">
-		<h1>Ingre<span>dients</span></h1>
+		<h1>Reci<span>pes</span></h1>
+		<div class="box">
+			<form th:action="@{/searchRecipes}" method="post">
+				<input type="text" th:value="${name}" name="name" placeholder="Search recipe...">
+				<input type="submit" value="Search">
+            </form>
+        </div>
 	</div>
 	
-	<!-- Found Ingredients starts -->
+	<!-- Banner ends -->
 	
-       <body>
-		   
-		   <h1>Ingredients that meet the requirements</h1>
-		   
-		   <div th:if="${ingredients.isEmpty()}">There are no ingredients that meet the requirements</div>
-		   
-		   <ul th:if="${!ingredients.isEmpty()}">
-			   
-			   <li th:each="ingredient: ${ingredients}">
-				   
-				   <a href="ingredient.html" th:href="@{'/ingredient' + '/' + ${ingredient.id}}"
-				       th:text="${ingredient.name + ' (' + ingredient.quantita + ')'}">
-				       <img th:src="@{'/images/ingredients/' + ${ingredient.image}}" alt="Ingredient Image"> Up! (2000)</a>
-               
-               </li>
-           
-           </ul>
-       
-       </body>
-       
-	<!-- Found Ingredients ends -->
+	<!-- Recipes starts -->
 	
-	<!-- Footer starts -->
+	<!-- Recipes ends -->	
+		
+		
+		
+			
+		<!-- Footer starts -->
 		
 		<footer>
 			<div class="footer_main">

@@ -113,10 +113,10 @@ public class RecipeController {
         return "redirect:/admin/manageRecipes";
     }
 	
-	@GetMapping("/formSearchRecipes")
+	/*@GetMapping("/formSearchRecipes")
 	public String formSearchRecipes() {
 		return "formSearchRecipes.html";
-	}
+	}*/
 
 	@PostMapping("/searchRecipes")
 	public String searchRecipes(Model model, @RequestParam String name) {
