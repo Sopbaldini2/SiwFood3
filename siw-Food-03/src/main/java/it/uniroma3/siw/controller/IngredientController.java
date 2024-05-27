@@ -56,10 +56,10 @@ public class IngredientController {
 		return "admin/formNewIngredient.html";
 	}
 	
-	@GetMapping("/formSearchIngredients")
+	/*@GetMapping("/formSearchIngredients")
 	public String formSearchIngredients() {
 		return "formSearchIngredients.html";
-	}
+	}*/
 
 	@PostMapping("/searchIngredients")
 	public String searchIngredients(Model model, @RequestParam String name) {
