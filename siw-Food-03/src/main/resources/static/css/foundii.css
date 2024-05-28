@@ -86,6 +86,7 @@ nav .login a:hover {
 }
 
 /* Ingredients */
+
 .main_ingredient {
     width: 100%;
     display: flex;
@@ -138,6 +139,7 @@ nav .login a:hover {
 }
 
 /* Footer */
+
 footer {
     margin-top: 50px;
     width: 100%;
