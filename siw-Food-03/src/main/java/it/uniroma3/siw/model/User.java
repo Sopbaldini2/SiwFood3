@@ -36,6 +36,12 @@ public class User {
 	@NotBlank
 	private String email;
 	
+	private String job;
+	
+	private String biography;
+	
+	private String image;
+	
 	@Past
 	@DateTimeFormat(pattern = "dd-MM-yyyy")
 	@NotNull
@@ -94,7 +100,31 @@ public class User {
     public void setDateOfBirth(LocalDate dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
     }
-
+    
+    public String getJob() {
+		return job;
+	}
+	
+	public void setJob(String job) {
+		this.job = job;
+	}
+	
+	public String getImage() {
+		return image;
+	}
+	
+	public void setBiography(String biography) {
+		this.biography = biography;
+	}
+	
+	public String getBiography() {
+		return biography;
+	}
+	
+	public void setImage(String image) {
+		this.image = image;
+	}
+	
     public Set<Recipe> getRecipes() {
         return recipes;
     }
