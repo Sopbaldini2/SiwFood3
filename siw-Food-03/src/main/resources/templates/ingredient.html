@@ -1,29 +1,93 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Ingredient</title>
-	<link rel="stylesheet" href="/css/iingredient.css" />
-</head>
-
-<body>
-	<header>
-		<div th:if="${userDetails}">
-			<span th:text="${userDetails.username}"></span>
-			<a href="/logout">Logout</a>
-		</div>
-		<div th:unless="${user}">
-			<a href="/login">Login</a>
-		</div>
-	</header>
-
-	<div><a href="/"><img src="/images/logo-siw.png" width="50%"/></a></div>
-    <h1>Dettagli Ingredents</h1>
-    <div th:if="${ingredent}">
-        <img th:src="@{'/images/ingredients/' + ${ingredient.image}}" alt="Immagine dell'ingrediente">
-        <span th:text="${ingredient.name}">Up!</span>
-        <span th:text="'(' + ${ingredient.quantita} + ')'">2000</span>
-
-    </div>
-    <div th:unless="${ingredient}">Non esiste</div>
-  </body>
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title> GOSTOSO - Ricette creole</title>
+		<link rel="stylesheet" href="/css/ingredientsdetails.css">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+		<link rel="shortcut icon" href="/images/IconaSF.png " type="image/x-icon">
+	</head>
+	<body>
+			<nav>
+				<div class="logo">
+					<a href="/"><img src="/images/LogoSF.png" ></a>
+				</div>
+				
+				<ul>
+					<li><a href="/" class="action">Home</a></li>
+					<li><a href="/recipe" >Recipes</a></li>
+					<li><a href="/ingredient" >Ingredients</a></li>
+					<li><a href="#" >Community</a></li>
+					<li><a href="#" >Blog</a></li>
+				</ul>
+				
+				<div class="login">
+					<a href="/login"> Login </a>
+				</div>
+			</nav>
+	
+    <!-- Navigation bar ends -->
+	
+	<!-- Recipes details starts -->
+	
+	<div class="ingredient">
+		<h1>Dettagli sugli ingredienti</h1>
+        <div th:if="${ingredient}">
+			
+			<div class="title">
+				<span th:text="${ingredient.name}">Up!</span>
+			</div>
+			
+			<div class="quantity">
+				Quantity:
+				<span th:text=" ${ingredient.quantita} ">200</span>
+			</div>
+			
+			<span><img th:src="@{'/images/ingredients/' + ${ingredient.image}}" alt="Ingredient Image"></span>
+            <span th:text=" ${ingredient.description} ">UP!</span>
+			
+       </div>
+       <div th:unless="${ingredient}">Non esiste</div>
+	</div>
+	
+	<!-- Recipes details ends -->
+	
+	<!-- Footer starts -->
+		
+		<footer>
+			<div class="footer_main">
+				
+				<div class="footer_img">
+						<img src="/images/IconaSF.png">
+				</div>
+				
+				<div class="footer_tag">
+					<h2>Quick Link</h2>
+					<p>Home</p>
+					<p>Recipes</p>
+					<p>Ingredients</p>
+					<p>Community</p>
+					<p>Blog</p>
+					
+				</div>
+				
+				<div class="footer_tag">
+					<h2>Follows</h2>
+					<i class="fa-brands fa-facebook"></i>
+					<i class="fa-brands fa-instagram"></i>
+					<i class="fa-brands fa-snapchat"></i>
+					<i class="fa-brands fa-youtube"></i>
+					<i class="fa-brands fa-tiktok"></i>
+					
+				</div>
+			</div>
+			
+			<p class="end"> Design by <span>Sophie Baldini</span></p>
+		</footer>
+		
+		<!-- Footer ends -->
+		
+	</body>
 </html>
