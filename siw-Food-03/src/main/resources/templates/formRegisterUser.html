@@ -16,24 +16,34 @@
     <div class="hero">
         <div class="login_form">
             <h1>Register</h1>
+            <header>
+				<div th:if="${userDetails}">
+					<span th:text="${userDetails.username}"></span>
+                    <a href="/logout">Logout</a>
+                </div>
+                <div th:unless="${user}">
+					<a href="/login">Login</a>
+                </div>
+            </header>
+            
             <form th:action="@{/register}" method="POST">
                 <div>
-                    <input type="text" class="field" placeholder="Name" required th:field="${user.name}" />
+                    <input type="text" class="field" placeholder="Name" required th:field="${user.name}" >
                 </div>
                 <div>
-                    <input type="text" class="field" placeholder="Surname" required th:field="${user.surname}" />
+                    <input type="text" class="field" placeholder="Surname" required th:field="${user.surname}" >
                 </div>
                 <div>
-                    <input type="text" class="field" placeholder="User Name" required th:field="${credentials.username}" />
+                    <input type="text" class="field" placeholder="User Name" required th:field="${credentials.username}" >
                 </div>
                 <div> 
-                    <input type="password" class="field" placeholder="Password" required th:field="${credentials.password}" />
+                    <input type="password" class="field" placeholder="Password" required th:field="${credentials.password}" >
                 </div>
                 <div>
-                    <input type="email" class="field" placeholder="Email" required th:field="${user.email}" />
+                    <input type="email" class="field" placeholder="Email" required th:field="${user.email}" >
                 </div>
                 <div>
-                    <input type="date" class="field" placeholder="Date of Birth" required th:field="${user.dateOfBirth}" />
+                    <input type="date" class="field" placeholder="Date of Birth" required th:field="${user.dateOfBirth}" >
                 </div> 
                 <div>
                     <input type="checkbox" class="check_box"><label>Remember Password</label>

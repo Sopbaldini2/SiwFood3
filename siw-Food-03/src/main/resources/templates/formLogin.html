@@ -1,41 +1,56 @@
 <!DOCTYPE html>
-<html lang="en">
-	<head>
-		<meta charset="UTF-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>Login</title>
-		<link rel="stylesheet" href="/css/login.css">
-		<link rel="shortcut icon" href="/images/IconaSF.png ">
-		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-		
-		<body>
-			
-			<div class="hero">
-				
-				<div class="login_form">
-					<h1>Login</h1>
-					
-					<form class="input_box" th:action="@{/login}" method="POST">
-						
-						<input type="text" class="field" placeholder="User Name" required>
-						<input type="password" class="field" maxlength="10" placeholder="Password" required>
-						<input type="checkbox" class="check_box"><p>Remember Password</p>
-						<button type="submit" class="submit_btn">Login</button>
-						
-						<div class="social_icon">
-							<i class="fa-brands fa-facebook-f"></i>
-							<i class="fa-brands fa-google"></i>
-							<i class="fa-brands fa-apple"></i>
-						</div>
-						
-						<div class="tag">
-							<span> New Cooke? </span>
-							<a href="/register">Sign Up</a>
-						</div>
-					</form>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GOSTOSO - Ricette creole</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="/css/login.css"> 
+    <link rel="shortcut icon" href="/images/IconaSF.png" type="image/x-icon">
+</head>
+
+<body>
+
+    <div class="hero">
+	  <!-- <header>
+			<div th:if="${userDetails}">
+				<span th:text="${userDetails.username}"></span>
+                <a href="/logout">Logout</a>
+            </div>
+            <div th:unless="${user}">
+				<a href="/login">Login</a>
+            </div>
+        </header>-->
+        <div class="login_form">
+            <h1>Login</h1>
+            <form th:action="@{/login}" method="POST">
+                <div class="input_box">
+                    <input name="username" type="text" class="field" required />
+                </div>
+                <div class="input_box">
+                    <input name="password" type="password" class="field" required />
+                </div>
+                <div>
+                    <span th:if="${param.error != null}" class="error-message">Username o password errati</span>
+                </div>
+                <div class="input_box">
+                    <button type="submit" class="submit_btn">Login</button>
+                </div>
+                
+                <div class="social_icon">
+					<i class="fa-brands fa-facebook-f"></i>
+					<i class="fa-brands fa-google"></i>
+					<i class="fa-brands fa-apple"></i>
 				</div>
-			</div>
-		</body>
-	</head>
+            </form>
+            <div class="tag">
+				<span> New Cooke? </span>
+                <a th:href="@{/register}" th:text="Submit">Registrati</a>
+            </div>
+        </div>
+    </div>
+</body>
+
 </html>
