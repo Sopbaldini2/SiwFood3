@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html >
 	
 	<head>
 		
@@ -7,14 +7,15 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<title>Ingredient found</title>
-		<link rel="stylesheet" href="/css/foundii.css">
+		<link rel="stylesheet" href="/css/foundIngredient.css">
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 		<link rel="shortcut icon" href="/images/IconaSF.png ">
 		
 	</head>
+    <body>
 	
 	<!-- Navigation Bar -->
-	
+ <section class="home">	
 	<nav>
 		
 		<div class="logo">
@@ -22,19 +23,19 @@
 		</div>
 		
 		<ul>
-					<li><a href="/" >Home</a></li>
-					<li><a href="/recipe" >Recipes</a></li>
-					<li><a href="/ingredient" class="action" >Ingredients</a></li>
-					<li><a href="#" >Community</a></li>
-					<li><a href="#" >Blog</a></li>
+			<li><a href="/" >Home</a></li>
+			<li><a href="/recipe" >Recipes</a></li>
+			<li><a href="/ingredient" class="action" >Ingredients</a></li>
+			<li><a href="#" >Community</a></li>
+			<li><a href="#" >Blog</a></li>
 					
 		</ul>
 		
 		<div class="login">
-					<a href="/login"> Login </a>
+			<a href="/login"> Login </a>
 		</div>
 	</nav>
-	
+</section>
 	<!-- Navigation Bar ends -->
 	
 	<!-- Banner starts -->
@@ -45,8 +46,8 @@
 	
 	<!-- Found Ingredients starts -->
 	
-       <body>
-		   
+      
+		<div class="ingredient">   
 		   <h1>Ingredients that meet the requirements</h1>
 		   
 		   <div th:if="${ingredients.isEmpty()}">There are no ingredients that meet the requirements</div>
@@ -62,8 +63,8 @@
                </li>
            
            </ul>
-       
-       </body>
+		</div>
+    
        
 	<!-- Found Ingredients ends -->
 	
