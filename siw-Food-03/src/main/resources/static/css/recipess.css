@@ -138,7 +138,7 @@ nav .login a:hover{
 	width: 95%;
     margin: 45px auto 0 auto;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
     grid-gap: 30px 10px;
 }
 
@@ -192,7 +192,7 @@ nav .login a:hover{
 	font-weight: bold;
     font-size: 20px;
     padding: 8px 0;
-    margin-left: 45px;
+    text-align: center;
 }
 
 .recipe .recipe_box .recipe_card .recipe_text .recipe_btn {
