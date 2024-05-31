@@ -73,5 +73,11 @@ public class UserService {
         // Verifica se le credenziali sono presenti e se il ruolo è ADMIN
         return credentials != null && credentials.getRole().equals(Credentials.ADMIN_ROLE);
     }
+    
+    /*Verificare se funziona */
+    
+	public User findById(Long id) {
+		return userRepository.findById(id).get();
+	}
 }
 

@@ -113,16 +113,16 @@ public class User {
 		return image;
 	}
 	
+	public void setImage(String image) {
+		this.image = image;
+	}
+		
 	public void setBiography(String biography) {
 		this.biography = biography;
 	}
 	
 	public String getBiography() {
 		return biography;
-	}
-	
-	public void setImage(String image) {
-		this.image = image;
 	}
 	
     public Set<Recipe> getRecipes() {

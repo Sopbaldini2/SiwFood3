@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import it.uniroma3.siw.model.Credentials;
+import it.uniroma3.siw.model.User;
 import it.uniroma3.siw.repository.CredentialsRepository;
 
 @Service
@@ -36,6 +37,14 @@ public class CredentialsService {
         credentials.setRole(Credentials.DEFAULT_ROLE);
         credentials.setPassword(this.passwordEncoder.encode(credentials.getPassword()));
         return this.credentialsRepository.save(credentials);
+    }
+    
+/* Vedere se funziona */
+    
+    // Metodo per ottenere le credenziali di un utente
+    @Transactional(readOnly = true)
+    public Credentials getCredentialsByUser(User user) {
+        return credentialsRepository.findByUser(user);
     }
 }
 
