@@ -1,52 +1,94 @@
 <!DOCTYPE html>
-<html lang="en">
-	
+<html>
 	<head>
-		
 		<meta charset="UTF-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>Recipes</title>
-		<link rel="stylesheet" href="/css/style.css">
+		<title> GOSTOSO - Ricette creole</title>
+		<link rel="stylesheet" href="/css/recipessdetails.css">
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-		<link rel="shortcut icon" href="/images/IconaSF.png ">
-		
+		<link rel="shortcut icon" href="/images/IconaSF.png " type="image/x-icon">
 	</head>
-	
-	<!-- Navigation Bar -->
-	
-	<nav>
-		
-		<div class="logo">
-			<a href="/"><img src="images/LogoSF.png" ></a>
-		</div>
-		
-		<ul>
-					<li><a href="/" >Home</a></li>
-					<li><a href="/recipe" class="action">Recipes</a></li>
+	<body>
+		<section id="Home">
+			<nav>
+				<div class="logo">
+					<a href="/"><img src="/images/LogoSF.png" ></a>
+				</div>
+				
+				<ul>
+					<li><a href="/" class="action">Home</a></li>
+					<li><a href="/recipe" >Recipes</a></li>
 					<li><a href="/ingredient" >Ingredients</a></li>
 					<li><a href="#" >Community</a></li>
 					<li><a href="#" >Blog</a></li>
-					
-		</ul>
-		
-		<div class="login">
+				</ul>
+				
+				<div class="login">
 					<a href="/login"> Login </a>
-		</div>
-	</nav>
+				</div>
+			</nav>
 	
-	<!-- Navigation Bar ends -->
+    <!-- Navigation bar ends -->
 	
+	<!-- Recipes details starts -->
 	
-	<body>
+	<div class="recipe">
+		<h1>Dettagli sulle ricette</h1>
+        <div th:if="${recipe}">
+			
+			<div class="title">
+				<span th:text="${recipe.name}">Up!</span>
+			</div>
+			
+			<span><img th:src="@{'/images/recipes/' + ${recipe.image}}" alt="Recipe Image"></span>
+            <span th:text=" ${recipe.description} ">UP!</span>
+            
+            <div class="author">
+				By:
+				<span th:text=" ${recipe.cooke.name} ">UP!</span>
+			</div>
+			
+       </div>
+       <div th:unless="${recipe}">Non esiste</div>
+	</div>
 	
-	<h1>Dettagli sulle ricette</h1>
-    <div th:if="${recipe}">
-        <span th:text="${recipe.name}">Up!</span>
-        <span><img th:src="@{'/images/recipes/' + ${recipe.image}}" alt="Recipe Image"></span>
-        <span th:text="'(' + ${recipe.description} + ')'">UP!</span>
-        <span th:text="'(' + ${recipe.cooke} + ')'">UP!</span>
-    </div>
-    <div th:unless="${recipe}">Non esiste</div>
+	<!-- Recipes details ends -->
+	
+	<!-- Footer starts -->
+		
+		<footer>
+			<div class="footer_main">
+				
+				<div class="footer_img">
+						<img src="/images/IconaSF.png">
+				</div>
+				
+				<div class="footer_tag">
+					<h2>Quick Link</h2>
+					<p>Home</p>
+					<p>Recipes</p>
+					<p>Ingredients</p>
+					<p>Community</p>
+					<p>Blog</p>
+					
+				</div>
+				
+				<div class="footer_tag">
+					<h2>Follows</h2>
+					<i class="fa-brands fa-facebook"></i>
+					<i class="fa-brands fa-instagram"></i>
+					<i class="fa-brands fa-snapchat"></i>
+					<i class="fa-brands fa-youtube"></i>
+					<i class="fa-brands fa-tiktok"></i>
+					
+				</div>
+			</div>
+			
+			<p class="end"> Design by <span>Sophie Baldini</span></p>
+		</footer>
+		
+		<!-- Footer ends -->
+		
 	</body>
 </html>
