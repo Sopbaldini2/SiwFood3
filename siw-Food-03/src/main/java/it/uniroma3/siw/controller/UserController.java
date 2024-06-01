@@ -6,11 +6,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
+//import org.springframework.web.bind.annotation.PathVariable;
 
-import it.uniroma3.siw.model.Credentials;
+//import it.uniroma3.siw.model.Credentials;
 import it.uniroma3.siw.model.User;
-import it.uniroma3.siw.service.CredentialsService;
+//import it.uniroma3.siw.service.CredentialsService;
 import it.uniroma3.siw.service.UserService;
 
 @Controller
@@ -19,11 +19,16 @@ public class UserController {
 	@Autowired
     private UserService userService;
 	
-	@Autowired
-	private CredentialsService credentialsService;
+	/*@Autowired
+	private CredentialsService credentialsService;*/
+	
+	@GetMapping("/user/indexUser")
+	public String indexUser() {
+		return "user/indexUser.html";
+	}	
 
 	// Mostra i dettagli di un singolo cuoco
-	@GetMapping("/cooke/{id}")
+	/*@GetMapping("/cooke/{id}")
 	public String getUserDetails(@PathVariable Long id, Model model) {
 	    // Ottieni l'utente (cuoco) dal servizio
 	    User user = userService.findById(id);
@@ -31,7 +36,7 @@ public class UserController {
 	    // Verifica se l'utente esiste
 	    if (user == null) {
 	        /* Se l'utente non esiste, reindirizza alla pagina di errore o gestisci l'errore in modo appropriato*/
-	       return "redirect:/error";
+	      /* return "redirect:/error";
 	    }
 
 	    // Ottieni le credenziali dell'utente
@@ -52,7 +57,7 @@ public class UserController {
 	    
 	    // Restituisci il nome della vista per visualizzare i dettagli dell'utente
 	    return "cooke.html";
-	} 
+	} */
 
 	// Mostra un elenco di tutti i cuochi
 	@GetMapping("/cooke")

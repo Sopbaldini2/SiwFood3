@@ -21,12 +21,12 @@ public class IngredientController {
 	@Autowired
 	private IngredientService ingredientService;
 	
-	@GetMapping("/admin/indexIngredient")
+	@GetMapping("/usAd/indexIngredient")
 	public String indexIngredient() {
-		return "admin/indexIngredient.html";
+		return "usAd/indexIngredient.html";
 	}
 	
-	@PostMapping("/admin/ingredient")
+	@PostMapping("/usAd/ingredient")
 	public String newIngredient(@ModelAttribute("ingredient") Ingredient ingredient, Model model) {
 		if (!ingredientService.existsByName(ingredient.getName())) {
 			this.ingredientService.save(ingredient); 
@@ -34,7 +34,7 @@ public class IngredientController {
 			return "ingredient.html";
 		} else {
 			model.addAttribute("messaggioErrore", "Questo artista esiste già");
-			return "admin/formNewIngredient.html"; 
+			return "usAd/formNewIngredient.html"; 
 		}
 	}
 
@@ -50,10 +50,10 @@ public class IngredientController {
 		return "ingredients.html";
 	}
 	
-	@GetMapping("/admin/formNewIngredient")
+	@GetMapping("/usAd/formNewIngredient")
 	public String formNewIngredient(Model model) {
 		model.addAttribute("ingredient", new Ingredient());
-		return "admin/formNewIngredient.html";
+		return "usAd/formNewIngredient.html";
 	}
 	
 	/*@GetMapping("/formSearchIngredients")

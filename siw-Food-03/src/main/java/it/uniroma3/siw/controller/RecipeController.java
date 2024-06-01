@@ -43,9 +43,9 @@ public class RecipeController {
 	private UserService userService;
 	
 	
-	@GetMapping("/admin/indexRecipe")
+	@GetMapping("/usAd/indexRecipe")
 	public String indexRecipe() {
-		return "admin/indexRecipe.html";
+		return "usAd/indexRecipe.html";
 	}
 	
 	@GetMapping("/admin/manageRecipes")
