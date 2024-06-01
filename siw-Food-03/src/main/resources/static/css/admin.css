@@ -5,7 +5,7 @@
 	font-size: sans-serif;
 }
 
- nav{
+nav{
 	display: flex;
 	align-items: center;
 	justify-content: space-around;
@@ -26,44 +26,66 @@ nav .logo img{
 }
 
 /* Title */
-h1 {
-    margin-top: 20px;
+
+.admin{
+	width: 100%;
+    padding: 75px 0;
+    text-align: center;
+}
+
+.admin h1 {
+    margin-top: 40px;
     text-align: center;
     font-size: 36px;
     color: #333333;
 }
 
 /* Links */
-.recipe,
-.ingredient,
-.cooke,
-.aRecipe,
-.aIngredient,
-.aCooke {
+.admin .recipe,
+.admin .ingredient,
+.admin .cooke,
+.admin .aRecipe,
+.admin .aIngredient,
+.admin .aCooke {
     text-align: center;
     margin-top: 20px;
 }
 
-.recipe a,
-.ingredient a,
-.cooke a,
-.aRecipe a,
-.aIngredient a,
-.aCooke a {
+.admin .recipe a,
+.admin .ingredient a,
+.admin .cooke a,
+.admin .aRecipe a,
+.admin .aIngredient a,
+.admin .aCooke a {
     display: block;
     padding: 10px 20px;
-    background-color: #eeeeee;
+    /*background-color: #eeeeee;*/
     color: #333333;
     text-decoration: none;
     border-radius: 5px;
     transition: background-color 0.3s ease;
 }
 
-.recipe a:hover,
-.ingredient a:hover,
-.cooke a:hover,
-.aRecipe a:hover,
-.aIngredient a:hover,
-.aCooke a:hover {
-    background-color: #dddddd;
+.admin .recipe a:hover,
+.admin .ingredient a:hover,
+.admin .cooke a:hover,
+.admin .aRecipe a:hover,
+.admin .aIngredient a:hover,
+.admin .aCooke a:hover {
+    background-color:  rgb(0, 179, 0);
+    color: #fff;
+}
+
+.admin header {
+  color: white;
+  height: 1.5em;
+  margin-bottom: 0.5em;
+  padding: 0.2em;
+  text-align: right; 
+}
+
+.admin header a { 
+	text-decoration: none; 
+    color: white;
+    font-size: 1em;
 }

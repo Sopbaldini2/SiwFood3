@@ -16,7 +16,7 @@
     <div class="hero">
         <div class="login_form">
             <h1>Register</h1>
-            <header>
+            <!--<header>
 				<div th:if="${userDetails}">
 					<span th:text="${userDetails.username}"></span>
                     <a href="/logout">Logout</a>
@@ -24,7 +24,7 @@
                 <div th:unless="${user}">
 					<a href="/login">Login</a>
                 </div>
-            </header>
+            </header> -->
             
             <form th:action="@{/register}" method="POST">
                 <div>
