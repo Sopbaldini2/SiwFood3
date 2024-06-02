@@ -75,7 +75,7 @@
                         <i class="fa-solid fa-star-half-stroke" th:if="${recipe.rating % 1 != 0}"></i>
                     </div> -->
                     <div class="author">
-                        <a href="${recipe.cooke.id}" class="author_link">by <span th:text="${recipe.cooke.name}">Admin</span></a>
+                        <a href="${recipe.cooke.id}" class="author_link">by <span th:text="${recipe.cooke.name} + ' ' + ${recipe.cooke.surname}">Admin</span></a>
                     </div>
                     <a th:href="@{'/recipe/' + ${recipe.id}}" class="recipe_btn">Cook <i class="fa-solid fa-cookie-bite"></i></a>
                 </div>

@@ -54,7 +54,7 @@ public class RecipeController {
 		return "admin/manageRecipes.html";
 	}
 	
-	@PostMapping("/recipe")
+	@PostMapping("usAd/recipe")
 	public String newRecipe(@Valid @ModelAttribute("recipe") Recipe recipe, BindingResult bindingResult, Model model) {
 		
 		this.recipeValidator.validate(recipe, bindingResult);
@@ -79,16 +79,18 @@ public class RecipeController {
 		return "recipes.html";
 	}
 	
-	@GetMapping("/admin/formNewRecipe")
+	@GetMapping("/usAd/formNewRecipe")
 	public String formNewRecipe(Model model) {
 		model.addAttribute("recipe", new Recipe());
-		return "admin/formNewRecipe.html";
+		model.addAttribute("user", userService.getCurrentUser()); 
+	    model.addAttribute("users", userService.getAllUsers());
+		return "usAd/formNewRecipe.html";
 	}
 
-	@GetMapping("/admin/formUpdateRecipe/{id}")
+	@GetMapping("/usAd/formUpdateRecipe/{id}")
 	public String formUpdateRecipe(@PathVariable("id") Long id, Model model) {
 		model.addAttribute("recipe", recipeService.findById(id));
-		return "admin/formUpdateRecipe.html";
+		return "usAd/formUpdateRecipe.html";
 	}
 	
 	 // Metodo per cancellare una ricetta

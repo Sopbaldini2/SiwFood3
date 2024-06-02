@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title> GOSTOSO - Ricette creole</title>
+		<link rel="stylesheet" href="/css/recipesNew.css">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+		<link rel="shortcut icon" href="/images/IconaSF.png " type="image/x-icon">
+	</head>
+	<body>
+			<nav>
+				<div class="logo">
+					<a href="/"><img src="/images/LogoSF.png" ></a>
+				</div>
+			</nav>
+	
+    <!-- Navigation bar ends -->
+    
+    <!-- Banner starts -->
+    
+           <div class="banner_bg">
+			   <h1>Add <span>an Re</span>cipe</h1>
+	       </div>
+    
+     <!-- Banner ends -->
+     
+     <!-- Recipe New starts -->
+     
+     <div class="recipe_new">
+		 
+		<form th:action="@{/usAd/recipe}" method="POST" th:object="${recipe}">
+			<div th:if="${#fields.hasGlobalErrors()}">
+				<p th:each="err : ${#fields.globalErrors()}" th:text="${err}">...</p> 
+		    </div>
+	  
+	        <div>
+				<label>Title:</label> 
+		        <span><input type="text" th:field="${recipe.name}" /></span>
+		        <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}">
+				</span>
+	        </div>
+
+	        <div>
+				<label>Description:</label> <span><input type="text" th:field="${recipe.description}" /></span>
+		        <span th:if="${#fields.hasErrors('description')}" th:errors="*{description}">
+				</span>
+	        </div>
+	
+              <div>
+				<label for="cooke">Utente:</label>
+                <select id="cooke" name="cooke">
+					<option value="">Seleziona un utente</option>
+					<option th:each="user : ${users}" th:value="${user.id}" th:text="${user.name} + ' ' + ${user.surname}"></option>
+                </select>
+                <span th:if="${#fields.hasErrors('cooke')}" th:errors="*{cooke}"></span>
+            </div>
+
+	        <div>
+				<label>Immage:</label> <span><span><input type="file" id="image" name="image" accept="image/png" /></span>
+	        </div>
+	  
+	        <div>
+				<span><button type="submit">Submit</button></span>
+	        </div>
+        </form>
+		
+	  </div>
+	  
+	  <!-- Recipe New ends -->
+
+	</body>
+</html> 
