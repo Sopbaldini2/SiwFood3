@@ -49,9 +49,9 @@
 	        </div>
 	
               <div>
-				<label for="cooke">Utente:</label>
+				<label for="cooke">Cooke:</label>
                 <select id="cooke" name="cooke">
-					<option value="">Seleziona un utente</option>
+					<option value="">Select Chef</option>
 					<option th:each="user : ${users}" th:value="${user.id}" th:text="${user.name} + ' ' + ${user.surname}"></option>
                 </select>
                 <span th:if="${#fields.hasErrors('cooke')}" th:errors="*{cooke}"></span>
