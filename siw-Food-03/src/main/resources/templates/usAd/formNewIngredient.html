@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title> GOSTOSO - Ricette creole</title>
+		<link rel="stylesheet" href="/css/ingredientsNew.css">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+		<link rel="shortcut icon" href="/images/IconaSF.png " type="image/x-icon">
+	</head>
+	<body>
+			<nav>
+				<div class="logo">
+					<a href="/"><img src="/images/LogoSF.png" ></a>
+				</div>
+			</nav>
+	
+    <!-- Navigation bar ends -->
+    
+    <!-- Banner starts -->
+    
+           <div class="banner_bg">
+			   <h1>Add <span>an Ing</span>redient</h1>
+	       </div>
+    
+     <!-- Banner ends -->
+     
+     <!-- Ingredient New starts -->
+     
+     <div class="ingredient_new">
+		 
+		<form th:action="@{/usAd/ingredient}" method="POST" th:object="${ingredient}" >
+			
+			<div>
+				<span th:text="${messaggioErrore}">Error</span>
+			</div>
+			
+			<div>
+				<label>Name:</label> <span><input required type="text" th:field="${ingredient.name}" /></span>
+			</div>
+	
+			<div>
+				<label>Quantity:</label> <span><input required type="text" th:field="${ingredient.quantita}" /></span>
+			</div>
+	
+			<div>
+				<label>Description:</label> <span><input type="text" th:field="${ingredient.description}" /></span>
+			</div>
+	
+				<div>
+					<label>Immage:</label> <span><input type="file" id="image" name="image" accept="image/png" /></span>
+			    </div>
+			
+			<div>
+				<span><button type="submit">Confirm</button></span>
+			</div>
+			
+		</form>
+		
+	  </div>
+	  
+	  <!-- Ingredient New ends -->
+
+	</body>
+</html>    

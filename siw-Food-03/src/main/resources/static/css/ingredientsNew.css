@@ -1,0 +1,128 @@
+*{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-size: sans-serif;
+}
+
+ nav{
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+	background: #fff;
+	position: fixed;
+	right: 0;
+	left: 0;
+	z-index: 1000;
+	box-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
+
+nav .logo img{
+	width: 120px;
+	margin: 20px 0;
+	position: relative;
+	left: -45%;
+	cursor: pointer;
+}
+
+/*Banner*/
+
+.banner_bg{
+	width: 100%;
+	height: 50vh;
+	background-image: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), url(/images/banner5.png);
+	background-size: cover;
+	background-position: center;
+}
+
+.banner_bg h1{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 50px;
+	position: relative;
+	top: 50%;
+	color: #fff;
+}
+
+.banner_bg h1 span{
+	margin-left: 10px;
+
+	color: rgb(0, 179, 0);
+}
+
+/* Ingredient new*/
+
+.ingredient_new {
+	width: 100%;
+	max-width: 500px;
+	margin: 50px auto;
+	padding: 20px;
+	background-color: #fff;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+	border-radius: 8px;
+}
+
+.ingredient_new form {
+	display: flex;
+	flex-direction: column;
+}
+
+.ingredient_new form div {
+	margin-bottom: 15px;
+}
+
+.ingredient_new form label {
+	font-size: 16px;
+	color: #333;
+	margin-bottom: 5px;
+	display: block;
+}
+
+.ingredient_new form input[type="text"],
+.ingredient_new form input[type="file"] {
+	width: 100%;
+	padding: 10px;
+	font-size: 14px;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+}
+
+.ingredient_new form input[type="file"] {
+	padding: 5px;
+}
+
+.ingredient_new form span {
+	display: flex;
+	justify-content: center;
+}
+
+.ingredient_new form button {
+	background-color: rgb(0, 179, 0);
+	color: #fff;
+	padding: 10px 20px;
+	border: none;
+	border-radius: 4px;
+	cursor: pointer;
+	font-size: 16px;
+	transition: background-color 0.3s;
+}
+
+.ingredient_new form button:hover {
+	background-color: rgb(226, 152, 29);
+}
+
+.ingredient_new form span[th\:text="${messaggioErrore}"] {
+	color: red;
+	text-align: center;
+	margin-bottom: 10px;
+}
+
+::-webkit-scrollbar{
+	width: 10px;
+}
+
+::-webkit-scrollbar-thumb{
+	background: rgb(0, 179, 0);
+	border-radius: 30px;
+}
