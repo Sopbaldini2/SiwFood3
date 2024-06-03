@@ -34,6 +34,7 @@
 	
 	<div class="recipe">
 		<h1>Dettagli sulle ricette</h1>
+		
         <div th:if="${recipe}">
 			
 			<div class="title">
@@ -41,7 +42,18 @@
 			</div>
 			
 			<span><img th:src="@{'/images/recipes/' + ${recipe.image}}" alt="Recipe Image"></span>
-            <span th:text=" ${recipe.description} ">UP!</span>
+			
+			<div class="ingredients">
+				<h2>Ingredients</h2>
+                <ul>
+					<li th:each="ingredient : ${recipe.ingredients}" th:text="${ingredient.name} + ' ' + ${ingredient.quantita + 'g'}">Ingrediente 20</li>
+                </ul>
+            </div>
+            
+            <div class="recipe_preparation">
+				<h2>Preparation</h2>
+				<span th:text=" ${recipe.description} ">UP!</span>
+            </div>
             
             <div class="author">
 				By:

@@ -11,4 +11,14 @@ INSERT INTO users (id, name, surname, email, date_of_birth, job, image) VALUES (
 INSERT INTO recipe (id, name, description, image, cooke_id) VALUES (nextval('recipe_seq'), 'Cachupa', 'A fresh salad with tomatoes and basil.', 'Cachupa.png', 1);
 INSERT INTO recipe (id, name, description, image, cooke_id) VALUES (nextval('recipe_seq'), 'Gumbo', 'Classic Italian pasta with tomato sauce.', 'gumbo.png', 51);
 
+-- Cachupa
 
+INSERT INTO recipe_ingredients (recipes_id, ingredients_id) VALUES (1, 1); 
+INSERT INTO recipe_ingredients (recipes_id, ingredients_id) VALUES (1, 51);
+INSERT INTO recipe_ingredients (recipes_id, ingredients_id) VALUES (1, 101); 
+
+-- Gumbo
+
+INSERT INTO recipe_ingredients (recipes_id, ingredients_id) VALUES (51, 1); 
+INSERT INTO recipe_ingredients (recipes_id, ingredients_id) VALUES (51, 51);
+INSERT INTO recipe_ingredients (recipes_id, ingredients_id) VALUES (51, 101); 
