@@ -164,7 +164,7 @@ public class RecipeController {
 		model.addAttribute("recipe", recipe);
 		model.addAttribute("ingredientsToAdd", ingredientsToAdd);
 
-		return "admin/ingredientsToAdd.html";
+		return "usAd/ingredientsToAdd.html";
 	}
 	
 	@GetMapping("/admin/removeIngredientFromRecipe/{ingredientId}/{recipeId}")
@@ -180,7 +180,7 @@ public class RecipeController {
 		model.addAttribute("recipe", recipe);
 		model.addAttribute("ingredientToAdd", ingredientsToAdd);
 
-		return "admin/ingredientsToAdd.html";
+		return "usAd/ingredientsToAdd.html";
 	}
 
 	private List<Ingredient> ingredientsToAdd(Long recipeId) {
