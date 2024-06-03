@@ -8,8 +8,8 @@ INSERT INTO ingredient (id, name, quantita, description, image) VALUES(nextval('
 INSERT INTO users (id, name, surname, email, date_of_birth, job, image) VALUES (nextval('users_seq'), 'Gordon', 'Ramsay', 'gordon@example.com', '08-11-1966', 'Cuoco', 'Joao Ratao.png');
 INSERT INTO users (id, name, surname, email, date_of_birth, job, image) VALUES (nextval('users_seq'), 'Jamie', 'Oliver', 'jamie@example.com', '27-05-1975', 'Cuoco', 'Marco Santini.png');
 
-INSERT INTO recipe (id, name, description, image, cooke_id) VALUES (nextval('recipe_seq'), 'Cachupa', 'A fresh salad with tomatoes and basil.', 'Cachupa.png', 1);
-INSERT INTO recipe (id, name, description, image, cooke_id) VALUES (nextval('recipe_seq'), 'Gumbo', 'Classic Italian pasta with tomato sauce.', 'gumbo.png', 51);
+INSERT INTO recipe (id, name, description, preparation, image, cooke_id) VALUES (nextval('recipe_seq'), 'Cachupa', 'A fresh salad with tomatoes and basil.', 'frase ad effetto', 'Cachupa.png', 1);
+INSERT INTO recipe (id, name, description, preparation, image, cooke_id) VALUES (nextval('recipe_seq'), 'Gumbo', 'Classic Italian pasta with tomato sauce.', 'frase ad effetto', 'gumbo.png', 51);
 
 -- Cachupa
 

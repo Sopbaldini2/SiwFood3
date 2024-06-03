@@ -19,6 +19,7 @@ public class Recipe {
 	private Long id;
 	private String name;
 	private String description;
+	private String preparation;
 	private String image;
 	@ManyToOne
 	@JoinColumn(name = "cooke_id", nullable = false)
@@ -45,6 +46,12 @@ public class Recipe {
 	}
 	public void setDescription(String description) {
 		this.description = description;
+	}
+	public String getPreparation() {
+		return preparation;
+	}
+	public void setPreparation(String preparation) {
+		this.preparation = preparation;
 	}
 	public User getCooke() {
 		return cooke;
