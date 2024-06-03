@@ -47,8 +47,22 @@
 		        <span th:if="${#fields.hasErrors('description')}" th:errors="*{description}">
 				</span>
 	        </div>
-	
-              <div>
+	        
+	        <div>
+				<label>Preparation:</label> <span><input type="text" th:field="${recipe.preparation}" /></span>
+		        <span th:if="${#fields.hasErrors('preparation')}" th:errors="*{preparation}">
+				</span>
+	        </div>
+	        
+	        <div>
+				<label>Ingredients:</label>
+                <select multiple="multiple" name="ingredientIds" id="ingredientIds">
+					<option th:each="ingredient : ${ingredients}" th:value="${ingredient.id}" th:text="${ingredient.name} + ' ' + ${ingredient.quantita + ' ' + 'g'}"></option>
+                </select>
+                <span th:if="${#fields.hasErrors('ingredients')}" th:errors="*{ingredients}"></span>
+            </div>
+	  
+            <div>
 				<label for="cooke">Cooke:</label>
                 <select id="cooke" name="cooke">
 					<option value="">Select Chef</option>
@@ -65,7 +79,7 @@
 				<span><button type="submit">Submit</button></span>
 	        </div>
         </form>
-		
+        
 	  </div>
 	  
 	  <!-- Recipe New ends -->

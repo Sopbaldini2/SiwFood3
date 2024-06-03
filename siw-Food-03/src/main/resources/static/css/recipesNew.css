@@ -98,6 +98,23 @@ nav .logo img{
     justify-content: center;
 }
 
+.recipe_new form select {
+    width: 100%;
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.recipe_new form select option {
+    padding: 5px;
+}
+
+.recipe_new form span {
+    display: flex;
+    justify-content: center;
+}
+
 .recipe_new form button {
     background-color:crimson;
     color: #fff;

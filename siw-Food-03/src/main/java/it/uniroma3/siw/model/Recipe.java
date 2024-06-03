@@ -26,7 +26,7 @@ public class Recipe {
 	private User cooke;
 	@ManyToMany
 	private Set<Ingredient> ingredients;
-	
+    
 	//Aggiungo i metodi Getter e Setter
 	
 	public Long getId() {

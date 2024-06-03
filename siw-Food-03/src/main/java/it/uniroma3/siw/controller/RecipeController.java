@@ -1,6 +1,7 @@
 package it.uniroma3.siw.controller;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -55,16 +56,29 @@ public class RecipeController {
 	}
 	
 	@PostMapping("usAd/recipe")
-	public String newRecipe(@Valid @ModelAttribute("recipe") Recipe recipe, BindingResult bindingResult, Model model) {
-		
-		this.recipeValidator.validate(recipe, bindingResult);
-		if (!bindingResult.hasErrors()) {
-			this.recipeService.save(recipe); 
-			model.addAttribute("recipe", recipe);
-			return "recipe.html";
-		} else {
-			return "formNewRecipe.html"; 
-		}
+	public String newRecipe(@Valid @ModelAttribute("recipe") Recipe recipe, BindingResult bindingResult, 
+	                        @RequestParam(value = "ingredientIds", required = false) List<Long> ingredientIds, Model model) {
+	    
+	    this.recipeValidator.validate(recipe, bindingResult);
+	    
+	    if (!bindingResult.hasErrors()) {
+	      
+	            Set<Ingredient> ingredients = new HashSet<>();
+	            for (Long ingredientId : ingredientIds) {
+	                Ingredient ingredient = ingredientService.findById(ingredientId);
+	                if (ingredient != null) {
+	                    ingredients.add(ingredient);
+	                }
+	            }
+	            recipe.setIngredients(ingredients);
+	   
+	        
+	        this.recipeService.save(recipe); 
+	        model.addAttribute("recipe", recipe);
+	        return "recipe.html";
+	    } else {
+	        return "formNewRecipe.html"; 
+	    }
 	}
 
 	@GetMapping("/recipe/{id}")
@@ -84,6 +98,7 @@ public class RecipeController {
 		model.addAttribute("recipe", new Recipe());
 		model.addAttribute("user", userService.getCurrentUser()); 
 	    model.addAttribute("users", userService.getAllUsers());
+	    model.addAttribute("ingredients", ingredientService.findAll());
 		return "usAd/formNewRecipe.html";
 	}
 
@@ -136,7 +151,7 @@ public class RecipeController {
 		return "admin/ingredientsToAdd.html";
 	}
 
-	@GetMapping("/admin/addIngredientToRecipe/{ingredientId}/{recipeId}")
+	@GetMapping("/usAd/addIngredientToRecipe/{ingredientId}/{recipeId}")
 	public String addIngredientToRecipe(@PathVariable("ingredientId") Long ingredientId, @PathVariable("recipeId") Long recipeId, Model model) {
 		Recipe recipe = this.recipeService.findById(recipeId);
 		Ingredient ingredient = this.ingredientService.findById(ingredientId);
