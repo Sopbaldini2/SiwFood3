@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+	
+	<head>
+		
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Recipe Management</title>
+		<link rel="stylesheet" href="/css/updateRecipe.css">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+		<link rel="shortcut icon" href="/images/IconaSF.png ">
+		
+	</head>
+    <body>
+	
+	<!-- Navigation Bar -->
+	
+	<nav>
+		
+		<div class="logo">
+			<a href="/manageRecipes"><img src="/images/LogoSF.png" ></a>
+		</div>
+		
+		<ul>
+			
+			<li><a href="/" >Home</a></li>
+			<li><a href="/recipe" class="action">Recipes</a></li>
+
+		</ul>
+
+	</nav>
+	
+	<!-- Navigation Bar ends -->
+	
+	<!-- Banner starts -->
+	
+	<div class="banner_bg">
+		<h1>Recipes<span>Update</span></h1>
+
+	</div>
+	
+	<!-- Banner ends -->
+	
+	<!-- Update recipe starts -->
+	
+	<div class="recipe_update">
+		<h1>Update recipes</h1>
+	    <div th:if="${recipe}">
+			<div class="title">
+				<span th:text="${recipe.name}">Up!</span>
+		    </div>
+		    
+		    <div th:if="${recipe.cooke}" class="cook">
+				<span>Cooke: </span><span th:text="${recipe.cooke.name} + ' ' + ${recipe.cooke.surname}">Gordon Ramsay</span>
+		    </div>
+		    
+		    <div class="ingredient_recipe">
+				<span>Ingredients: </span>
+			    <div th:each="ingredient: ${recipe.ingredients}">
+					<span th:text="${ingredient.name} + ' ' + ${ingredient.quantita +' '+ 'g'}">mais 500g</span>
+			    </div>
+			    <a th:href="@{'/usAd/updateIngredients/' + ${recipe.id}}">
+					<button type="button">Edit</button>
+			    </a>
+		   </div>
+		   <div th:unless="${recipe}">The recipe doesn't exist</div>
+	</div>
+	
+	<!-- Update recipe ends -->
+	
+   </body>
+
+</html>

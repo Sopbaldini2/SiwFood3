@@ -19,7 +19,7 @@
 	<nav>
 		
 		<div class="logo">
-			<a href="/"><img src="/images/LogoSF.png" ></a>
+			<a href="/manageRecipes"><img src="/images/LogoSF.png" ></a>
 		</div>
 		
 		<ul>
@@ -33,7 +33,17 @@
 	
 	<!-- Navigation Bar ends -->
 	
+	<!-- Banner starts -->
+	
+	<div class="banner_bg">
+		<h1>Recipes<span>Operation</span></h1>
+
+	</div>
+	
+	<!-- Banner ends -->
+	
 	<!-- Manage recipe starts -->
+	
 	<div class="recipe_main">
 		<h1>Recipes</h1>
 	    <div th:if="${recipes.isEmpty()}">There are no recipes in the system</div>

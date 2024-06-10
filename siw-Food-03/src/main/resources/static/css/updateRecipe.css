@@ -1,0 +1,150 @@
+*{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-size: sans-serif;
+}
+
+ nav{
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+	background: #fff;
+	position: fixed;
+	right: 0;
+	left: 0;
+	z-index: 1000;
+	box-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
+
+nav .logo img{
+	width: 120px;
+	margin: 20px 0;
+	position: relative;
+	left: -45%;
+	cursor: pointer;
+}
+
+nav ul{
+	list-style: none;
+}
+
+nav ul li{
+	display: inline-block;
+	margin: 0 10px;
+}
+
+nav ul li a{
+	color: black;
+	text-decoration: none;
+	transition: 0.3s;
+}
+
+nav ul li a.action{
+	color: rgb(0, 179, 0);
+}
+
+nav ul li a:hover{
+	color: rgb(0, 179, 0);
+}
+
+/*Banner*/
+
+.banner_bg{
+	width: 100%;
+	height: 50vh;
+	background-image: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), url(/images/banner4.png);
+	background-size: cover;
+	background-position: center;
+}
+
+.banner_bg h1{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 50px;
+	position: relative;
+	top: 50%;
+	color: #fff;
+}
+
+.banner_bg h1 span{
+	margin-left: 10px;
+	color: crimson;
+}
+
+/* Recipe Update */
+
+.recipe_update {
+    margin-top: 50px;
+    padding: 20px;
+    background-color: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 5px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    text-align: center; /* Centra tutto il contenuto */
+}
+
+.recipe_update h1 {
+    font-size: 28px;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.recipe_update .title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: rgb(226, 152, 29);
+}
+
+.recipe_update .cook {
+    margin-top: 20px; /* Sposta "cooke" sotto il titolo */
+}
+
+.recipe_update .cook,
+.recipe_update .ingredient_recipe {
+    display: inline-block;
+    width: 100%;
+}
+
+.recipe_update .cook::after {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 1px;
+    background-color: #e0e0e0;
+    margin: 10px auto;
+}
+
+.recipe_update .ingredient_recipe span {
+    display: block;
+    margin-bottom: 10px;
+}
+
+.recipe_update a {
+    text-decoration: none;
+}
+
+.recipe_update button {
+    background-color: #4caf50;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.recipe_update button:hover {
+    background-color: crimson;
+}
+
+::-webkit-scrollbar{
+	width: 10px;
+}
+
+::-webkit-scrollbar-thumb{
+	background: rgb(0, 179, 0);
+	border-radius: 30px;
+}
