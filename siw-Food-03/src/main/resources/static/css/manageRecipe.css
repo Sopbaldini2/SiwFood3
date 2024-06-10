@@ -1,0 +1,136 @@
+*{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-size: sans-serif;
+}
+
+ nav{
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+	background: #fff;
+	position: fixed;
+	right: 0;
+	left: 0;
+	z-index: 1000;
+	box-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
+
+nav .logo img{
+	width: 120px;
+	margin: 20px 0;
+	position: relative;
+	left: -45%;
+	cursor: pointer;
+}
+
+nav ul{
+	list-style: none;
+}
+
+nav ul li{
+	display: inline-block;
+	margin: 0 10px;
+}
+
+nav ul li a{
+	color: black;
+	text-decoration: none;
+	transition: 0.3s;
+}
+
+nav ul li a.action{
+	color: rgb(0, 179, 0);
+}
+
+nav ul li a:hover{
+	color: rgb(0, 179, 0);
+}
+
+/*Banner*/
+
+.banner_bg{
+	width: 100%;
+	height: 50vh;
+	background-image: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), url(/images/banner4.png);
+	background-size: cover;
+	background-position: center;
+}
+
+.banner_bg h1{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 50px;
+	position: relative;
+	top: 50%;
+	color: #fff;
+}
+
+.banner_bg h1 span{
+	margin-left: 10px;
+	color: crimson;
+}
+
+/* Recipe Manage */
+
+.recipe_main {
+  max-width: 800px;
+  margin: 0 auto 10px auto; /* Sposta la sezione sotto la navbar */
+  padding: 200px;
+  background: #fff;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  border-radius: 5px;
+}
+
+.recipe_main h1 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #333;
+  font-size: 2em;
+}
+
+.recipe_main div {
+  text-align: center;
+  margin: 20px 0;
+  font-size: 1.2em;
+  color: #888;
+}
+
+.recipe_main ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.recipe_main ul li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+}
+
+.recipe_main ul li:last-child {
+  border-bottom: none;
+}
+
+.recipe_main ul li span {
+  font-size: 1.1em;
+  color: #555;
+}
+
+/* Stile per il pulsante "Update" */
+.recipe_main ul li a.update_btn {
+  text-decoration: none;
+  color: crimson;
+  padding: 5px 10px;
+  border: 1px solid crimson;
+  border-radius: 3px;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.recipe_main ul li a.update_btn:hover {
+  background-color: crimson;
+  color: #fff;
+}

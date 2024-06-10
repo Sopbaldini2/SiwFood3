@@ -49,10 +49,10 @@ public class RecipeController {
 		return "usAd/indexRecipe.html";
 	}
 	
-	@GetMapping("/admin/manageRecipes")
+	@GetMapping("/usAd/manageRecipes")
 	public String manageRecipes(Model model) {
 		model.addAttribute("recipes", this.recipeService.findAll());
-		return "admin/manageRecipes.html";
+		return "usAd/manageRecipes.html";
 	}
 	
 	@PostMapping("usAd/recipe")

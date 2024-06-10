@@ -1,31 +1,52 @@
 <!DOCTYPE html>
-<html>
-
-<head>
-	<title>Ricette</title>
-	<link rel="stylesheet" href="/css/style.css" />
-</head>
-
-<body>
-	<header>
-		<div th:if="${userDetails}">
-			<span th:text="${userDetails.username}"></span>
-			<a href="/logout">Logout</a>
+<html lang="en">
+	
+	<head>
+		
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Recipe Management</title>
+		<link rel="stylesheet" href="/css/manageRecipe.css">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+		<link rel="shortcut icon" href="/images/IconaSF.png ">
+		
+	</head>
+    <body>
+	
+	<!-- Navigation Bar -->
+	
+	<nav>
+		
+		<div class="logo">
+			<a href="/"><img src="/images/LogoSF.png" ></a>
 		</div>
-		<div th:unless="${user}">
-			<a href="/login">Login</a>
-		</div>
-	</header>
+		
+		<ul>
+			
+			<li><a href="/" >Home</a></li>
+			<li><a href="/recipe" class="action">Recipes</a></li>
 
-	<div><a href="/"><img src="/images/logo-siw.png" width="50%" /></a></div>
-	<h1>Ricette</h1>
-	<div th:if="${recipes.isEmpty()}">Non ci sono ricette nel sistema</div>
-	<ul>
-		<li th:each="recipe : ${recipes}">
-			<span th:text="${recipe.name} ">Up! </span>
-			<a th:href="@{'/usAd/formUpdateRecipe' + '/' + ${recipe.id}}">Aggiorna</a>
-		</li>
-	</ul>
-</body>
+		</ul>
+
+	</nav>
+	
+	<!-- Navigation Bar ends -->
+	
+	<!-- Manage recipe starts -->
+	<div class="recipe_main">
+		<h1>Recipes</h1>
+	    <div th:if="${recipes.isEmpty()}">There are no recipes in the system</div>
+	    <ul>
+			<li th:each="recipe : ${recipes}">
+				<span th:text="${recipe.name} ">Up! </span>
+			    <a th:href="@{'/usAd/formUpdateRecipe' + '/' + ${recipe.id}}" class="update_btn">Update</a>
+		    </li>
+	   </ul>
+	</div>
+	
+	<!-- Manage recipe ends- -->
+	
+  </body>
 
 </html>
