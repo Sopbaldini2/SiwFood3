@@ -51,6 +51,9 @@
 			<li th:each="recipe : ${recipes}">
 				<span th:text="${recipe.name} ">Up! </span>
 			    <a th:href="@{'/usAd/formUpdateRecipe' + '/' + ${recipe.id}}" class="update_btn">Update</a>
+			     <form th:action="@{'/usAd/deleteRecipe/' + ${recipe.id}}" method="get" onsubmit="return confirm('Are you sure you want to delete this recipe?');">
+					 <button type="submit" class="btn">Delete</button>
+                 </form>
 		    </li>
 	   </ul>
 	</div>

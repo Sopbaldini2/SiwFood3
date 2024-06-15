@@ -1,8 +1,10 @@
 package it.uniroma3.siw.controller;
 
+import java.security.Principal;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +13,6 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -20,9 +21,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 
 import it.uniroma3.siw.controller.validator.RecipeValidator;
+import it.uniroma3.siw.model.Credentials;
 import it.uniroma3.siw.model.Ingredient;
 import it.uniroma3.siw.model.Recipe;
 import it.uniroma3.siw.model.User;
+import it.uniroma3.siw.service.CredentialsService;
 import it.uniroma3.siw.service.IngredientService;
 import it.uniroma3.siw.service.RecipeService;
 import it.uniroma3.siw.service.UserService;
@@ -42,6 +45,9 @@ public class RecipeController {
 	
 	@Autowired
 	private UserService userService;
+	
+	@Autowired
+    private CredentialsService credentialsService;
 	
 	
 	@GetMapping("/usAd/indexRecipe")
@@ -77,7 +83,7 @@ public class RecipeController {
 	        model.addAttribute("recipe", recipe);
 	        return "recipe.html";
 	    } else {
-	        return "formNewRecipe.html"; 
+	        return "/usAd/formNewRecipe.html"; 
 	    }
 	}
 
@@ -109,25 +115,38 @@ public class RecipeController {
 	}
 	
 	 // Metodo per cancellare una ricetta
-    @DeleteMapping("/admin/deleteRecipe/{recipeId}")
-    public String deleteRecipe(@PathVariable("recipeId") Long recipeId, Model model) {
+	@GetMapping("/usAd/deleteRecipe/{id}")
+    public String deleteRecipe(@PathVariable("id") Long id, Model model) {
+        // Ottieni l'utente autenticato
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        String currentUserEmail = authentication.getName();
-        User currentUser = userService.findByEmail(currentUserEmail);
-        Recipe recipe = recipeService.findById(recipeId);
-        
-        if (recipe != null && currentUser != null) {
-            if (userService.isUserAdmin(currentUser) || currentUser.getId().equals(recipe.getCooke().getId())) {
-                recipeService.deleteRecipe(recipeId);
-                model.addAttribute("successMessage", "Ricetta cancellata con successo.");
+        String username = authentication.getName();
+
+        Optional<Credentials> optionalCredentials = credentialsService.findByUsername(username);
+        if (optionalCredentials.isPresent()) {
+            User user = optionalCredentials.get().getUser();
+
+            Recipe recipe = recipeService.findById(id);
+            if (recipe != null) {
+                // Verifica se l'ID del cuoco corrisponde all'ID dell'utente autenticato
+                if (recipe.getCooke().getId().equals(user.getId())) {
+                    recipeService.deleteRecipe(recipe);
+                    // Redirect alla pagina dell'indice delle ricette dopo la cancellazione
+                    return "redirect:/recipe";
+                } else {
+                    // Messaggio di errore se l'utente non è autorizzato a cancellare la ricetta
+                    model.addAttribute("messaggioErrore", "Non sei autorizzato a cancellare questa ricetta");
+                    return "usAd/indeRecipe.html";
+                }
             } else {
-                model.addAttribute("errorMessage", "Non hai il permesso per cancellare questa ricetta.");
+                // Nel caso in cui la ricetta non esista
+                model.addAttribute("messaggioErrore", "Ricetta non trovata");
+                return "usAd/indeRecipe.html";
             }
         } else {
-            model.addAttribute("errorMessage", "Ricetta non trovata.");
+            // Nel caso in cui le credenziali non siano trovate
+            model.addAttribute("messaggioErrore", "Utente non trovato");
+            return "usAd/indeRecipe.html";
         }
-        
-        return "redirect:/admin/manageRecipes";
     }
 	
 	/*@GetMapping("/formSearchRecipes")
@@ -141,14 +160,14 @@ public class RecipeController {
 		return "foundRecipes.html";
 	}
 	
-	@GetMapping("/admin/updateIngredients/{id}")
+	@GetMapping("/usAd/updateIngredients/{id}")
 	public String updateIngredients(@PathVariable("id") Long id, Model model) {
 
 		List<Ingredient> ingredientsToAdd = this.ingredientsToAdd(id);
 		model.addAttribute("ingredientsToAdd", ingredientsToAdd);
 		model.addAttribute("recipe", this.recipeService.findById(id));
 
-		return "admin/ingredientsToAdd.html";
+		return "usAd/ingredientsToAdd.html";
 	}
 
 	@GetMapping("/usAd/addIngredientToRecipe/{ingredientId}/{recipeId}")
