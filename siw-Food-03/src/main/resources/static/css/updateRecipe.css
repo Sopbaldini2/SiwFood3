@@ -103,12 +103,16 @@ nav ul li a:hover{
 }
 
 .recipe_update .cook,
-.recipe_update .ingredient_recipe {
-    display: inline-block;
+.recipe_update .ingredient_recipe,
+.recipe_update .description,
+.recipe_update .preparation {
+    display: block;
     width: 100%;
 }
 
-.recipe_update .cook::after {
+.recipe_update .cook::after,
+.recipe_update .ingredient_recipe::after,
+.recipe_update .description::after {
     content: "";
     display: block;
     width: 100%;
@@ -117,9 +121,15 @@ nav ul li a:hover{
     margin: 10px auto;
 }
 
-.recipe_update .ingredient_recipe span {
+.recipe_update .ingredient_recipe span,
+.recipe_update .description span,
+.recipe_update .preparation span {
     display: block;
     margin-bottom: 10px;
+}
+
+.recipe_update label {
+    font-weight: bold;
 }
 
 .recipe_update a {

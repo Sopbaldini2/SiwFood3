@@ -64,6 +64,23 @@
 					<button type="button">Edit</button>
 			    </a>
 		   </div>
+		   
+		   <div th:if="${recipe.description}" class="description">
+				<label>Description: </label>
+				<span th:text="${recipe.description} ">UP!</span>
+				<a th:href="@{'/usAd/updateDescriptionRecipe/' + ${recipe.id}}">
+					<button type="button">Edit</button>
+			    </a>
+		    </div>
+		    
+		    <div th:if="${recipe.preparation}" class="preparation">
+				<label>Preparation:</label>
+				<span th:text="${recipe.preparation} ">UP!</span>
+				<a th:href="@{'/usAd/updatePreparationRecipe/' + ${recipe.id}}">
+					<button type="button">Edit</button>
+			    </a>
+		    </div>
+		   
 		   <div th:unless="${recipe}">The recipe doesn't exist</div>
 	</div>
 	
