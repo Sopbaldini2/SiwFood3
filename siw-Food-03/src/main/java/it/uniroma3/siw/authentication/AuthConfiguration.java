@@ -58,8 +58,8 @@ import javax.sql.DataSource;
                 .requestMatchers(HttpMethod.POST,"/register", "/login").permitAll()
                 .requestMatchers(HttpMethod.GET,"/admin/**").hasAnyAuthority(ADMIN_ROLE)
                 .requestMatchers(HttpMethod.POST,"/admin/**").hasAnyAuthority(ADMIN_ROLE)
-                //.requestMatchers(HttpMethod.GET,"/user/**").hasAnyAuthority( DEFAULT_ROLE)
-               // .requestMatchers(HttpMethod.POST,"/user/**").hasAnyAuthority( DEFAULT_ROLE)
+                .requestMatchers(HttpMethod.GET,"/user/**").hasAnyAuthority( DEFAULT_ROLE)
+                .requestMatchers(HttpMethod.POST,"/user/**").hasAnyAuthority( DEFAULT_ROLE)
                 .requestMatchers(HttpMethod.GET,"/usAd/**").hasAnyAuthority(ADMIN_ROLE, DEFAULT_ROLE)
                 .requestMatchers(HttpMethod.POST,"/usAd/**").hasAnyAuthority(ADMIN_ROLE, DEFAULT_ROLE)
         		// tutti gli utenti autenticati possono accere alle pagine rimanenti 

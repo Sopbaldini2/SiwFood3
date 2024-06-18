@@ -49,6 +49,10 @@
 			<a href="/usAd/formNewIngredient">Record the details of a new ingredient</a>
 		</div>
 		
+        <div th:if="${userRole == 'ADMIN'}" >
+			<a href="/admin/manageIngredients">Manage Ingredients</a>
+        </div>
+		
 		<div>
 			<a href="/ingredient">Ingredient</a>
 		</div>

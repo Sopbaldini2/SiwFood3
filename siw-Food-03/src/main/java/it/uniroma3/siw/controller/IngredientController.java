@@ -28,6 +28,12 @@ public class IngredientController {
 		return "usAd/indexIngredient.html";
 	}
 	
+	@GetMapping("/admin/managIngredients")
+	public String manageIngredients(Model model) {
+		model.addAttribute("ingredients", this.ingredientService.findAll());
+		return "admin/manageIngredients.html";
+	}
+	
 	@PostMapping("/usAd/ingredient")
 	public String newIngredient(@ModelAttribute("ingredient") Ingredient ingredient, Model model) {
 		if (!ingredientService.existsByName(ingredient.getName())) {
@@ -84,7 +90,7 @@ public class IngredientController {
         // Cancella l'ingrediente
         try {
             ingredientService.deleteById(id);
-            return "redirect:/admin/indexIngredient"; // Redirect alla pagina degli ingredienti dopo la cancellazione
+            return "redirect:/usAd/indexIngredient"; // Redirect alla pagina degli ingredienti dopo la cancellazione
         } catch (Exception e) {
             model.addAttribute("errorMessage", "Si è verificato un errore durante la cancellazione dell'ingrediente");
             return "error";
