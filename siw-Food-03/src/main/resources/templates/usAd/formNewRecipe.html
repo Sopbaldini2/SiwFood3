@@ -53,14 +53,17 @@
 		        <span th:if="${#fields.hasErrors('preparation')}" th:errors="*{preparation}">
 				</span>
 	        </div>
-	        
-	        <div>
+            
+            <div>
 				<label>Ingredients:</label>
-                <select multiple="multiple" name="ingredientIds" id="ingredientIds">
-					<option th:each="ingredient : ${ingredients}" th:value="${ingredient.id}" th:text="${ingredient.name} + ' ' + ${ingredient.quantita + ' ' + 'g'}"></option>
-                </select>
-                <span th:if="${#fields.hasErrors('ingredients')}" th:errors="*{ingredients}"></span>
-            </div>
+				<div class="ingredients-container">
+					<div th:each="ingredient : ${ingredients}" class="ingredient">
+						<input type="checkbox" name="ingredientIds" th:value="${ingredient.id}" id="ingredient_${ingredient.id}">
+                        <label th:for="${'ingredient_' + ingredient.id}" th:text="${ingredient.name + ' ' + ingredient.quantita + ' g'}"></label>
+                    </div>
+                    <span th:if="${#fields.hasErrors('ingredients')}" th:errors="*{ingredients}"></span>
+				</div>    
+           </div>
 	  
             <div>
 				<label for="cooke">Cooke:</label>

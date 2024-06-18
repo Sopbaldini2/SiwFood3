@@ -136,6 +136,25 @@ nav .logo img{
     margin-bottom: 10px;
 }
 
+/* Ingredienti */
+.recipe_new form .ingredients-container {
+            max-height: 200px;
+            overflow-y: auto;
+            border: 1px solid #ccc;
+            padding: 10px;
+            border-radius: 4px;
+        }
+
+        .recipe_new form div.ingredient {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .recipe_new form div.ingredient input[type="checkbox"] {
+            margin-right: 10px;
+        }
+
 /* Stili per gli errori globali */
 .recipe_new form p {
     color: red;
