@@ -2,8 +2,6 @@ package it.uniroma3.siw.controller;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 
@@ -64,6 +62,12 @@ public class IngredientController {
 		return "usAd/formNewIngredient.html";
 	}
 	
+	@GetMapping("/admin/formUpdateIngredient/{id}")
+	public String formUpdateIngredient(@PathVariable("id") Long id, Model model) {
+		model.addAttribute("ingredient", ingredientService.findById(id));
+		return "admin/formUpdateIngredient.html";
+	}
+	
 	/*@GetMapping("/formSearchIngredients")
 	public String formSearchIngredients() {
 		return "formSearchIngredients.html";
@@ -76,24 +80,17 @@ public class IngredientController {
 	}
 	
 	// Verifica se è corretto 
-	@GetMapping("/admin/ingredient/{id}")
-    public String deleteIngredient(@PathVariable("id") Long id, Model model) {
-        // Controlla se l'utente è autenticato come admin (puoi utilizzare Spring Security per questo)
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        boolean isAdmin = authentication.getAuthorities().stream()
-                .anyMatch(role -> role.getAuthority().equals("ROLE_ADMIN"));
-        if (!isAdmin) {
-            model.addAttribute("errorMessage", "Accesso negato");
-            return "error";
-        }
-
-        // Cancella l'ingrediente
-        try {
+	@GetMapping("/admin/deleteIngredient/{id}")
+	 public String deleteIngredient(@PathVariable("id") Long id, Model model) {
+		Ingredient ingredient = ingredientService.findById(id);
+        if (ingredient != null) {
             ingredientService.deleteById(id);
-            return "redirect:/usAd/indexIngredient"; // Redirect alla pagina degli ingredienti dopo la cancellazione
-        } catch (Exception e) {
-            model.addAttribute("errorMessage", "Si è verificato un errore durante la cancellazione dell'ingrediente");
-            return "error";
+            // Redirect alla pagina dell'indice dei servizi dopo la cancellazione
+            return "redirect:/ingredient";
+        } else {
+            // Nel caso in cui il servizio non esista
+            model.addAttribute("messaggioErrore", "Ingredient not found");
+            return "usAd/indexIngredient.html";
+            }
         }
-    }
 }

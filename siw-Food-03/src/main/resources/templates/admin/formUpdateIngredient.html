@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+	
+	<head>
+		
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Gostoso - Ingredient Update</title>
+		<link rel="stylesheet" href="/css/updateIngredient.css">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+		<link rel="shortcut icon" href="/images/IconaSF.png ">
+		
+	</head>
+    <body>
+	
+	<!-- Navigation Bar -->
+	
+	<nav>
+		
+		<div class="logo">
+			<a href="/admin/manageIngredients"><img src="/images/LogoSF.png" ></a>
+		</div>
+		
+		<ul>
+			
+			<li><a href="/success" >Home</a></li>
+			<li><a href="/ingredient" class="action">Ingredients</a></li>
+
+		</ul>
+
+	</nav>
+	
+	<!-- Navigation Bar ends -->
+	
+	<!-- Banner starts -->
+	
+	<div class="banner_bg">
+		<h1>Ingredients<span>Update</span></h1>
+
+	</div>
+	
+	<!-- Banner ends -->
+	
+	<!-- Update ingredient starts -->
+	
+	<div class="ingredient_update">
+		
+	    <div th:if="${ingredient}">
+			
+			<div class="title">
+				<span th:text="${ingredient.name}">Up!</span>
+		    </div>
+		    
+		    <div th:if="${ingredient.quantita}" class="quantita">
+				<label> Quantity: </label><span th:text="${ingredient.quantita} + ' ' +'g' "> 50 g </span>
+		    </div>
+		   
+		   <div th:if="${ingredient.description}" class="description">
+				<label>Description: </label>
+				<span th:text="${ingredient.description} ">UP!</span>
+				<a th:href="@{'/usAd/updateDescriptionIngredient/' + ${ingredient.id}}">
+					<button type="button">Edit</button>
+			    </a>
+		    </div>
+		   
+		   <div th:unless="${ingredient}">The ingredient doesn't exist</div>
+	</div>
+	
+	<!-- Update ingredient ends -->
+	
+   </body>
+
+</html>
