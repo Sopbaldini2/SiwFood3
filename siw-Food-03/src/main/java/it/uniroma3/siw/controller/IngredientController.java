@@ -28,7 +28,7 @@ public class IngredientController {
 		return "usAd/indexIngredient.html";
 	}
 	
-	@GetMapping("/admin/managIngredients")
+	@GetMapping("/admin/manageIngredients")
 	public String manageIngredients(Model model) {
 		model.addAttribute("ingredients", this.ingredientService.findAll());
 		return "admin/manageIngredients.html";

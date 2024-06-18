@@ -6,8 +6,8 @@
 		<meta charset="UTF-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>Recipe Management</title>
-		<link rel="stylesheet" href="/css/manageRecipe.css">
+		<title>Ingredients Management</title>
+		<link rel="stylesheet" href="/css/manageIngredient.css">
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 		<link rel="shortcut icon" href="/images/IconaSF.png ">
 		
@@ -25,7 +25,7 @@
 		<ul>
 			
 			<li><a href="/" >Home</a></li>
-			<li><a href="/recipe" class="action">Recipes</a></li>
+			<li><a href="/ingredient" class="action">Ingredients</a></li>
 
 		</ul>
 
@@ -36,29 +36,29 @@
 	<!-- Banner starts -->
 	
 	<div class="banner_bg">
-		<h1>Recipes<span>Operation</span></h1>
+		<h1>Ingredients<span>Operation</span></h1>
 
 	</div>
 	
 	<!-- Banner ends -->
 	
-	<!-- Manage recipe starts -->
+	<!-- Manage ingredients starts -->
 	
-	<div class="recipe_main">
-		<h1>Recipes</h1>
-	    <div th:if="${recipes.isEmpty()}">There are no recipes in the system</div>
+	<div class="ingredient_main">
+		<h1>Ingredients</h1>
+	    <div th:if="${ingredients.isEmpty()}">There are no ingredients in the system</div>
 	    <ul>
-			<li th:each="recipe : ${recipes}">
-				<span th:text="${recipe.name} ">Up! </span>
-			    <a th:href="@{'/usAd/formUpdateRecipe' + '/' + ${recipe.id}}" class="update_btn">Update</a>
-			     <form th:action="@{'/usAd/deleteRecipe/' + ${recipe.id}}" method="get" onsubmit="return confirm('Are you sure you want to delete this recipe?');">
+			<li th:each="ingredient : ${ingredients}">
+				<span th:text="${ingredient.name} +' '+ ${ingredient.quantita + ' ' + 'g'}">Up! </span>
+			    <a th:href="@{'/admin/formUpdateIngredient' + '/' + ${ingredient.id}}" class="update_btn">Update</a>
+			     <form th:action="@{'/admin/deleteIngredient/' + ${ingredient.id}}" method="get" onsubmit="return confirm('Are you sure you want to delete this ingredient?');">
 					 <button type="submit" class="btn">Delete</button>
                  </form>
 		    </li>
 	   </ul>
 	</div>
 	
-	<!-- Manage recipe ends- -->
+	<!-- Manage ingredients ends- -->
 	
   </body>
 
