@@ -14,6 +14,21 @@
 				<div class="logo">
 					<a href="/success"><img src="/images/LogoSF.png" ></a>
 				</div>
+				
+				<div class="login">
+					<details>
+						<summary th:text="${userDetails.username}">Gostoso</summary>
+                        <ul>
+							<div th:if="${userRole == 'DEFAULT'}" >
+								<li><a href="/profile">Your Profile</a></li>
+                                <li><a href="/usAd/indexRecipe">Recipe operations</a></li>
+                                <li><a href="/usAd/indexIngredient">Ingredient operations</a></li>
+					        </div>
+					
+                            <li><a href="/logout">Logout</a></li>
+                        </ul>
+                    </details>
+                </div>
 			</nav>
 	
     <!-- Navigation bar ends -->

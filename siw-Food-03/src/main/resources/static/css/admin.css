@@ -25,6 +25,61 @@ nav .logo img{
 	cursor: pointer;
 }
 
+nav .login details {
+    position: relative;
+}
+
+nav .login summary {
+    list-style: none;
+    cursor: pointer;
+    color: #000;
+    text-decoration: none;
+    border: 2px solid rgb(0, 179, 0);
+    border-radius: 20px;
+    padding: 7px 20px;
+    transition: 0.3s;
+    display: inline-block;
+}
+
+nav .login summary:hover {
+    background: rgb(0, 179, 0);
+}
+
+nav .login details[open] ul {
+    display: block;
+}
+
+nav .login ul {
+    display: none;
+    position: absolute;
+    top: calc(100% + 10px);
+    right: 50%;
+    transform: translateX(50%);
+    background: white;
+    border: 1px solid #ccc;
+    padding: 10px;
+    list-style: none;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+}
+
+nav .login ul li {
+    margin-bottom: 5px;
+}
+
+nav .login ul li a {
+    text-decoration: none;
+    color: black;
+    padding: 5px 10px;
+    display: block;
+}
+
+nav .login ul li a:hover {
+    background: rgb(0, 179, 0);
+    color: white;
+    border-radius: 5px;
+}
+
 /* Title */
 
 .admin{

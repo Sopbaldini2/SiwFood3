@@ -61,6 +61,61 @@ section nav .login a:hover{
 	background: rgb(0, 179, 0);
 }
 
+section nav .login2 details {
+    position: relative;
+}
+
+section nav .login2 summary {
+    list-style: none;
+    cursor: pointer;
+    color: #000;
+    text-decoration: none;
+    border: 2px solid rgb(0, 179, 0);
+    border-radius: 20px;
+    padding: 7px 20px;
+    transition: 0.3s;
+    display: inline-block;
+}
+
+section nav .login2 summary:hover {
+    background: rgb(0, 179, 0);
+}
+
+section nav .login2 details[open] ul {
+    display: block;
+}
+
+section nav .login2 ul {
+    display: none;
+    position: absolute;
+    top: calc(100% + 10px);
+    right: 50%;
+    transform: translateX(50%);
+    background: white;
+    border: 1px solid #ccc;
+    padding: 10px;
+    list-style: none;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+}
+
+section nav .login2 ul li {
+    margin-bottom: 5px;
+}
+
+section nav .login2 ul li a {
+    text-decoration: none;
+    color: black;
+    padding: 5px 10px;
+    display: block;
+}
+
+section nav .login2 ul li a:hover {
+    background: rgb(0, 179, 0);
+    color: white;
+    border-radius: 5px;
+}
+
 /*Banner*/
 
 .banner_bg{

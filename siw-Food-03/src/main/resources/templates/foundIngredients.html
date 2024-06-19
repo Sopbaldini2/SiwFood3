@@ -31,9 +31,28 @@
 					
 		</ul>
 		
-		<div class="login">
+		<!--Se l'utente non è autenticato -->
+		
+		<div th:if="${userDetails == null}" class="login">
 			<a href="/login"> Login </a>
-		</div>
+        </div>
+    
+        <!--Se l'utente è autenticato -->
+    
+        <div th:if="${userDetails != null}" class="login2">
+			<details>
+				<summary th:text="${userDetails.username}">Gostoso</summary>
+                <ul>
+					<div th:if="${userRole == 'DEFAULT'}" >
+						 <li><a href="/profile">Your Profile</a></li>
+                         <li><a href="/usAd/indexRecipe">Recipe operations</a></li>
+                         <li><a href="/usAd/indexIngredient">Ingredient operations</a></li>
+					 </div>
+					
+                     <li><a href="/logout">Logout</a></li>
+                </ul>
+            </details>
+        </div>
 	</nav>
 </section>
 	<!-- Navigation Bar ends -->
