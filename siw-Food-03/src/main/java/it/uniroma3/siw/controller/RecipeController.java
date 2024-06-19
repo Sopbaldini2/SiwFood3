@@ -187,7 +187,7 @@ public class RecipeController {
 	}
 	
 	@GetMapping("/admin/removeIngredientFromRecipe/{ingredientId}/{recipeId}")
-	public String removeActorFromMovie(@PathVariable("ingredientId") Long ingredientId, @PathVariable("recipeId") Long recipeId, Model model) {
+	public String removeIngredientFromRecipe(@PathVariable("ingredientId") Long ingredientId, @PathVariable("recipeId") Long recipeId, Model model) {
 		Recipe recipe = this.recipeService.findById(recipeId);
 		Ingredient ingredient = this.ingredientService.findById(ingredientId);
 		Set<Ingredient> ingredients = recipe.getIngredients();

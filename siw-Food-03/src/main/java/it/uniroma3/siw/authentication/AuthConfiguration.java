@@ -63,8 +63,8 @@ import javax.sql.DataSource;
                 .requestMatchers(HttpMethod.GET,"/usAd/**").hasAnyAuthority(ADMIN_ROLE, DEFAULT_ROLE)
                 .requestMatchers(HttpMethod.POST,"/usAd/**").hasAnyAuthority(ADMIN_ROLE, DEFAULT_ROLE)
         		// tutti gli utenti autenticati possono accere alle pagine rimanenti 
-               .anyRequest().authenticated()
-                //.anyRequest().permitAll()
+               //.anyRequest().authenticated()
+                .anyRequest().permitAll()
                 // LOGIN: qui definiamo il login
                 .and().formLogin()
                 .loginPage("/login")
