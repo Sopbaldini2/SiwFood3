@@ -68,6 +68,29 @@ public class IngredientController {
 		return "admin/formUpdateIngredient.html";
 	}
 	
+	@GetMapping("/admin/formUpdateDescription/{id}")
+    public String formUpdateDescription(@PathVariable("id") Long id, Model model) {
+        Ingredient ingredient = ingredientService.findById(id);
+        model.addAttribute("ingredient", ingredient);
+        return "admin/updateDescriptionIngredient.html"; // Nome del file HTML senza estensione
+    }
+
+    @PostMapping("/admin/updateDescriptionIngredient/{id}")
+    public String updateDescriptionIngredient(@PathVariable("id") Long id, 
+                                              @ModelAttribute("ingredient") Ingredient updatedIngredient,
+                                              Model model) {
+        Ingredient ingredient = ingredientService.findById(id);
+        if (ingredient != null) {
+            ingredient.setDescription(updatedIngredient.getDescription());
+            ingredientService.save(ingredient); // Salva l'ingrediente aggiornato nel database
+            model.addAttribute("ingredient", ingredient);
+            return "redirect:/admin/manageIngredients"; // Redirect alla pagina di gestione ingredienti
+        } else {
+            model.addAttribute("messaggioErrore", "Ingredient not found");
+            return "admin/manageIngredients"; // Gestisci il caso in cui l'ingrediente non sia trovato
+        }
+    }
+	
 	/*@GetMapping("/formSearchIngredients")
 	public String formSearchIngredients() {
 		return "formSearchIngredients.html";

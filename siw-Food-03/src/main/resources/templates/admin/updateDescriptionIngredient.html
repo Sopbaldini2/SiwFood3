@@ -6,8 +6,8 @@
 		<meta charset="UTF-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>Gostoso - Ingredient Update</title>
-		<link rel="stylesheet" href="/css/updateIngredient.css">
+		<title>Gostoso - Edit Description Ingredient</title>
+		<link rel="stylesheet" href="/css/editIngredient.css">
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 		<link rel="shortcut icon" href="/images/IconaSF.png ">
 		
@@ -45,38 +45,29 @@
 	<!-- Banner starts -->
 	
 	<div class="banner_bg">
+		
 		<h1>Ingredients<span>Update</span></h1>
 
 	</div>
 	
 	<!-- Banner ends -->
 	
-	<!-- Update ingredient starts -->
+	<!-- Edit ingredient starts -->
 	
-	<div class="ingredient_update">
+	<div class="ingredient_edit">
 		
-	    <div th:if="${ingredient}">
-			
-			<div class="title">
-				<span th:text="${ingredient.name}">Up!</span>
-		    </div>
-		    
-		    <div th:if="${ingredient.quantita}" class="quantita">
-				<label> Quantity: </label><span th:text="${ingredient.quantita} + ' ' +'g' "> 50 g </span>
-		    </div>
-		   
-		   <div th:if="${ingredient.description}" class="description">
-				<label>Description: </label>
-				<span th:text="${ingredient.description} ">UP!</span>
-				<a th:href="@{'/admin/formUpdateDescription/' + ${ingredient.id}}">
-					<button type="button">Edit</button>
-			    </a>
-		    </div>
-		   
-		   <div th:unless="${ingredient}">The ingredient doesn't exist</div>
-	</div>
-	
-	<!-- Update ingredient ends -->
+		<h2>Edit Ingredient Description</h2>
+    
+        <form action="#" th:action="@{/admin/updateDescriptionIngredient/{id}(id=${ingredient.id})}" th:object="${ingredient}" method="post">
+			<div>
+				<label>Description:</label>
+				<textarea th:field="*{description}" rows="5" cols="50"></textarea>
+            </div>
+            <input type="submit" value="Save">
+        </form>
+	</div>    
+    
+    <!-- Edit ingredient ends -->
 	
    </body>
 
