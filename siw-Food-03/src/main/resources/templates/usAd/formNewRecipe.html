@@ -82,10 +82,11 @@
 	  
            <div>
 				<label for="cooke">Cooke:</label>
-                <select id="cooke" name="cooke">
+				<select id="cooke" name="cooke">
 					<option value="">Select Chef</option>
-					<option th:each="user : ${users}" th:value="${user.id}" th:text="${user.name} + ' ' + ${user.surname}"></option>
+					<option th:each="user : ${users}" th:value="${user.id}" th:text="${user.name} + ' ' + ${user.surname}" th:selected="${user.id == user.id}"></option>
                 </select>
+                
                 <span th:if="${#fields.hasErrors('cooke')}" th:errors="*{cooke}"></span>
             </div>
 
