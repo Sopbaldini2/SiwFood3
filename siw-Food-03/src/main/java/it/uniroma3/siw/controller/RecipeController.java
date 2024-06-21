@@ -118,7 +118,7 @@ public class RecipeController {
     public String showUpdateDescriptionForm(@PathVariable("id") Long id, Model model) {
         Recipe recipe = recipeService.findById(id);
         model.addAttribute("recipe", recipe);
-        return "/usAd/updateDescriptionRecipeForm"; // nome del template Thymeleaf
+        return "/usAd/updateDescriptionRecipeForm"; 
     }
 
     // Metodo per gestire l'aggiornamento della descrizione
@@ -128,6 +128,22 @@ public class RecipeController {
         recipe.setDescription(description);
         recipeService.save(recipe);
         return "redirect:/recipe/" + id; // Redirige alla pagina della ricetta aggiornata
+    }
+    
+    // Metodo per gestire l'aggiornamento della preparazione
+    @GetMapping("/usAd/updatePreparationRecipe/{id}")
+    public String showUpdatePreparationForm(@PathVariable("id") Long id, Model model) {
+        Recipe recipe = recipeService.findById(id);
+        model.addAttribute("recipe", recipe);
+        return "/usAd/updatePreparationForm.html"; 
+    }
+
+    @PostMapping("/usAd/updatePreparationRecipe/{id}")
+    public String updatePreparationRecipe(@PathVariable("id") Long id, @RequestParam("preparation") String preparation) {
+        Recipe recipe = recipeService.findById(id);
+        recipe.setPreparation(preparation);
+        recipeService.save(recipe);
+        return "redirect:/recipe/" + id; // Reindirizzamento alla pagina dei dettagli della ricetta
     }
     
 	
