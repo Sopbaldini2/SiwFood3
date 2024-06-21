@@ -13,11 +13,13 @@
 		<section id="Home">
 			<nav>
 				<div class="logo">
-					<a href="/"><img src="images/LogoSF.png" ></a>
+					<a sec:authorize="isAuthenticated()" href="/success"><img src="images/LogoSF.png" ></a>
+			        <a sec:authorize="!isAuthenticated()" href="/"><img src="images/LogoSF.png" ></a>
 				</div>
 				
 				<ul>
-					<li><a href="/" class="action">Home</a></li>
+					<li><a sec:authorize="isAuthenticated()" href="/success" class="action">Home</a></li>
+					<li><a sec:authorize="!isAuthenticated()" href="/" class="action">Home</a></li>
 					<li><a href="/recipe" >Recipes</a></li>
 					<li><a href="/ingredient" >Ingredients</a></li>
 					<li><a href="/cooke" >Community</a></li>
