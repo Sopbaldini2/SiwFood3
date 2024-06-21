@@ -46,7 +46,7 @@
 	
 	<div class="banner_bg">
 		
-		<h1>Ingredients<span>Update</span></h1>
+		<h1>Ingredients<span>Edit</span> Description</h1>
 
 	</div>
 	
@@ -56,11 +56,10 @@
 	
 	<div class="ingredient_edit">
 		
-		<h2>Edit Ingredient Description</h2>
+		<h2>Description:</h2>
     
         <form action="#" th:action="@{/admin/updateDescriptionIngredient/{id}(id=${ingredient.id})}" th:object="${ingredient}" method="post">
 			<div>
-				<label>Description:</label>
 				<textarea th:field="*{description}" rows="5" cols="50"></textarea>
             </div>
             <input type="submit" value="Save">

@@ -114,6 +114,23 @@ public class RecipeController {
 		return "usAd/formUpdateRecipe.html";
 	}
 	
+	@GetMapping("/usAd/updateDescriptionRecipe/{id}")
+    public String showUpdateDescriptionForm(@PathVariable("id") Long id, Model model) {
+        Recipe recipe = recipeService.findById(id);
+        model.addAttribute("recipe", recipe);
+        return "/usAd/updateDescriptionRecipeForm"; // nome del template Thymeleaf
+    }
+
+    // Metodo per gestire l'aggiornamento della descrizione
+    @PostMapping("/usAd/updateDescriptionRecipe/{id}")
+    public String updateDescription(@PathVariable("id") Long id, @RequestParam("description") String description) {
+        Recipe recipe = recipeService.findById(id);
+        recipe.setDescription(description);
+        recipeService.save(recipe);
+        return "redirect:/recipe/" + id; // Redirige alla pagina della ricetta aggiornata
+    }
+    
+	
 	 // Metodo per cancellare una ricetta
 	@GetMapping("/usAd/deleteRecipe/{id}")
     public String deleteRecipe(@PathVariable("id") Long id, Model model) {

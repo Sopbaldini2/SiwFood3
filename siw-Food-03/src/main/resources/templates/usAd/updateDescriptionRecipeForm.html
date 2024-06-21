@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+	
+	<head>
+		
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Gostoso - Recipe Update</title>
+		<link rel="stylesheet" href="/css/editRecipeDescription.css">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+		<link rel="shortcut icon" href="/images/IconaSF.png ">
+		
+	</head>
+    <body>
+	
+	<!-- Navigation Bar -->
+	
+	<nav>
+		
+		<div class="logo">
+			<a href="/usAd/manageRecipes"><img src="/images/LogoSF.png" ></a>
+		</div>
+		
+		<ul>
+			
+			<li><a href="/success" >Home</a></li>
+			<li><a href="/recipe" class="action">Recipes</a></li>
+
+		</ul>
+		
+		<div class="login">
+			<details>
+				<summary th:text="${userDetails.username}">Gostoso</summary>
+                <ul>
+					<div th:if="${userRole == 'DEFAULT'}" >
+						 <li><a href="/user/profile">Your Profile</a></li>
+                         <li><a href="/usAd/indexRecipe">Recipe operations</a></li>
+                         <li><a href="/usAd/indexIngredient">Ingredient operations</a></li>
+					 </div>
+					
+                     <li><a href="/logout">Logout</a></li>
+                </ul>
+            </details>
+        </div>
+
+	</nav>
+	
+	<!-- Navigation Bar ends -->
+	
+	<!-- Banner starts -->
+	
+	<div class="banner_bg">
+		<h1>Recipes<span>Edit</span> Description</h1>
+
+	</div>
+	
+	<!-- Banner ends -->
+	
+	<!-- Edit description recipe starts -->
+	
+	<div class="descriptionRecipe">
+		
+        <form th:action="@{'/usAd/updateDescriptionRecipe/' + ${recipe.id}}" method="post">
+			<label for="description">New Description:</label>
+            <textarea id="description" name="description" th:text="${recipe.description}"></textarea>
+            <button type="submit">Save</button>
+        </form>
+    
+	</div>
+
+    <!-- Edit description recipe ends -->
+	
+   </body>
+
+</html>
