@@ -220,19 +220,23 @@ public class RecipeController {
 	}
 	
 	@GetMapping("/admin/removeIngredientFromRecipe/{ingredientId}/{recipeId}")
-	public String removeIngredientFromRecipe(@PathVariable("ingredientId") Long ingredientId, @PathVariable("recipeId") Long recipeId, Model model) {
-		Recipe recipe = this.recipeService.findById(recipeId);
-		Ingredient ingredient = this.ingredientService.findById(ingredientId);
-		Set<Ingredient> ingredients = recipe.getIngredients();
-		ingredients.remove(ingredient);
-		this.recipeService.save(recipe);
+	public String removeIngredientFromRecipe(@PathVariable("ingredientId") Long ingredientId, 
+	                                         @PathVariable("recipeId") Long recipeId, 
+	                                         Model model) {
+	    Recipe recipe = this.recipeService.findById(recipeId);
+	    Ingredient ingredient = this.ingredientService.findById(ingredientId);
+	    Set<Ingredient> ingredients = recipe.getIngredients();
+	    ingredients.remove(ingredient);
+	    this.recipeService.save(recipe);
 
-		List<Ingredient> ingredientsToAdd = ingredientsToAdd(recipeId);
-		
-		model.addAttribute("recipe", recipe);
-		model.addAttribute("ingredientToAdd", ingredientsToAdd);
+	    // Aggiorna gli ingredienti disponibili per l'aggiunta
+	    List<Ingredient> ingredientsToAdd = this.ingredientsToAdd(recipeId);
 
-		return "usAd/ingredientsToAdd.html";
+	    // Aggiorna il modello con gli attributi corretti
+	    model.addAttribute("recipe", recipe);
+	    model.addAttribute("ingredientsToAdd", ingredientsToAdd);
+
+	    return "usAd/ingredientsToAdd.html";
 	}
 
 	private List<Ingredient> ingredientsToAdd(Long recipeId) {
