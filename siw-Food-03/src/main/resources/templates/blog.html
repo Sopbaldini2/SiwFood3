@@ -4,8 +4,8 @@
 		<meta charset="UTF-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title> GOSTOSO - Ricette creole</title>
-		<link rel="stylesheet" href="/css/recipessdetails.css">
+		<title> GOSTOSO - Blog</title>
+		<link rel="stylesheet" href="/css/blogg.css">
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 		<link rel="shortcut icon" href="/images/IconaSF.png " type="image/x-icon">
 	</head>
@@ -17,7 +17,7 @@
 				</div>
 				
 				<ul>
-					<li><a sec:authorize="isAuthenticated()" href="/success" >Home</a></li>
+					<li><a sec:authorize="isAuthenticated()" href="/success">Home</a></li>
 					<li><a sec:authorize="!isAuthenticated()" href="/" >Home</a></li>
 					<li><a href="/recipe" class="action">Recipes</a></li>
 					<li><a href="/ingredient" >Ingredients</a></li>
@@ -50,48 +50,35 @@
 			</nav>
 	
     <!-- Navigation bar ends -->
+    
+    <!-- Banner starts -->
 	
-	<!-- Recipes details starts -->
+	 <div class="banner_bg">
+		<h1>Our<span>Blog</span></h1> 
+	 </div>
 	
-	<div class="recipe">
-		<h1>Dettagli sulle ricette</h1>
-		
-        <div th:if="${recipe}">
-			
-			<div class="title">
-				<span th:text="${recipe.name}">Up!</span>
-			</div>
-			
-			<div class="recipe_description">
-				<span th:text=" ${recipe.description} ">UP!</span>
-            </div>
-			
-			<span><img th:src="@{'/images/recipes/' + ${recipe.image}}" alt="Recipe Image"></span>
-			
-			<div class="ingredients">
-				<h2>Ingredients:</h2>
-                <ul>
-					<li th:each="ingredient : ${recipe.ingredients}" th:text="${ingredient.name} + ' ' + ${ingredient.quantita + ' ' + 'g'}"> Ingrediente 20 g</li>
-                </ul>
-            </div>
-            
-            <div class="recipe_preparation">
-				<h2>Preparation</h2>
-				<span th:text=" ${recipe.preparation} ">UP!</span>
-            </div>
-            
-            <div class="author">
-				By:
-				<span th:text="${recipe.cooke.name} + ' ' + ${recipe.cooke.surname}">UP!</span>
-			</div>
-			
-       </div>
-       <div th:unless="${recipe}">Non esiste</div>
-	</div>
-	
-	<!-- Recipes details ends -->
-	
-	<!-- Footer starts -->
+	<!-- Banner ends -->
+    
+    <!-- Blog section starts -->
+    
+    <div class="Blog">
+        <ul>
+			<li th:each="post : ${posts}">
+				<h3 th:text="${post.title}"></h3> 
+				<img th:src="@{'/images/post/' + ${post.image}}" alt="Immagine per il post">
+                <div th:text="${post.content}"></div>
+                <p th:text="'Published on the: ' + ${post.formattedDate}"></p>
+            </li>
+        </ul>
+        <div th:if="${userRole == 'ADMIN'}" >
+			<a th:href="@{/admin/new}">New Post</a>
+		</div>
+        
+	 </div>
+
+     <!-- Blog section ends -->
+       
+     <!-- Footer starts -->
 		
 		<footer>
 			<div class="footer_main">
