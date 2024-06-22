@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title> GOSTOSO - Edit Your Profile </title>
+		<link rel="stylesheet" href="/css/editprofile.css">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+		<link rel="shortcut icon" href="/images/IconaSF.png " type="image/x-icon">
+	</head>
+	<body>
+			<nav>
+				<div class="logo">
+					<a href="/success"><img src="/images/LogoSF.png" ></a>
+		        </div>
+		        
+		        <ul>
+					<li><a href="/success" >Home</a></li>
+			        <li><a href="/recipe" >Recipes</a></li>
+					<li><a href="/ingredient" >Ingredients</a></li>
+					<li><a href="/cooke" >Community</a></li>
+					<li><a href="/blog" >Blog</a></li>
+		        </ul>
+		
+		        <div class="login">
+					<details>
+						<summary th:text="${userDetails.username}">Gostoso</summary>
+                        <ul>
+							<li><a href="/profile">Your Profile</a></li>
+                            <li><a href="/usAd/indexRecipe">Recipe operations</a></li>
+                            <li><a href="/usAd/indexIngredient">Ingredient operations</a></li>
+					        <li><a href="/logout">Logout</a></li>
+                         </ul>
+                    </details>
+                </div>
+
+	        </nav>
+			
+			<!-- Navigation Bar ends -->
+			
+			<!-- Banner starts -->
+	
+	        <div class="banner_bg">
+				<h1>Edit <span>Your</span>Profile</h1>
+	        </div>
+	
+	        <!-- Banner ends -->
+	        
+            <!-- Edit Your Profile starts -->
+
+		<div class="container">
+
+            <div class="profile-header">
+
+                <div class="profile-name">
+					<h2 th:text="${name} + ' ' + ${surname}"> Gostoso Gostoso</h2>
+                </div>
+            </div>
+
+            <div class="profile-details">
+				<form th:action="@{/user/edit}" method="post">
+					
+					<div class="detail">
+						<label for="job">Job:</label>
+                        <textarea type="job" id="job" name="job" th:value="${job}"></textarea>
+                    </div>
+                    
+                    <div class="detail">
+						<label for="biography">Biography:</label>
+                        <textarea type="biography" id="biography" name="biography" th:value="${biography}"></textarea>
+                    </div>
+
+                    <div class="detail">
+						<label for="image">Immagine del profilo:</label>
+                        <input type="file" id="image" name="image">
+                    </div>
+
+                    <button type="submit">Save</button>
+                    <button type="button" onclick="location.href='/user/profile';">Cancel</button>
+               </form>
+            </div>
+         </div>
+
+         <!-- Edit your Profile ends -->
+         
+         <!-- Footer starts -->
+		
+		<footer>
+			<div class="footer_main">
+				
+				<div class="footer_img">
+						<img src="/images/IconaSF.png">
+				</div>
+				
+				<div class="footer_tag">
+					<h2>Quick Link</h2>
+					<p>Home</p>
+					<p>Recipes</p>
+					<p>Ingredients</p>
+					<p>Community</p>
+					<p>Blog</p>
+					
+				</div>
+				
+				<div class="footer_tag">
+					<h2>Follows</h2>
+					<i class="fa-brands fa-facebook"></i>
+					<i class="fa-brands fa-instagram"></i>
+					<i class="fa-brands fa-snapchat"></i>
+					<i class="fa-brands fa-youtube"></i>
+					<i class="fa-brands fa-tiktok"></i>
+					
+				</div>
+			</div>
+			
+			<p class="end"> Design by <span>Sophie Baldini</span></p>
+		</footer>
+		
+		<!-- Footer ends -->
+		
+	</body>
+</html>
+

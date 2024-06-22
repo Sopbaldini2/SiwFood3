@@ -34,7 +34,7 @@ public class CredentialsService {
 
     @Transactional
     public Credentials saveCredentials(Credentials credentials) {
-        credentials.setRole(Credentials.ADMIN_ROLE);
+        credentials.setRole(Credentials.DEFAULT_ROLE);
         credentials.setPassword(this.passwordEncoder.encode(credentials.getPassword()));
         return this.credentialsRepository.save(credentials);
     }
@@ -50,5 +50,14 @@ public class CredentialsService {
     public Optional<Credentials> findByUsername(String username) {
         return credentialsRepository.findByUsername(username);
     }
+
+    @Transactional
+    public void save(Credentials credentials) {
+        credentialsRepository.save(credentials);
+    }
+
+	public Credentials findUserByUsername(String username) {
+		return credentialsRepository.findUserByUsername(username);
+	}
 }
 
