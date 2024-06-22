@@ -101,7 +101,8 @@ nav .login ul li a:hover {
 .admin .cooke,
 .admin .aRecipe,
 .admin .aIngredient,
-.admin .aCooke {
+.admin .aCooke,
+.admin .aBlog {
     text-align: center;
     margin-top: 20px;
 }
@@ -111,7 +112,8 @@ nav .login ul li a:hover {
 .admin .cooke a,
 .admin .aRecipe a,
 .admin .aIngredient a,
-.admin .aCooke a {
+.admin .aCooke a,
+.admin .aBlog a {
     display: block;
     padding: 10px 20px;
     /*background-color: #eeeeee;*/
@@ -126,7 +128,8 @@ nav .login ul li a:hover {
 .admin .cooke a:hover,
 .admin .aRecipe a:hover,
 .admin .aIngredient a:hover,
-.admin .aCooke a:hover {
+.admin .aCooke a:hover,
+.admin .aBlog a:hover {
     background-color:  rgb(0, 179, 0);
     color: #fff;
 }
