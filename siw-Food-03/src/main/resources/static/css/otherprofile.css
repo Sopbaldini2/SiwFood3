@@ -48,11 +48,24 @@ nav ul li a:hover{
 	color: rgb(0, 179, 0);
 }
 
-nav .login details {
+nav .login a{
+	color: #000;
+	text-decoration: none;
+	border: 2px solid rgb(0, 179, 0);
+	border-radius: 20px;
+	padding: 7px 20px;
+	transition: 0.3s;
+}
+
+nav .login a:hover{
+	background: rgb(0, 179, 0);
+}
+
+nav .login2 details {
     position: relative;
 }
 
-nav .login summary {
+nav .login2 summary {
     list-style: none;
     cursor: pointer;
     color: #000;
@@ -64,15 +77,15 @@ nav .login summary {
     display: inline-block;
 }
 
-nav .login summary:hover {
+nav .login2 summary:hover {
     background: rgb(0, 179, 0);
 }
 
-nav .login details[open] ul {
+nav .login2 details[open] ul {
     display: block;
 }
 
-nav .login ul {
+nav .login2 ul {
     display: none;
     position: absolute;
     top: calc(100% + 10px);
@@ -86,18 +99,18 @@ nav .login ul {
     border-radius: 5px;
 }
 
-nav .login ul li {
+nav .login2 ul li {
     margin-bottom: 5px;
 }
 
-nav .login ul li a {
+nav .login2 ul li a {
     text-decoration: none;
     color: black;
     padding: 5px 10px;
     display: block;
 }
 
-nav .login ul li a:hover {
+nav .login2 ul li a:hover {
     background: rgb(0, 179, 0);
     color: white;
     border-radius: 5px;

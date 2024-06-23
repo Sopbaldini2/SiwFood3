@@ -64,6 +64,6 @@ public class ProfileController {
 
         credentialsService.save(credentials);
         return "redirect:/user/profile";
-    }
+    }    
 }  
 

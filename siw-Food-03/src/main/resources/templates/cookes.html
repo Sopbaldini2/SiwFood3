@@ -78,7 +78,7 @@
 						<img th:src="@{'/images/cookes/' + ${user.image}}" alt="Immagine del cuoco">
 					</div>
 					<div class="community_tag">
-						<a th:href="@{'/user' + '/' + ${user.id}}" th:text="${user.name} + ' ' + ${user.surname}">
+						<a th:href="@{'/cookess' + '/' + ${user.id}}" th:text="${user.name} + ' ' + ${user.surname}">
 							Dino Risi
 						</a>
 						<p class="date" th:text="${user.dateOfBirth}">20/20/2020</p>
