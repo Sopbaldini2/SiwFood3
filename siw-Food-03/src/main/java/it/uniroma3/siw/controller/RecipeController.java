@@ -168,19 +168,20 @@ public class RecipeController {
                 } else {
                     // Messaggio di errore se l'utente non è autorizzato a cancellare la ricetta
                     model.addAttribute("messaggioErrore", "Non sei autorizzato a cancellare questa ricetta");
-                    return "usAd/indeRecipe.html";
+                    return "usAd/indexRecipe.html";
                 }
             } else {
                 // Nel caso in cui la ricetta non esista
                 model.addAttribute("messaggioErrore", "Ricetta non trovata");
-                return "usAd/indeRecipe.html";
+                return "usAd/indexRecipe.html";
             }
         } else {
             // Nel caso in cui le credenziali non siano trovate
             model.addAttribute("messaggioErrore", "Utente non trovato");
-            return "usAd/indeRecipe.html";
+            return "usAd/indexRecipe.html";
         }
     }
+    
 	
 	/*@GetMapping("/formSearchRecipes")
 	public String formSearchRecipes() {
