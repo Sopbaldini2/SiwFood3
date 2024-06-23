@@ -65,8 +65,12 @@
 			<a href="/usAd/formNewRecipe">Record the details of a new recipe</a>
 	    </div>
 	    
-	    <div>
+	    <div th:if="${userRole == 'ADMIN'}" >
 			<a href="/usAd/manageRecipes">Manage recipes</a>
+	    </div>
+	    
+	    <div th:if="${userRole == 'DEFAULT'}" >
+			<a href="/usAd/manageRecipesUser">Manage recipes</a>
 	    </div>
 		
 	</div>

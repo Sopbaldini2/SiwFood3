@@ -61,6 +61,32 @@ public class RecipeController {
 		return "usAd/manageRecipes.html";
 	}
 	
+	@GetMapping("/usAd/manageRecipesUser")
+	public String manageRecipesUser(Model model) {
+	    // Get authenticated user's username
+	    Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+	    String username = authentication.getName();
+
+	    // Find user by username
+	    Optional<Credentials> optionalCredentials = credentialsService.findByUsername(username);
+	    if (optionalCredentials.isPresent()) {
+	        User currentUser = optionalCredentials.get().getUser();
+
+	        // Find recipes where cooke.id equals current user's id
+	        Set<Recipe> userRecipes = currentUser.getRecipes();
+
+	        // Add filtered recipes to the model
+	        model.addAttribute("recipes", userRecipes);
+
+	        return "usAd/manageRecipes.html";
+	    } else {
+	        // Handle case where user is not found
+	        model.addAttribute("error", "User not found");
+	        return "errorPage"; // Return appropriate error page
+	    }
+	}
+
+	
 	@PostMapping("usAd/recipe")
 	public String newRecipe(@Valid @ModelAttribute("recipe") Recipe recipe, BindingResult bindingResult, 
 	                        @RequestParam(value = "ingredientIds", required = false) List<Long> ingredientIds, Model model) {
@@ -148,7 +174,7 @@ public class RecipeController {
     
 	
 	 // Metodo per cancellare una ricetta
-	@GetMapping("/usAd/deleteRecipe/{id}")
+	/*@GetMapping("/usAd/deleteRecipe/{id}")
     public String deleteRecipe(@PathVariable("id") Long id, Model model) {
         // Ottieni l'utente autenticato
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
@@ -180,7 +206,24 @@ public class RecipeController {
             model.addAttribute("messaggioErrore", "Utente non trovato");
             return "usAd/indexRecipe.html";
         }
+    }*/
+    
+    @GetMapping("/usAd/deleteRecipe/{id}")
+    public String deleteRecipe(@PathVariable("id") Long id) {
+        // Trova la ricetta per l'ID fornito
+        Recipe recipe = recipeService.findById(id);
+        
+        if (recipe != null) {
+            // Cancella la ricetta
+            recipeService.deleteRecipe(recipe);
+            // Redirect alla pagina dell'indice delle ricette dopo la cancellazione
+            return "redirect:/recipe";
+        } else {
+            // Nel caso in cui la ricetta non esista
+            return "redirect:/usAd/indexRecipe.html?messaggioErrore=Ricetta non trovata";
+        }
     }
+
     
 	
 	/*@GetMapping("/formSearchRecipes")
