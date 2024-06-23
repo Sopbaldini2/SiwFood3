@@ -41,7 +41,7 @@ public class User {
 	private String biography;
 	
 	private String image;
-	
+    		
 	@Past
 	@DateTimeFormat(pattern = "dd-MM-yyyy")
 	@NotNull

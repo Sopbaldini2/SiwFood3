@@ -11,6 +11,7 @@ import it.uniroma3.siw.model.Credentials;
 import it.uniroma3.siw.model.User;
 import it.uniroma3.siw.repository.CredentialsRepository;
 import it.uniroma3.siw.repository.UserRepository;
+import jakarta.persistence.EntityNotFoundException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -87,5 +88,17 @@ public class UserService {
         String currentUserEmail = authentication.getName();
         return findByEmail(currentUserEmail);
     }
+
+	public void deleteById(Long id) {
+		try {
+        userRepository.deleteById(id);
+         } catch (EntityNotFoundException e) {
+            throw new RuntimeException("Il cuoco con ID " + id + " non esiste", e);
+         }
+	}
+
+	public Iterable<User> findAll() {
+		return userRepository.findAll();
+	}
 }
 

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+	
+	<head>
+		
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Gostoso - Cookes Management</title>
+		<link rel="stylesheet" href="/css/manageCooke.css">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+		<link rel="shortcut icon" href="/images/IconaSF.png ">
+		
+	</head>
+    <body>
+	
+	<!-- Navigation Bar -->
+	
+	<nav>
+		
+		<div class="logo">
+			<a href="/success"><img src="/images/LogoSF.png" ></a>
+		</div>
+		
+		<ul>
+			
+			<li><a href="/success" >Home</a></li>
+			<li><a href="/cooke" class="action">Community</a></li>
+
+		</ul>
+		
+		<div class="login">
+			<details>
+				<summary th:text="${userDetails.username}">Gostoso</summary>
+                <ul>
+					<li><a href="/logout">Logout</a></li>
+                </ul>
+            </details>
+        </div>
+
+	</nav>
+	
+	<!-- Navigation Bar ends -->
+	
+	<!-- Banner starts -->
+	
+	<div class="banner_bg">
+		<h1>Cookes<span>Operation</span></h1>
+
+	</div>
+	
+	<!-- Banner ends -->
+	
+	<!-- Manage Cookes starts -->
+	
+    <div class="container mt-4">
+        <h2 class="mb-4">Manage Cookes</h2>
+        <!-- Messaggi di errore o conferma -->
+        <div th:if="${messaggioErrore}" class="alert alert-danger" role="alert">
+            <p th:text="${messaggioErrore}"></p>
+        </div>
+        <div th:if="${messaggioSuccesso}" class="alert alert-success" role="alert">
+            <p th:text="${messaggioSuccesso}"></p>
+        </div>
+        
+        <!-- Elenco degli utenti Cookes -->
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Surname</th>
+                    <th>Email</th>
+                    <th>Date of Birth</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Iterazione sugli utenti Cookes -->
+                <tr th:each="cooke : ${cookes}">
+                    <td th:text="${cooke.name}"></td>
+                    <td th:text="${cooke.surname}"></td>
+                    <td th:text="${cooke.email}"></td>
+                    <td th:text="${cooke.dateOfBirth}"></td>
+                    <td>
+                        <!-- Link per eliminare un cooke -->
+                        <a th:href="@{/admin/deleteCommunity/{id}(id=${cooke.id})}" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this cooke?')">Delete</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        
+    </div>
+    
+    <!-- Manage ingredients ends- -->
+	
+  </body>
+
+</html>

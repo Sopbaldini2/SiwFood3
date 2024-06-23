@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cooks List</title>
+</head>
+<body>
+    <body>
+    <h1>Manage Cooks</h1>
+    
+    <!-- Messaggio di conferma dopo l'operazione -->
+    <p th:if="${message}">Message: <span th:text="${message}"></span></p>
+
+    <!-- Tabella per mostrare i cuochi -->
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Surname</th>
+                <th>Email</th>
+                <th>Job</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Iterazione sulla lista dei cuochi -->
+            <tr th:each="cooke : ${users}">
+                <td th:text="${cooke.id}"></td>
+                <td th:text="${cooke.name}"></td>
+                <td th:text="${cooke.surname}"></td>
+                <td th:text="${cooke.email}"></td>
+                <td th:text="${cooke.job}"></td>
+                <td>
+                    <!-- Form per cancellare un cuoco -->
+                    <form th:action="@{/deleteCook/{id}(id=${cooke.id})}" method="post">
+                        <input type="submit" value="Delete">
+                    </form>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <!-- Link per tornare indietro -->
+    <p><a href="/success">Back to Home</a></p>
+</body>
+</html>
