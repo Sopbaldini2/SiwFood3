@@ -132,7 +132,7 @@ nav .login ul li a:hover {
 
 .recipe_main {
   max-width: 800px;
-  margin: 0 auto 10px auto; /* Sposta la sezione sotto la navbar */
+  margin: 20px auto 10px auto; /* Sposta la sezione sotto la navbar */
   padding: 20px;
   background: #fff;
   box-shadow: 0 0 10px rgba(0,0,0,0.1);
@@ -178,17 +178,33 @@ nav .login ul li a:hover {
 /* Stile per il pulsante "Update" */
 .recipe_main ul li a.update_btn {
   text-decoration: none;
-  color: crimson;
+  color: rgb(0, 179, 0);
   padding: 5px 10px;
-  border: 1px solid crimson;
+  border: 1px solid rgb(0, 179, 0);
   border-radius: 3px;
   transition: background-color 0.3s, color 0.3s;
 }
 
-.recipe_main ul li a.update_btn:hover {
-  background-color: crimson;
+.recipe_main ul li a.update_btn:hover{
+  background-color: darkgreen;
   color: #fff;
 }
+
+.recipe_main ul li form .btn {
+  text-decoration: none;
+  color: crimson;
+  padding: 7px 15px;
+  border: 1px solid crimson;
+  border-radius: 3px;
+  transition: background-color 0.3s, color 0.3s;
+  font-family: serif;
+}
+
+.recipe_main ul li form .btn:hover{
+  background-color: rgb(152, 14, 41);
+  color: #fff;
+}
+
 
 ::-webkit-scrollbar{
 	width: 10px;
