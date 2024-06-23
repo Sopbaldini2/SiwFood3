@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 
 import it.uniroma3.siw.model.Ingredient;
+import it.uniroma3.siw.model.Recipe;
 import it.uniroma3.siw.service.IngredientService;
 
 @Controller
@@ -102,18 +103,25 @@ public class IngredientController {
 		return "foundIngredients.html";
 	}
 	
-	// Verifica se è corretto 
 	@GetMapping("/admin/deleteIngredient/{id}")
-	 public String deleteIngredient(@PathVariable("id") Long id, Model model) {
-		Ingredient ingredient = ingredientService.findById(id);
-        if (ingredient != null) {
-            ingredientService.deleteById(id);
-            // Redirect alla pagina dell'indice dei servizi dopo la cancellazione
-            return "redirect:/ingredient";
-        } else {
-            // Nel caso in cui il servizio non esista
-            model.addAttribute("messaggioErrore", "Ingredient not found");
-            return "usAd/indexIngredient.html";
-            }
-        }
+	public String deleteIngredient(@PathVariable("id") Long id, Model model) {
+	    Ingredient ingredient = ingredientService.findById(id);
+	    if (ingredient != null) {
+	        // Rimuovi l'ingrediente da tutte le ricette
+	        for (Recipe recipe : ingredient.getRecipes()) {
+	            recipe.getIngredients().remove(ingredient);
+	        }
+	        // Salva le modifiche alle ricette
+	        ingredient.getRecipes().clear(); // Rimuovi il riferimento dall'ingrediente stesso
+	        ingredientService.deleteById(id); // Cancella l'ingrediente
+
+	        // Redirect alla pagina dell'indice degli ingredienti dopo la cancellazione
+	        return "redirect:/ingredient";
+	    } else {
+	        // Nel caso in cui l'ingrediente non esista
+	        model.addAttribute("messaggioErrore", "Ingredient not found");
+	        return "usAd/indexIngredient.html";
+	    }
+	}
+
 }
