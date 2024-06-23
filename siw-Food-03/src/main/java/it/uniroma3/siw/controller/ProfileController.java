@@ -20,7 +20,7 @@ public class ProfileController {
     private CredentialsService credentialsService;
 
 		
-	@GetMapping("/user/profile")
+	@GetMapping("/usAd/profile")
     public String getProfile(Model model, Authentication authentication) {
         String username = authentication.getName();
         Credentials credentials = credentialsService.findUserByUsername(username);
@@ -33,10 +33,10 @@ public class ProfileController {
         model.addAttribute("image", credentials.getUser().getImage());
         model.addAttribute("dateOfBirth", credentials.getUser().getDateOfBirth());
 
-        return "user/profile";
+        return "usAd/profile";
     }
 	
-	@GetMapping("/user/edit")
+	@GetMapping("/usAd/edit")
     public String showEditProfileForm(Model model, Authentication authentication) {
         String username = authentication.getName();
         Credentials credentials = credentialsService.findUserByUsername(username);
@@ -47,10 +47,10 @@ public class ProfileController {
         model.addAttribute("biography", credentials.getUser().getBiography());
         model.addAttribute("dateOfBirth", credentials.getUser().getDateOfBirth());
 
-        return "user/editProfile.html";
+        return "usAd/editProfile.html";
     }
 
-    @PostMapping("/user/edit")
+    @PostMapping("/usAd/edit")
     public String updateProfile(@RequestParam("biography") String biography,
     		                    @RequestParam("job") String job,
                                 @RequestParam("image") String nuovaImmagine,
@@ -63,7 +63,7 @@ public class ProfileController {
         credentials.getUser().setImage(nuovaImmagine); // Aggiorna l'immagine con la nuova stringa
 
         credentialsService.save(credentials);
-        return "redirect:/user/profile";
+        return "redirect:/usAd/profile";
     }    
 }  
 
