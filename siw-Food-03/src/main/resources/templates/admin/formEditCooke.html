@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title> GOSTOSO - Edit Cooke Profile </title>
+		<link rel="stylesheet" href="/css/editCooke.css">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+		<link rel="shortcut icon" href="/images/IconaSF.png " type="image/x-icon">
+	</head>
+	<body>
+			<nav>
+				<div class="logo">
+					<a href="/success"><img src="/images/LogoSF.png" ></a>
+		        </div>
+		        
+		        <ul>
+					<li><a href="/success" >Home</a></li>
+			        <li><a href="/recipe" >Recipes</a></li>
+					<li><a href="/ingredient" >Ingredients</a></li>
+					<li><a href="/cooke" class="action">Community</a></li>
+					<li><a href="/blog" >Blog</a></li>
+		        </ul>
+		
+		        <div class="login">
+					<details>
+						<summary th:text="${userDetails.username}">Gostoso</summary>
+                        <ul>
+							<li><a href="/user/profile">Your Profile</a></li>
+                            <li><a href="/usAd/indexRecipe">Recipe operations</a></li>
+                            <li><a href="/usAd/indexIngredient">Ingredient operations</a></li>
+					        <li><a href="/logout">Logout</a></li>
+                         </ul>
+                    </details>
+                </div>
+
+	        </nav>
+			
+			<!-- Navigation Bar ends -->
+			
+			<!-- Banner starts -->
+	
+	        <div class="banner_bg">
+				<h1>Edit <span>Cooke</span>Profile</h1>
+	        </div>
+	
+	        <!-- Banner ends -->
+	        
+	        <!-- Edit Cooke Profile starts -->
+	        
+            <form th:action="@{/admin/updateCooke/{id}(id=${cooke.id})}" th:object="${cooke}" method="post">
+				<div>
+					<label for="job">Job:</label>
+                    <input type="text" id="job" th:field="*{job}" />
+                </div>
+                
+                <div>
+					<label for="biography">Biography:</label>
+                    <textarea id="biography" th:field="*{biography}"></textarea>
+                </div>
+                
+                <div>
+					<label for="image">Image:</label>
+                    <input type="file" id="image" th:field="*{image}" />
+                </div>
+                
+                <div>
+					<button type="submit">Save</button>
+                </div>
+           </form>
+           
+           <!-- Edit Cooke Profile ends -->
+		
+	</body>
+</html>
+

@@ -3,6 +3,7 @@
 	padding: 0;
 	box-sizing: border-box;
 	font-size: sans-serif;
+	font-family: serif;
 }
 
  nav{
@@ -102,13 +103,12 @@ nav .login ul li a:hover {
     color: white;
     border-radius: 5px;
 }
-
 /*Banner*/
 
 .banner_bg{
 	width: 100%;
 	height: 50vh;
-	background-image: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), url(/images/banner3.png);
+	background-image: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), url(/images/banner6.png);
 	background-size: cover;
 	background-position: center;
 }
@@ -126,121 +126,65 @@ nav .login ul li a:hover {
 .banner_bg h1 span{
 	margin-left: 10px;
 	color: darkgreen;
+	margin-right: 10px;
 }
 
-/* Cookes Manage */
+/* Edit cooke Profile*/
 
-.container {
-    max-width: 800px;
-    margin: 20px auto;
-    padding: 20px;
-    background-color: #f9f9f9;
-    border: 1px solid #ccc;
+form {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 30px;
+    background-color: #fff;
+    border: 1px solid #ddd;
     border-radius: 10px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
 }
 
-h2 {
-    text-align: center;
-    font-size: 32px;
-    color: #333;
+form div {
     margin-bottom: 20px;
-    text-transform: uppercase;
-    letter-spacing: 1px;
 }
 
-.alert {
-    padding: 10px;
-    margin-bottom: 15px;
+form label {
+    display: block;
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+form input[type="text"],
+form textarea {
+    width: calc(100% - 20px);
+    padding: 12px;
+    font-size: 16px;
+    border: 1px solid #ccc;
     border-radius: 5px;
-}
-
-.alert-danger {
-    background-color: #f8d7da;
-    border-color: #f5c6cb;
-    color: #721c24;
-}
-
-.alert-success {
-    background-color: #d4edda;
-    border-color: #c3e6cb;
-    color: #155724;
-}
-
-.table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
-}
-
-.table th, .table td {
-    padding: 12px 15px;
-    text-align: left;
-    border-bottom: 1px solid #ddd;
-}
-
-.table th {
-    background-color: #f2f2f2;
-    text-transform: uppercase;
-    font-size: 14px;
+    box-sizing: border-box;
     color: #555;
 }
 
-.table td {
-    font-size: 16px;
-    color: #333;
+form textarea {
+    min-height: 150px;
 }
 
-.btn {
-    display: inline-block;
-    padding: 8px 12px;
-    border-radius: 5px;
-    text-decoration: none;
-    text-align: center;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-.btn-edit{
-	background-color: darkgreen;
-    border-color: darkgreen;
-    color: #fff;	
-}
-
-.btn-edit:hover {
-    background-color: rgb(226, 152, 29);
-    border-color: rgb(226, 152, 29);
-}
-
-.btn-danger {
-	margin-right: 1rem;
-    background-color: crimson;
-    border-color: crimson;
+form button[type="submit"] {
+    background-color: #4CAF50;
     color: #fff;
+    border: none;
+    padding: 12px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+    display: block;
+    width: 100%;
 }
 
-.btn-danger:hover {
+form button[type="submit"]:hover {
     background-color: darkgreen;
-    border-color: darkgreen;
 }
 
-.btn-primary {
-	margin-top: 2rem;
-    background-color: rgb(0, 179, 0); 
-    border-color: rgb(0, 179, 0); 
-    color: #fff; 
-    padding: 10px 15px; 
-    border-radius: 5px; 
-    font-size: 16px; 
-    text-transform: uppercase; /* Trasformazione del testo */
-    letter-spacing: 1px;
-    transition: background-color 0.3s ease; 
-}
-
-.btn-primary:hover {
-    background-color: #0056b3; 
-    border-color: #0056b3; 
-}
 
 ::-webkit-scrollbar{
 	width: 10px;

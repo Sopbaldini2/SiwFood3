@@ -83,6 +83,7 @@
                     <td th:text="${cooke.email}"></td>
                     <td th:text="${cooke.dateOfBirth}"></td>
                     <td>
+						<a th:href="@{/admin/updateCooke/{id}(id=${cooke.id})}" class="btn btn-edit">Edit</a>
                         <!-- Link per eliminare un cooke -->
                         <a th:href="@{/admin/deleteCommunity/{id}(id=${cooke.id})}" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this cooke?')">Delete</a>
                     </td>

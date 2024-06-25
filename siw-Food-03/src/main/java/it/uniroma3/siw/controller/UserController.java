@@ -120,5 +120,30 @@ public class UserController {
         return "redirect:/admin/manageCookes";
     }
 	
+    @GetMapping("/admin/updateCooke/{id}")
+    public String formUpdateCooke(@PathVariable("id") Long id, Model model) {
+        User cooke = userService.findById(id);
+        model.addAttribute("cooke", cooke);
+        return "admin/formEditCooke.html"; // Nome del file HTML senza estensione
+    }
+
+    @PostMapping("/admin/updateCooke/{id}")
+    public String updateCooke(@PathVariable("id") Long id, 
+                                              @ModelAttribute("cooke") User updateCooke,
+                                              Model model) {
+        User cooke = userService.findById(id);
+        if (cooke != null) {
+            cooke.setBiography(updateCooke.getBiography());
+            cooke.setJob(updateCooke.getJob());
+            cooke.setImage(updateCooke.getImage());
+            userService.saveUser(cooke); // Salva l'ingrediente aggiornato nel database
+            model.addAttribute("cooke", cooke);
+            return "redirect:/admin/manageCookes"; // Redirect alla pagina di gestione ingredienti
+        } else {
+            model.addAttribute("messaggioErrore", "Ingredient not found");
+            return "admin/manageCookes"; // Gestisci il caso in cui l'ingrediente non sia trovato
+        }
+    }   
+
 }
 
