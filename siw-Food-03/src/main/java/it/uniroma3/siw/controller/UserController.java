@@ -9,8 +9,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 //import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import it.uniroma3.siw.model.Credentials;
 import it.uniroma3.siw.model.Recipe;
@@ -69,9 +71,6 @@ public class UserController {
 	    }
 	}
 
-
-	
-
 	// Mostra un elenco di tutti i cuochi
 	@GetMapping("/cooke")
     public String showAllCooks(Model model) {
@@ -107,6 +106,19 @@ public class UserController {
 	        return "admin/indexCooke.html";
 	    }
 	}
+	
+	//Aggiunta di un nuovo cuoco
+	@GetMapping("/admin/addCooke")
+    public String newCooke(Model model) {
+        model.addAttribute("cooke", new User());
+        return "admin/formNewCooke";
+    }
+
+    @PostMapping("/admin/saveCooke")
+    public String savePost(@ModelAttribute("user") User user) {
+        userService.saveUser(user);
+        return "redirect:/admin/manageCookes";
+    }
 	
 }
 

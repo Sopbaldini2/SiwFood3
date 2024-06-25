@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+	
+	<head>
+		
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Gostoso - New Cookes</title>
+		<link rel="stylesheet" href="/css/newCooke.css">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+		<link rel="shortcut icon" href="/images/IconaSF.png ">
+		
+	</head>
+    <body>
+	
+	<!-- Navigation Bar -->
+	
+	<nav>
+		
+		<div class="logo">
+			<a href="/success"><img src="/images/LogoSF.png" ></a>
+		</div>
+		
+		<ul>
+			
+			<li><a href="/success" >Home</a></li>
+			<li><a href="/cooke" class="action">Community</a></li>
+
+		</ul>
+		
+		<div class="login">
+			<details>
+				<summary th:text="${userDetails.username}">Gostoso</summary>
+                <ul>
+					<li><a href="/usAd/profile">Your Profile</a></li>
+					<li><a href="/logout">Logout</a></li>
+                </ul>
+            </details>
+        </div>
+
+	</nav>
+	
+	<!-- Navigation Bar ends -->
+	
+	<!-- Banner starts -->
+	
+	<div class="banner_bg">
+		<h1>New<span>Cooke</span></h1>
+
+	</div>
+	
+	<!-- Banner ends -->
+	
+	<!-- New Cookes starts -->
+	
+    <form th:action="@{/admin/saveCooke}" th:object="${cooke}" method="post">
+        <div>
+            <label for="name">Name:</label>
+            <input type="text" id="name" th:field="*{name}" required/>
+        </div>
+        <div>
+            <label for="surname">Surname:</label>
+            <input type="text" id="surname" th:field="*{surname}" required/>
+        </div>
+        <div>
+            <label for="email">Email:</label>
+            <input type="email" id="email" th:field="*{email}" required/>
+        </div>
+        <div>
+            <label for="job">Job:</label>
+            <input type="text" id="job" th:field="*{job}" required/>
+        </div>
+        <div>
+            <label for="biography">Biography:</label>
+            <textarea id="biography" th:field="*{biography}" required></textarea>
+        </div>
+        <div>
+            <label for="image">Image:</label>
+            <input type="file" id="image" th:field="*{image}" required/>
+        </div>
+        <div>
+            <label for="dateOfBirth">Date of Birth:</label>
+            <input type="date" id="dateOfBirth" th:field="*{dateOfBirth}" required/>
+        </div>
+        <div>
+            <button type="submit">Aggiungi Cuoco</button>
+        </div>
+    </form>
+    
+    <!-- New ingredients ends- -->
+	
+  </body>
+
+</html>
