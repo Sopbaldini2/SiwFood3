@@ -122,3 +122,34 @@
     color: darkcyan;
     text-decoration: none;
 }
+
+/* Media query per schermi di dimensioni medie (ad es. tablet) */
+@media (max-width: 768px) {
+    .hero .login_form {
+        width: 90%; /* Modifica la larghezza per adattarsi a schermi più piccoli */
+        max-width: 400px; /* Larghezza massima mantenuta per il form */
+    }
+
+    .hero .login_form h1 {
+        font-size: 28px; /* Riduce la dimensione del titolo su schermi più piccoli */
+    }
+
+    .hero .login_form .field {
+        font-size: 14px; /* Riduce la dimensione del testo di input su schermi più piccoli */
+    }
+}
+
+/* Media query per schermi di dimensioni piccole (ad es. smartphone) */
+@media (max-width: 480px) {
+    .hero .login_form {
+        padding: 20px; /* Riduce il padding per un aspetto più compatto su schermi molto piccoli */
+    }
+
+    .hero .login_form h1 {
+        font-size: 24px; /* Ulteriore riduzione della dimensione del titolo su schermi molto piccoli */
+    }
+
+    .hero .login_form .field {
+        font-size: 12px; /* Ulteriore riduzione della dimensione del testo di input su schermi molto piccoli */
+    }
+}
