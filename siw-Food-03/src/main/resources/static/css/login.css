@@ -148,3 +148,36 @@
     color: white;
     font-size: 1em;
 }*/
+
+
+/*Media */
+
+@media (min-width: 991px) {
+  .hero .login_form {
+    width: 500px;
+    height: 550px;
+    padding: 30px;
+  }
+
+  .hero .login_form h1 {
+    font-size: 50px;
+    margin-bottom: 60px;
+  }
+
+  /* Aggiungi altre regole CSS specifiche per dispositivi di dimensioni maggiori di 991px */
+}
+
+@media (min-width: 1200px) {
+  .hero .login_form {
+    width: 500px;
+    height: 550px;
+    padding: 30px;
+  }
+
+  .hero .login_form h1 {
+    font-size: 50px;
+    margin-bottom: 60px;
+  }
+
+  /* Aggiungi altre regole CSS specifiche per dispositivi di dimensioni maggiori */
+}
