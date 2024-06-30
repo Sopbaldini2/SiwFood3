@@ -181,3 +181,40 @@ nav .login ul li a:hover {
 	background: rgb(0, 179, 0);
 	border-radius: 30px;
 }
+
+
+/* Media query per schermi di larghezza fino a 768px */
+@media (max-width: 768px) {
+    nav {
+        flex-direction: row;
+        padding: 10px 0;
+    }
+
+    nav .logo img {
+        margin: 10px auto;
+        left: 0;
+    }
+
+    nav .login details {
+        margin-top: 10px;
+    }
+
+    nav .login ul {
+        right: 0;
+        left: 0;
+        top: 100%;
+        transform: none;
+        width: 100%;
+        padding: 10px 0;
+    }
+
+    .banner_bg h1 {
+        font-size: 32px;
+    }
+
+    .ingredient_new {
+        width: 90%;
+        max-width: 100%;
+        margin: 20px auto;
+    }
+}
