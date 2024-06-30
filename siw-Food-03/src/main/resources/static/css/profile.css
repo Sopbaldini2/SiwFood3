@@ -258,7 +258,7 @@ footer .end span{
 }
 
 /* Mobile Devices */
-@media (max-width: 767px) {
+@media (max-width: 768px) {
     nav {
         /*display: flex; /* Utilizza flexbox per il layout dei figli */
         flex-direction: row;
