@@ -311,32 +311,4 @@ nav .login ul li a:hover {
 		font-size: 40px;
     }
 
-    .recipe_main {
-		padding: 10px;
-    }
-
-    .recipe_main h1 {
-		font-size: 1.8em;
-    }
-
-    .recipe_main div {
-		font-size: 1em;
-    }
-
-    .recipe_main ul li {
-		flex-direction: column;
-		text-align: left;
-    }
-
-    .recipe_main ul li span {
-		font-size: 1em;
-    }
-
-    .recipe_main ul li a.update_btn {
-		padding: 5px 8px;
-    }
-
-    .recipe_main ul li form .btn {
-		padding: 5px 10px;
-    }
 }
