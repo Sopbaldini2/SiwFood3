@@ -191,14 +191,14 @@ nav .login2 ul li a:hover {
 .recipe {
 	width: 100%;
     padding: 10px 0 20px 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
 }
 
 .recipe .recipe_box {
-	width: 95%;
-    margin: 45px auto 0 auto;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-gap: 30px 10px;
+    width: 45%; /* Regola la larghezza delle singole card delle ricette */
+    margin-top: 20px;
 }
 
 .recipe .recipe_box .recipe_card {
@@ -472,24 +472,25 @@ footer .end span{
     }
 
     .recipe .recipe_box {
-        grid-template-columns: 1fr;
-        grid-gap: 20px;
+        width: 100%; /* Imposta larghezza al 100% per occupare l'intera larghezza disponibile */
+        margin-top: 20px;
     }
 
     .recipe .recipe_box .recipe_card {
-        width: 100%;
-        height: auto;
+        width: 100%; /* Imposta larghezza al 100% per occupare l'intera larghezza disponibile */
+        height: auto; /* Altezza automatica in base al contenuto */
     }
 
     .recipe .recipe_box .recipe_card .recipe_img {
-        width: 100%;
-        height: auto;
+        width: 100%; /* Imposta larghezza al 100% per riempire l'intera larghezza della card */
+        height: auto; /* Altezza automatica in base all'immagine */
     }
 
     .recipe .recipe_box .recipe_card .recipe_text p {
-        width: 90%;
+        width: 90%; /* Limita la larghezza del testo per una migliore leggibilità */
+        margin: 0 auto; /* Centra il testo nel contenitore */
     }
-    
+
     .recipe .recipe_box .recipe_card .recipe_text .recipe_btn {
         max-width: 100%; /* Imposta larghezza massima al 100% */
         display: block; /* Imposta il pulsante come blocco per gestire la larghezza */
