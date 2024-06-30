@@ -267,20 +267,21 @@ footer .end span{
     }
 
     nav .logo img {
-        width: 100px;
+		width: 100px;
         margin: 10px 0;
-        /*padding-left: 6rem;*/
-    }
-
-    nav .nav_link {
-        display: none;
+        left: 0;
+        align-items: center;
     }
     
-     nav .nav-toggle {
+    nav .nav_link{
+		display: none;
+	}
+
+    nav .nav-toggle {
         display: block;
         width: 100%;
-        text-align: center; /* Centra il toggle nel container */
-        padding-right: 7rem;
+        align-items: center; /* Centra il toggle nel container */
+        padding-right: 3rem;
     }
 
     .nav-toggle details {
@@ -338,12 +339,12 @@ footer .end span{
         color: white;
         border-radius: 5px;
     }
-    
-    nav .login {
-        display: flex; /* Utilizza flexbox per allineare gli elementi */
+
+     nav .login {
+        display: block; /* Utilizza flexbox per allineare gli elementi */
         justify-content: space-between; /* Distribuisce gli elementi uniformemente */
         align-items: center; /* Allinea verticalmente al centro */
-        padding-left: 7rem;
+        padding-left: 1.9rem;
     }
 
     .banner_bg {
