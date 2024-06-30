@@ -255,7 +255,7 @@ nav .login ul li a:hover {
         display: block; /* Utilizza flexbox per allineare gli elementi */
         justify-content: space-between; /* Distribuisce gli elementi uniformemente */
         align-items: center; /* Allinea verticalmente al centro */
-        padding-left: 2.5rem;
+        padding-left: 3rem;
     }
 
     .banner_bg {
