@@ -214,7 +214,7 @@ button:active {
 	border-radius: 30px;
 }
 
-
+/*Media*/
 
 @media screen and (max-width: 768px) {
     nav {
