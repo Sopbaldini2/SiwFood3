@@ -11,12 +11,27 @@
 	</head>
 	<body>
 			<nav>
+				
+				<div class="nav-toggle">
+			<details>
+				<summary>Menu</summary>
+				<ul>
+					<li><a sec:authorize="isAuthenticated()" href="/success" >Home</a></li>
+					<li><a sec:authorize="!isAuthenticated()" href="/" >Home</a></li>
+					<li><a href="/recipe">Recipes</a></li>
+                    <li><a href="/ingredient">Ingredients</a></li>
+                    <li><a href="/cooke">Community</a></li>
+                    <li><a href="/blog" class="action">Blog</a></li>
+                 </ul>
+             </details>
+        </div> 
+				
 				<div class="logo">
 					<a sec:authorize="isAuthenticated()" href="/success"><img src="images/LogoSF.png" ></a>
 			        <a sec:authorize="!isAuthenticated()" href="/"><img src="images/LogoSF.png" ></a>
 				</div>
 				
-				<ul>
+				<ul class="nav-link">
 					<li><a sec:authorize="isAuthenticated()" href="/success">Home</a></li>
 					<li><a sec:authorize="!isAuthenticated()" href="/" >Home</a></li>
 					<li><a href="/recipe" >Recipes</a></li>
