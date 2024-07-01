@@ -148,58 +148,50 @@ nav .login2 ul li a:hover {
 /* Cookes */
 
 .community {
-    width: 100%;
-    padding: 10px 0 20px 0;
+	display: flex;
+	flex-wrap: wrap;
+	gap: 20px;
+	padding: 20px;
+	list-style: none;
+	justify-content: center;
 }
-.community .community_box{
-    width: 95%;
-    height: auto;
-    margin: 0 auto;
-    position: relative;
-    bottom: 55px;
-    padding: 15px 0;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-gap: 0;
+
+.community_box {
+	width: 300px; /* aumentato da 200px a 300px */
 }
-.community .community_box .community_card{
-    width: 350px;
-    height: 410px;
-    background: #fff;
-    padding: 20px;
-    text-align: center;
-    border-radius: 10px;
-    margin: 0 auto;
-    z-index: 5;
-    box-shadow: 1px 2px 10px rgba(0,0,0,0.2);
+
+.community_card {
+	border: 1px solid #ccc;
+	border-radius: 10px;
+	overflow: hidden;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+	text-align: center;
+	padding: 20px; /* aggiunto padding per un aspetto migliore */
 }
-.community .community_box .community_card .community_img {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+
+.community_img img {
+	width: 150px; /* aumentato da 100px a 150px */
+	height: 150px; /* aumentato da 100px a 150px */
+	border-radius: 50%; /* rende l'immagine circolare */
+	margin-top: 20px;
 }
-.community .community_box .community_card .community_img img{
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
-    object-fit: cover;
-    object-position: center;
-    box-shadow: 0 0 8px rgba(0,0,0,0.3);
+
+.community_tag {
+	padding: 10px;
 }
-.community .community_box .community_card .community_tag a{
-    display: block;
-    margin: 10px 0;
-    font-weight: bold;
-    font-size: 1.2em;
+
+.community_tag a {
+	color: rgb(0, 179, 0);
+	text-decoration: none;
+	font-weight: bold;
+	display: block;
+	margin-bottom: 5px;
 }
-.community .community_box .community_card .community_tag p.job {
-    font-size: 1em;
-    color: #666;
-}
-.community .community_box .community_card .community_tag p.info{
-    text-align: center;
-    line-height: 23px;
-    margin-top: 10px;
+
+.community_tag .date,
+.community_tag .job {
+	color: #666;
+	font-size: 1em; 
 }
 
 /* Footer */

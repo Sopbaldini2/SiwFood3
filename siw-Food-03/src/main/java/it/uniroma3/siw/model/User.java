@@ -41,6 +41,8 @@ public class User {
 	private String biography;
 	
 	private String image;
+	
+	private String phrase;
     		
 	@Past
 	@DateTimeFormat(pattern = "dd-MM-yyyy")
@@ -123,6 +125,14 @@ public class User {
 	
 	public String getBiography() {
 		return biography;
+	}
+	
+	public void setPhrase(String phrase) {
+		this.phrase = phrase;
+	}
+	
+	public String getPhrase() {
+		return phrase;
 	}
 	
     public Set<Recipe> getRecipes() {
