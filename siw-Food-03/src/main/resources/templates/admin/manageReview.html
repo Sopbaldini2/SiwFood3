@@ -6,8 +6,8 @@
 		<meta charset="UTF-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>Recipe Management</title>
-		<link rel="stylesheet" href="/css/indexRecipe.css">
+		<title>Ingredients Management</title>
+		<link rel="stylesheet" href="/css/manageIngredient.css">
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 		<link rel="shortcut icon" href="/images/IconaSF.png ">
 		
@@ -21,11 +21,11 @@
 		<div class="nav-toggle">
 			<details>
 				<summary>Menu</summary>
-                <ul>
+				<ul>
 					<li><a href="/success" >Home</a></li>
-			        <li><a href="/recipe" class="action">Recipes</a></li>
-                 </ul>
-             </details>
+			        <li><a href="/ingredient" class="action">Ingredients</a></li>
+                </ul>
+            </details>
         </div> 
 		
 		<div class="logo">
@@ -44,13 +44,8 @@
 				<summary th:text="${userDetails.username}">Gostoso</summary>
                 <ul>
 					<li><a href="/usAd/profile">Your Profile</a></li>
-					<div th:if="${userRole == 'DEFAULT'}" >
-						 <li><a href="/usAd/indexRecipe">Recipe operations</a></li>
-                         <li><a href="/usAd/indexIngredient">Ingredient operations</a></li>
-					 </div>
-					 
-					 <li><a href="/usAd/indexReview">Review operations</a></li>
-                     <li><a href="/logout">Logout</a></li>
+					<li><a href="/usAd/indexReview">Review operations</a></li>
+					<li><a href="/logout">Logout</a></li>
                 </ul>
             </details>
         </div>
@@ -62,31 +57,30 @@
 	<!-- Banner starts -->
 	
 	<div class="banner_bg">
-		<h1>Recipes<span>Management</span></h1>
+		<h1>Review<span>Operation</span></h1>
 
 	</div>
 	
 	<!-- Banner ends -->
 	
-	<!-- Recipes Management starts -->
+	<!-- Manage ingredients starts -->
 	
-    <div class="recipe_manager">
-		
-		<div>
-			<a href="/usAd/formNewRecipe">Record the details of a new recipe</a>
-	    </div>
-	    
-	    <div th:if="${userRole == 'ADMIN'}" >
-			<a href="/usAd/manageRecipes">Manage recipes</a>
-	    </div>
-	    
-	    <div th:if="${userRole == 'DEFAULT'}" >
-			<a href="/usAd/manageRecipesUser">Manage recipes</a>
-	    </div>
-		
+	<div class="review_main">
+		<h1>Review</h1>
+	    <div th:if="${review.isEmpty()}">There are no review in the system</div>
+	    <ul>
+			<li th:each="review : ${reviews}">
+				<span th:text="${review.name} +' '+ ${ingredient.quantita + ' ' + 'g'}">Up! </span>
+			    <a th:href="@{'/admin/formUpdateIngredient' + '/' + ${ingredient.id}}" class="update_btn">Update</a>
+			     <form th:action="@{'/admin/deleteIngredient/' + ${ingredient.id}}" method="get" onsubmit="return confirm('Are you sure you want to delete this ingredient?');">
+					 <button type="submit" class="btn">Delete</button>
+                 </form>
+		    </li>
+	   </ul>
 	</div>
 	
-	<!-- Recipes Management ends -->
+	<!-- Manage ingredients ends- -->
 	
-	</body>
+  </body>
+
 </html>
