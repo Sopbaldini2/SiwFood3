@@ -1,0 +1,40 @@
+Inserimento Nuovo Ingrediente
+
+Attore: Amministratore
+Descrizione: L'amministratore inserisce i dettagli di un nuovo ingrediente nel sistema, inclusi nome, descrizione, quantita e un immagine.
+
+
+Aggiornamento Dati Ricetta
+
+Attore: Amministratore
+Descrizione: L'amministratore modifica i dettagli di una ricetta esistente nel sistema, come gli ingredienti che può aggiungere o eliminare, la descrizione, o la preparazione.
+
+
+Inserimento Recensione
+
+Attore: Utente registrato/cuoco
+Descrizione: L'utente registrato pubblica una recensione su una ricetta, fornendo un commento testuale o lasciando un like.
+
+
+Visualizzazione Catalogo Prodotti
+
+Attore: Utente generico
+Descrizione: L'utente generico visualizza l'elenco completo degli ingredienti o delle ricette disponibili nel sistema, con la possibilità di cercare prodotti specifici.
+
+
+Visualizzazione Dettagli Prodotto
+
+Attore: Utente generico
+Descrizione: L'utente generico visualizza i dettagli completi di una ricetta o di un ingrediente specifico, inclusi nome, descrizione, preparazione, recensioni associate o altre informazioni.
+
+
+Modifica Proprio Profilo
+
+Attore: Utente registrato / Amministratore
+Descrizione: L'utente registrato o l'amministratore modifica i propri dati di profilo nel sistema, come frase, descrizione, foto o altre informazioni personali.
+
+
+Operazioni su una ricetta
+
+Attore: Utente registrato/cuoc
+Descrizione: L'untente registrato può visualizzare solo le ricette da lui inserite e le può modificare o cancellare. 
