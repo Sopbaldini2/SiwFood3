@@ -36,5 +36,5 @@ Descrizione: L'utente registrato o l'amministratore modifica i propri dati di pr
 
 Operazioni su una ricetta
 
-Attore: Utente registrato/cuoc
+Attore: Utente registrato/cuoco
 Descrizione: L'untente registrato può visualizzare solo le ricette da lui inserite e le può modificare o cancellare. 
