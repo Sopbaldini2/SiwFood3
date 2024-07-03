@@ -8,6 +8,7 @@ import java.util.Set;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -39,10 +40,12 @@ public class User {
 	
 	private String job;
 	
+	@Column(columnDefinition = "TEXT")
 	private String biography;
 	
 	private String image;
 	
+	@Column(columnDefinition = "TEXT")
 	private String phrase;
     		
 	@Past

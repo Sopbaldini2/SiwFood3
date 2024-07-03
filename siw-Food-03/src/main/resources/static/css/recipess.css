@@ -260,7 +260,7 @@ nav .login2 ul li a:hover {
     padding: 10px 20px;
     border: 2px solid crimson;
     position: relative;
-    top: 20px;
+    top: 16px;
     transition: 0.3s;
     z-index: 5;
 }
