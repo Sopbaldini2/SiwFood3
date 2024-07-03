@@ -4,6 +4,7 @@ import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -18,6 +19,8 @@ public class Ingredient {
 	private Long id;
 	private String name;
 	private Float quantita;
+	
+	@Column(columnDefinition = "TEXT")
 	private String description;
 	private String image;
 	@ManyToMany(mappedBy="ingredients")
