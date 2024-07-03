@@ -1,11 +1,13 @@
 package it.uniroma3.siw.repository;
 
 import java.util.List;
+import java.util.Set;
 
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 
 import it.uniroma3.siw.model.Ingredient;
+import it.uniroma3.siw.model.Recipe;
 
 public interface IngredientRepository extends CrudRepository <Ingredient, Long>{
 
@@ -14,5 +16,7 @@ public interface IngredientRepository extends CrudRepository <Ingredient, Long>{
 
 	public boolean existsByName(String name);
 	public List<Ingredient> findByName(String name);
+
+	boolean existsByNameAndRecipes(String name, Set<Recipe> recipes);
 
 }

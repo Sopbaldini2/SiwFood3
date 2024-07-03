@@ -10,6 +10,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToMany;
+import jakarta.validation.constraints.NotBlank;
 
 @Entity
 public class Ingredient {
@@ -17,12 +18,18 @@ public class Ingredient {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
+	
+	@NotBlank(message = "{ingredient.name.notblank}")
 	private String name;
+	
 	private Float quantita;
 	
 	@Column(columnDefinition = "TEXT")
 	private String description;
+	
+	@NotBlank(message = "{ingredient.image.notblank}")
 	private String image;
+	
 	@ManyToMany(mappedBy="ingredients")
 	private Set<Recipe> recipes;
 	

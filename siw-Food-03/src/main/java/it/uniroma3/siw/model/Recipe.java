@@ -13,6 +13,7 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
+import jakarta.validation.constraints.NotBlank;
 
 @Entity
 public class Recipe {
@@ -25,6 +26,7 @@ public class Recipe {
 	private String description;
 	@Column(columnDefinition = "TEXT")
 	private String preparation;
+	@NotBlank(message = "{recipe.image.notblank}")
 	private String image;
 	@ManyToOne
 	@JoinColumn(name = "cooke_id", nullable = false)
