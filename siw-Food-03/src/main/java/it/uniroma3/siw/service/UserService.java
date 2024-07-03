@@ -100,5 +100,14 @@ public class UserService {
 	public Iterable<User> findAll() {
 		return userRepository.findAll();
 	}
+
+	public User findUserByUsername(String username) {
+		Credentials credentials = credentialsRepository.findUserByUsername(username);
+        if (credentials != null) {
+            return credentials.getUser(); // Assumi che Credentials abbia un campo cliente
+        }
+        return null;
+	}
+
 }
 

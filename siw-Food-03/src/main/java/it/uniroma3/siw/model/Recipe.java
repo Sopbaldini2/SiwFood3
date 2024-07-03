@@ -1,5 +1,6 @@
 package it.uniroma3.siw.model;
 
+import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 
@@ -11,6 +12,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 
 @Entity
 public class Recipe {
@@ -29,6 +31,9 @@ public class Recipe {
 	private User cooke;
 	@ManyToMany
 	private Set<Ingredient> ingredients;
+	
+	@OneToMany(mappedBy="recipe")
+	private List<Review> reviews;
     
 	//Aggiungo i metodi Getter e Setter
 	
@@ -75,12 +80,19 @@ public class Recipe {
 		this.ingredients = ingredients;
 	}
 	
+	public List<Review> getReviews() {
+		return reviews;
+	}
+	public void setReviews(List<Review> reviews) {
+		this.reviews = reviews;
+	}
+	
 	//Aggiungo i metodi Equals() e HashCode() 
 	//Due oggetti Recipe sono uguali se hanno lo stesso id,lo stesso nome e lo stesso cuoco
 	
 	@Override
 	public int hashCode() {
-		return Objects.hash(cooke, id, name);
+		return Objects.hash(cooke, id, name, reviews);
 	}
 	@Override
 	public boolean equals(Object obj) {
@@ -91,7 +103,8 @@ public class Recipe {
 		if (getClass() != obj.getClass())
 			return false;
 		Recipe other = (Recipe) obj;
-		return Objects.equals(cooke, other.cooke) && Objects.equals(id, other.id) && Objects.equals(name, other.name);
+		return Objects.equals(cooke, other.cooke) && Objects.equals(id, other.id) && Objects.equals(name, other.name)
+				&& Objects.equals(reviews, other.reviews);
 	}
 	
 }

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title> GOSTOSO - Ricette creole</title>
+		<link rel="stylesheet" href="/css/review.css">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+		<link rel="shortcut icon" href="/images/IconaSF.png" type="image/x-icon">
+	</head>
+	<body>
+		<!-- Navigation Bar -->
+	
+	<nav>
+		
+		<div class="nav-toggle">
+			<details>
+				<summary>Menu</summary>
+				<ul>
+					<li><a sec:authorize="isAuthenticated()" href="/success" >Home</a></li>
+					<li><a sec:authorize="!isAuthenticated()" href="/" >Home</a></li>
+					<li><a href="/recipe" class="action">Recipes</a></li>
+                    <li><a href="/ingredient">Ingredients</a></li>
+                    <li><a href="/cooke">Community</a></li>
+                    <li><a href="/blog">Blog</a></li>
+                 </ul>
+             </details>
+        </div> 
+		
+		<div class="logo">
+			<a sec:authorize="isAuthenticated()" href="/success"><img src="/images/LogoSF.png" ></a>
+			<a sec:authorize="!isAuthenticated()" href="/"><img src="/images/LogoSF.png" ></a>
+		</div>
+		
+		<ul class="nav-link">
+					<li><a sec:authorize="isAuthenticated()" href="/success" >Home</a></li>
+					<li><a sec:authorize="!isAuthenticated()" href="/" >Home</a></li>
+					<li><a href="/recipe" class="action">Recipes</a></li>
+					<li><a href="/ingredient" >Ingredients</a></li>
+					<li><a href="/cooke" >Community</a></li>
+					<li><a href="/blog" >Blog</a></li>
+					
+		</ul>
+		
+        <!--Se l'utente è autenticato -->
+    
+        <div th:if="${userDetails != null}" class="login2">
+			<details>
+				<summary th:text="${userDetails.username}">Gostoso</summary>
+                <ul>
+					<li><a href="/usAd/profile">Your Profile</a></li>
+					<div th:if="${userRole == 'DEFAULT'}" >
+                         <li><a href="/usAd/indexRecipe">Recipe operations</a></li>
+                         <li><a href="/usAd/indexIngredient">Ingredient operations</a></li>
+					 </div>
+					
+					 <li><a href="/usAd/indexReview">Review operations</a></li>
+                     <li><a href="/logout">Logout</a></li>
+                </ul>
+            </details>
+        </div>
+	 </nav>
+	
+	 <!-- Navigation Bar ends -->
+	
+
+    <!-- Form per aggiungere una nuova recensione -->
+    
+    <div class="container">
+		<form th:action="@{/usAd/review}" method="POST" th:object="${review}" enctype="multipart/form-data">
+			<input type="hidden" id="recipeId" name="recipeId" th:value="${recipeId}">
+
+			<div class="form-group">
+				<label for="comment">Comment:</label>
+				<textarea class="form-control" id="comment" name="comment" rows="4" required></textarea>
+			</div>
+			
+			<div class="form-group">
+				<label for="cooke">Coooke:</label>
+				<input type="text" class="form-control" id="user" name="user" th:value="${cookeName}" disabled>
+				<input type="text" class="form-control" id="surname" name="surname" th:value="${cookeSurname}"
+					disabled>
+			</div>
+
+			<button type="submit" class="btn btn-primary">Add Reviews</button>
+		</form>
+	</div>
+
+	<!-- Review section ends -->
+	
+	<!-- Footer starts -->
+	<footer>
+		<div class="footer_main">
+			<div class="footer_img">
+				<img src="/images/IconaSF.png">
+			</div>
+			<div class="footer_tag">
+				<h2>Quick Link</h2>
+				<p>Home</p>
+				<p>Recipes</p>
+				<p>Ingredients</p>
+				<p>Community</p>
+				<p>Blog</p>
+			</div>
+			<div class="footer_tag">
+				<h2>Follows</h2>
+				<i class="fa-brands fa-facebook"></i>
+				<i class="fa-brands fa-instagram"></i>
+				<i class="fa-brands fa-snapchat"></i>
+				<i class="fa-brands fa-youtube"></i>
+				<i class="fa-brands fa-tiktok"></i>
+			</div>
+		</div>
+		<p class="end"> Design by <span>Sophie Baldini</span></p>
+	</footer>
+	<!-- Footer ends -->
+	</body>
+</html>

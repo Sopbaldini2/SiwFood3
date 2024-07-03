@@ -107,6 +107,42 @@
 	
 	<!-- Recipes details ends -->
 	
+	<!-- Review section starts -->
+	
+	<div class="recensioni-info">
+		<h4>Review</h4>
+		<div class="review">
+			<div class="box-container">
+				<div th:each="review : ${recipe.reviews}" class="box">
+					
+					<div class="user">
+						<img th:src="@{'/images/cookes/' + ${review.user.image}}">
+						
+						<div class="user-info">
+							<h3 th:text="${review.user.name} + ' ' + ${review.user.surname}">Joao Ratao</h3>
+							<br>
+					    </div>
+					    
+					    <div class="comment">
+							<p th:text="${review.comment}">Commento</p>
+                        </div>
+                        
+				    </div>
+					<span class="fas fa-quote-right"></span>
+				</div>
+			</div>
+
+			<!-- Pulsante per aggiungere recensione -->
+			
+			<div sec:authorize="isAuthenticated()">
+				<a th:href="@{/usAd/formNewReview(id=${recipe.id})}" class="btn btn-primary">Add Review</a>
+            </div>
+
+		</div>
+	</div>
+    
+    <!-- Review section ends -->
+	
 	<!-- Footer starts -->
 		
 		<footer>

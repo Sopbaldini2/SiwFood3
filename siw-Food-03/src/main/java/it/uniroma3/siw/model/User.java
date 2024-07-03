@@ -2,6 +2,7 @@ package it.uniroma3.siw.model;
 
 import java.time.LocalDate;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import org.springframework.format.annotation.DateTimeFormat;
@@ -51,6 +52,18 @@ public class User {
 
     @OneToMany(mappedBy = "cooke", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<Recipe> recipes = new HashSet<>();
+    
+    @OneToMany
+	private List<Review> reviews;
+	
+	
+	public List<Review> getReview() {
+		return reviews;
+	}
+
+	public void setRecensioni(List<Review> reviews) {
+		this.reviews = reviews;
+	}
     
     @PrePersist
     @PreUpdate

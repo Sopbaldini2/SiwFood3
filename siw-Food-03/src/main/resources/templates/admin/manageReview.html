@@ -7,7 +7,7 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<title>Ingredients Management</title>
-		<link rel="stylesheet" href="/css/manageIngredient.css">
+		<link rel="stylesheet" href="/css/manageReview.css">
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 		<link rel="shortcut icon" href="/images/IconaSF.png ">
 		
@@ -58,28 +58,40 @@
 	
 	<div class="banner_bg">
 		<h1>Review<span>Operation</span></h1>
-
 	</div>
 	
 	<!-- Banner ends -->
 	
-	<!-- Manage ingredients starts -->
+	<!-- Manage Review starts -->
 	
-	<div class="review_main">
-		<h1>Review</h1>
-	    <div th:if="${review.isEmpty()}">There are no review in the system</div>
-	    <ul>
-			<li th:each="review : ${reviews}">
-				<span th:text="${review.name} +' '+ ${ingredient.quantita + ' ' + 'g'}">Up! </span>
-			    <a th:href="@{'/admin/formUpdateIngredient' + '/' + ${ingredient.id}}" class="update_btn">Update</a>
-			     <form th:action="@{'/admin/deleteIngredient/' + ${ingredient.id}}" method="get" onsubmit="return confirm('Are you sure you want to delete this ingredient?');">
-					 <button type="submit" class="btn">Delete</button>
-                 </form>
-		    </li>
-	   </ul>
-	</div>
+	<section id="review-list">
+		<h2>All Reviews</h2>
+		<table>
+			<thead>
+				<tr>
+					<th>Comment</th>
+                    <th>Recipe</th>
+                    <th>User</th>
+                    <th>Actions</th>
+                 </tr>
+            </thead>
+            <tbody>
+				<!-- Reviews will be populated dynamically using Thymeleaf -->
+                <tr th:each="review : ${reviews}">
+					<td th:text="${review.comment}"></td>
+                    <td th:text="${review.recipe.name}"></td>
+                    <td th:text="${review.user.name}"></td>
+                    <td>
+						<form th:action="@{'/admin/review/' + ${review.id}}" method="get">
+							<button type="submit" onclick="return confirm('Sei sicuro di voler eliminare questa recensione?');">Delete</button>
+							</form>
+                    </td>
+                </tr>
+             </tbody>
+         </table>
+    </section>
 	
-	<!-- Manage ingredients ends- -->
+	<!-- Manage Review ends- -->
 	
   </body>
 

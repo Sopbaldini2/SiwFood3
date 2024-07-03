@@ -88,7 +88,32 @@
 			
 			<!--Profile section starts -->
 			
-			<!-- Footer starts -->
+			<!-- Review section starts -->
+			
+			<div class="reviews_main">
+				
+				<h2>Le tue recensioni</h2>
+				
+				<div th:if="${reviews.isEmpty()}">
+					<p>Non hai scritto nessuna recensione.</p>
+		        </div>
+
+		        <ul>
+					<!-- Ciclo sulle recensioni dell'utente -->
+
+			        <li th:each="review : ${reviews}">
+						<div>
+							<p th:text="${review.comment}"></p>
+					        <p>Recipe: <span th:text="${review.recipe.name}"></span></p>
+					        <a th:href="@{/usAd/deleteReview/{id}(id=${review.id})}" onclick="return confirm('Sei sicuro di voler cancellare questa recensione?');">Delete</a>
+				       </div>
+			       </li>
+		        </ul>
+	       </div>
+
+		<!--Review section ends -->
+			
+		<!-- Footer starts -->
 		
 		<footer>
 			<div class="footer_main">
