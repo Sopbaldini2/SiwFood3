@@ -37,6 +37,6 @@ public class RecipeService {
 
 	public void deleteRecipe(Recipe recipe) {
 		recipeRepository.delete(recipe);
-		
 	}
+	
 }

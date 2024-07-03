@@ -16,9 +16,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import it.uniroma3.siw.model.Credentials;
 import it.uniroma3.siw.model.Recipe;
+import it.uniroma3.siw.model.Review;
 //import it.uniroma3.siw.model.Credentials;
 import it.uniroma3.siw.model.User;
 import it.uniroma3.siw.service.CredentialsService;
+import it.uniroma3.siw.service.ReviewService;
 //import it.uniroma3.siw.service.CredentialsService;
 import it.uniroma3.siw.service.UserService;
 
@@ -30,6 +32,9 @@ public class UserController {
 	
 	@Autowired
     private CredentialsService credentialsService;
+	
+	@Autowired
+    private ReviewService reviewService;
 	
 	@GetMapping("/admin/indexCooke")
 	public String indexCooke() {
@@ -85,7 +90,7 @@ public class UserController {
 		return "yourProfile.html";
 	}
 	
-	@GetMapping("/admin/deleteCommunity/{id}")
+	/*@GetMapping("/admin/deleteCommunity/{id}")
 	public String deleteCommunity(@PathVariable("id") Long id, Model model) {
 	    User user = userService.findById(id);
 	    if (user != null) {
@@ -94,8 +99,40 @@ public class UserController {
 	            recipe.setCooke(null); // Rimuovi il riferimento dell'utente dalla ricetta
 	        }
 	        user.getRecipes().clear(); // Rimuovi le ricette dall'utente
-
+	        
 	        // Ora puoi eliminare l'utente
+	        userService.deleteById(id);
+
+	        // Redirect alla pagina degli utenti dopo la cancellazione
+	        return "redirect:/cooke";
+	    } else {
+	        // Nel caso in cui l'utente non esista
+	        model.addAttribute("messaggioErrore", "User not found");
+	        return "admin/indexCooke.html";
+	    }
+	}*/
+	
+	@GetMapping("/admin/deleteCommunity/{id}")
+	public String deleteCommunity(@PathVariable("id") Long id, Model model) {
+	    User user = userService.findById(id);
+	    if (user != null) {
+	        // Step 1: Elimina le recensioni associate alle ricette del cuoco
+	        for (Recipe recipe : user.getRecipes()) {
+	            for (Review review : recipe.getReviews()) {
+	                reviewService.deleteById(review.getId());
+	            }
+	        }
+
+	        // Step 2: Elimina le ricette del cuoco
+	        user.getRecipes().clear();
+
+	        // Step 3: Elimina le recensioni scritte dal cuoco su altre ricette
+	        List<Review> reviewsByUser = reviewService.findByCooke(user);
+	        for (Review review : reviewsByUser) {
+	            reviewService.deleteById(review.getId());
+	        }
+
+	        // Step 4: Elimina il cuoco
 	        userService.deleteById(id);
 
 	        // Redirect alla pagina degli utenti dopo la cancellazione
