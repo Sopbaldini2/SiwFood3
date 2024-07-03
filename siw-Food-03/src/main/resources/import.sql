@@ -5,6 +5,9 @@ INSERT INTO ingredient (id, name, quantita, description, image) VALUES(nextval('
 INSERT INTO ingredient (id, name, quantita, description, image) VALUES(nextval('ingredient_seq'), 'Fagioli', 200, 'I fagioli sono legumi commestibili di forma generalmente ovale o tondeggiante, di colore variegato dal bianco al nero passando per il verde, il giallo e il rosso. Sono una importante fonte di proteine vegetali, fibre, vitamine e minerali. I fagioli vengono utilizzati in moltissime cucine del mondo, sia freschi che secchi, e sono alla base di numerosi piatti tradizionali come minestre, zuppe, insalate e piatti principali.', 'fagioli.png');
 INSERT INTO ingredient (id, name, quantita, description, image) VALUES(nextval('ingredient_seq'), 'Origano', 50, 'Erba mediterranea usata essenzialmente nella cucina italiana.', 'origano.png');
 INSERT INTO ingredient (id, name, quantita, description, image) VALUES(nextval('ingredient_seq'), 'Maiale', 200, 'La carne di maiale è ottenuta dal suino domestico ed è ampiamente consumata per il suo sapore ricco e la sua versatilità in cucina. È una buona fonte di proteine di alta qualità e contiene vitamine del gruppo B, ferro e zinco. È utilizzata fresca o trasformata in prodotti come salsicce e prosciutto.', 'maiale.png');
+INSERT INTO ingredient (id, name, quantita, description, image) VALUES(nextval('ingredient_seq'), 'Pepe di Caienna', 20, 'Il pepe di Caienna è una spezia molto piccante ottenuta dalla macinazione dei peperoncini secchi della specie Capsicum annuum. Ha un colore rosso brillante e un aroma intenso. È utilizzato per aggiungere piccantezza ai piatti e può essere trovato in forma di polvere o fiocchi. Il pepe di Caienna è noto anche per i suoi potenziali benefici per la salute, tra cui proprietà antiossidanti e capacità di migliorare la circolazione sanguigna.', 'pepec.png');
+INSERT INTO ingredient (id, name, quantita, description, image) VALUES(nextval('ingredient_seq'), 'Brodo di pollo', 500, 'Il brodo di pollo è un liquido aromatico e nutriente ottenuto dalla cottura lenta di ossa di pollo con acqua, verdure e aromi come sedano, carote e cipolle. È utilizzato come base per zuppe, risotti e salse, donando profondità di sapore e arricchendo i piatti con sostanze nutritive come collagene, minerali e vitamine.', 'brodo.png');
+
 
 INSERT INTO users (id, name, surname, email, date_of_birth, job, phrase, biography, image) VALUES (nextval('users_seq'), 'Joao', 'Ratao', 'joao@example.com', '08-11-1974', 'Architetto', 'La nostra tradizione culinaria è il filo che tiene unita la nostra famiglia: ogni piatto è un ricordo gustoso di tempo trascorso insieme!', 'Ciao, sono Joao Ratao, un architetto portoghese di Lisbona con una passione profonda per la cucina, ereditata da mia nonna. Quando non progetto edifici moderni, mi dedico a cucinare e sperimentare nuove ricette. La cucina è per me un''arte che unisce creatività e precisione, proprio come l''architettura.', 'Joao Ratao.png');
 INSERT INTO users (id, name, surname, email, date_of_birth, job, phrase, biography, image) VALUES (nextval('users_seq'), 'Alessandra', 'Verdi', 'ale.verdi@example.com', '27-05-1975', 'Avvocato', 'La mia passione per la cucina etnica è come un viaggio senza fine: ogni spezia è una nuova avventura e ogni piatto un mondo da scoprire! ', 'Ciao, mi chiamo Alessandra e vivo a Milano. Nonostante il mio lavoro impegnativo, trovo sempre il tempo per dedicarmi alla mia grande passione: la cucina. Nel fine settimana, sperimento nuove ricette e organizzo cene per amici e familiari. Amo la cucina etnica e esplorare sapori e tecniche da tutto il mondo.', 'Alessandra Verdi.png');
@@ -15,15 +18,15 @@ INSERT INTO recipe (id, name, description, preparation, image, cooke_id) VALUES 
 
 -- Cachupa
 
+INSERT INTO recipe_ingredients (recipes_id, ingredients_id) VALUES (1, 201); 
+INSERT INTO recipe_ingredients (recipes_id, ingredients_id) VALUES (1, 301);
 INSERT INTO recipe_ingredients (recipes_id, ingredients_id) VALUES (1, 1); 
-INSERT INTO recipe_ingredients (recipes_id, ingredients_id) VALUES (1, 51);
-INSERT INTO recipe_ingredients (recipes_id, ingredients_id) VALUES (1, 101); 
 
 -- Gumbo
 
 INSERT INTO recipe_ingredients (recipes_id, ingredients_id) VALUES (51, 1); 
-INSERT INTO recipe_ingredients (recipes_id, ingredients_id) VALUES (51, 51);
-INSERT INTO recipe_ingredients (recipes_id, ingredients_id) VALUES (51, 101); 
+INSERT INTO recipe_ingredients (recipes_id, ingredients_id) VALUES (51, 351);
+INSERT INTO recipe_ingredients (recipes_id, ingredients_id) VALUES (51, 401); 
 
 -- Inserimento di esempi di post
 
