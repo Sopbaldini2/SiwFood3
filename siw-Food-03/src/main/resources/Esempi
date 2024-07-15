@@ -23,3 +23,30 @@ Ingredienti
 Nome: Patate dolci
 Descrizione:
 Foto : patateDolci.png
+
+
+
+-- Cachupa
+
+INSERT INTO recipe_ingredients (recipes_id, ingredients_id) VALUES (1, 201); 
+INSERT INTO recipe_ingredients (recipes_id, ingredients_id) VALUES (1, 301);
+INSERT INTO recipe_ingredients (recipes_id, ingredients_id) VALUES (1, 1); 
+
+-- Gumbo
+
+INSERT INTO recipe_ingredients (recipes_id, ingredients_id) VALUES (51, 1); 
+INSERT INTO recipe_ingredients (recipes_id, ingredients_id) VALUES (51, 351);
+INSERT INTO recipe_ingredients (recipes_id, ingredients_id) VALUES (51, 401); 
+
+-- Kari
+
+INSERT INTO recipe_ingredients (recipes_id, ingredients_id) VALUES (101, 1); 
+INSERT INTO recipe_ingredients (recipes_id, ingredients_id) VALUES (101, 351);
+INSERT INTO recipe_ingredients (recipes_id, ingredients_id) VALUES (101, 401); 
+
+-- Moka
+
+INSERT INTO recipe_ingredients (recipes_id, ingredients_id) VALUES (151, 1); 
+INSERT INTO recipe_ingredients (recipes_id, ingredients_id) VALUES (151, 351);
+INSERT INTO recipe_ingredients (recipes_id, ingredients_id) VALUES (151, 401); 
+
