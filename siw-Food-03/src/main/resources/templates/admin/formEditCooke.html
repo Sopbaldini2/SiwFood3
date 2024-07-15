@@ -63,7 +63,7 @@
 	        
 	        <!-- Edit Cooke Profile starts -->
 	        
-            <form th:action="@{/admin/updateCooke/{id}(id=${cooke.id})}" th:object="${cooke}" method="post">
+            <form th:action="@{/admin/updateCooke/{id}(id=${cooke.id})}" th:object="${cooke}" method="post" enctype="multipart/form-data">
 				<div>
 					<label for="job">Job:</label>
                     <input type="text" id="job" th:field="*{job}" />
@@ -76,7 +76,7 @@
                 
                 <div>
 					<label for="image">Image:</label>
-                    <input type="file" id="image" th:field="*{image}" />
+                    <input type="file" id="image" name="file" />
                 </div>
                 
                 <div>

@@ -45,7 +45,7 @@ public class User {
 	@Column(columnDefinition = "TEXT")
 	private String biography;
 	
-	@OneToOne
+	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "image_id", referencedColumnName = "id")
 	private Image image;
 	

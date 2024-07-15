@@ -77,11 +77,11 @@
 	        <!--Profile section starts -->
 	        
 	        <div class="profile_main">
-				<div th:if="${image != null}" class="image">
-					<img th:src="@{'/display/image/' + ${image.id}}" alt="Immagine del cuoco">
+				<div th:if="${cooke.image != null}" class="image">
+					<img th:src="@{'/display/image/' + ${cooke.image.id}}" alt="Immagine del cuoco">
 				</div>
 				
-				<div th:unless="${image != null}" class="image">
+				<div th:unless="${cooke.image != null}" class="image">
 					<!-- Gestione alternativa nel caso in cui image sia null -->
                     <img th:src="@{'/images/cookes/profilo.png' }" alt="">
                 </div>

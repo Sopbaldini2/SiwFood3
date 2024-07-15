@@ -1,5 +1,6 @@
 package it.uniroma3.siw.controller;
 
+import java.io.IOException;
 import java.security.Principal;
 import java.util.List;
 import java.util.Optional;
@@ -13,13 +14,17 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 //import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import it.uniroma3.siw.model.Credentials;
+import it.uniroma3.siw.model.Image;
 import it.uniroma3.siw.model.Recipe;
 import it.uniroma3.siw.model.Review;
 //import it.uniroma3.siw.model.Credentials;
 import it.uniroma3.siw.model.User;
 import it.uniroma3.siw.service.CredentialsService;
+import it.uniroma3.siw.service.ImageService;
 import it.uniroma3.siw.service.ReviewService;
 //import it.uniroma3.siw.service.CredentialsService;
 import it.uniroma3.siw.service.UserService;
@@ -35,6 +40,9 @@ public class UserController {
 	
 	@Autowired
     private ReviewService reviewService;
+	
+	@Autowired
+    private ImageService imageService;
 	
 	@GetMapping("/admin/indexCooke")
 	public String indexCooke() {
@@ -167,12 +175,23 @@ public class UserController {
     @PostMapping("/admin/updateCooke/{id}")
     public String updateCooke(@PathVariable("id") Long id, 
                                               @ModelAttribute("cooke") User updateCooke,
+                                              @RequestParam("file") MultipartFile file,
                                               Model model) {
         User cooke = userService.findById(id);
         if (cooke != null) {
             cooke.setBiography(updateCooke.getBiography());
             cooke.setJob(updateCooke.getJob());
-            cooke.setImage(updateCooke.getImage());
+            //cooke.setImage(updateCooke.getImage());
+            if (!file.isEmpty()) {
+	            try {
+	                Image image = new Image();
+	                image.setBytes(file.getBytes());
+	                Image savedImage = imageService.saveImage(image);
+	                cooke.setImage(savedImage); // Assicurati di usare lo stesso nome dell'attributo nella classe Recipe
+	            } catch (IOException e) {
+	                e.printStackTrace();
+	            }
+	        }
             userService.saveUser(cooke); // Salva l'ingrediente aggiornato nel database
             model.addAttribute("cooke", cooke);
             return "redirect:/admin/manageCookes"; // Redirect alla pagina di gestione ingredienti
