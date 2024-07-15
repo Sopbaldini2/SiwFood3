@@ -106,6 +106,18 @@
 					<button type="button">Edit</button>
 			    </a>
 		    </div>
+		    
+		    <div th:if="${recipe.imageR}" class="image">
+                <label>Current Image:</label>
+                <img th:src="@{'/display/image/' + ${recipe.imageR.id}}" alt="Recipe Image">
+            </div>
+            <div class="image_update">
+                <form th:action="@{'/usAd/updateImage/' + ${recipe.id}}" method="post" enctype="multipart/form-data">
+                    <label for="image">Change Image:</label>
+                    <input type="file" id="image" name="image" accept="image/jpeg">
+                    <button type="submit">Upload</button>
+                </form>
+            </div>
 		   
 		   <div th:unless="${recipe}">The recipe doesn't exist</div>
 	</div>

@@ -164,14 +164,16 @@ nav .login ul li a:hover {
 .recipe_update .cook,
 .recipe_update .ingredient_recipe,
 .recipe_update .description,
-.recipe_update .preparation {
+.recipe_update .preparation,
+.recipe_update .image_update{
     display: block;
     width: 100%;
 }
 
 .recipe_update .cook::after,
 .recipe_update .ingredient_recipe::after,
-.recipe_update .description::after {
+.recipe_update .description::after,
+.recipe_update .preparation::after {
     content: "";
     display: block;
     width: 100%;
@@ -206,6 +208,60 @@ nav .login ul li a:hover {
 }
 
 .recipe_update button:hover {
+    background-color: crimson;
+}
+
+.image {
+    margin-top: 20px;
+}
+
+.image label {
+    font-weight: bold;
+    margin-bottom: 10px;
+    display: block;
+}
+
+.image img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Stili per l'area di aggiornamento dell'immagine */
+.image_update {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.image_update form {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.image_update label {
+    font-weight: bold;
+    margin-bottom: 10px;
+    display: block;
+}
+
+.image_update input[type="file"] {
+    margin-bottom: 10px;
+}
+
+.image_update button {
+    background-color: #4caf50;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.image_update button:hover {
     background-color: crimson;
 }
 

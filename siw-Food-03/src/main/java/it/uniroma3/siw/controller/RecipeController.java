@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import it.uniroma3.siw.controller.validator.RecipeValidator;
 import it.uniroma3.siw.model.Credentials;
@@ -309,6 +310,40 @@ public class RecipeController {
 			ingredientsToAdd.add(i);
 		}
 		return ingredientsToAdd;
+	}
+	
+	@PostMapping("/usAd/updateImage/{id}")
+	public String updateRecipeImage(@PathVariable("id") Long id,
+	                                @RequestParam("image") MultipartFile imageFile,
+	                                RedirectAttributes redirectAttributes) {
+	    try {
+	        Recipe recipe = recipeService.findById(id);
+	        if (recipe == null) {
+	            redirectAttributes.addFlashAttribute("error", "Recipe not found");
+	            return "redirect:/usAd/manageRecipes";
+	        }
+
+	        if (!imageFile.isEmpty()) {
+	            Image image = recipe.getImageR(); // Ottieni l'immagine attuale della ricetta
+	            if (image == null) {
+	                image = new Image();
+	            }
+
+	            image.setBytes(imageFile.getBytes());
+	            Image savedImage = imageService.saveImage(image);
+	            recipe.setImageR(savedImage); // Aggiorna l'immagine della ricetta
+
+	            recipeService.save(recipe); // Salva la ricetta aggiornata
+	            redirectAttributes.addFlashAttribute("message", "Image updated successfully!");
+	        } else {
+	            redirectAttributes.addFlashAttribute("error", "Image file is empty");
+	        }
+	    } catch (IOException e) {
+	        e.printStackTrace();
+	        redirectAttributes.addFlashAttribute("error", "Failed to update image");
+	    }
+
+	    return "redirect:/usAd/formUpdateRecipe/" + id; // Reindirizzamento alla pagina di aggiornamento della ricetta
 	}
 	
 }
