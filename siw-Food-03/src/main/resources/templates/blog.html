@@ -80,8 +80,18 @@
         <ul>
 			<li th:each="post : ${posts}">
 				<h3 th:text="${post.title}"></h3> 
-				<img th:src="@{'/images/post/' + ${post.image}}" alt="Immagine per il post">
+				
+				<div th:if="${post.imageP != null}" >
+					<img th:src="@{'/display/image/' + ${post.imageP.id}}" alt="Immagine per il post">
+				</div>
+				
+				<div th:unless="${post.imageP != null}" >
+					<!-- Gestione alternativa nel caso in cui image sia null -->
+                    <img th:src="@{'/images/ingredients/mercato.png' }" alt="">
+			    </div>
+			    
                 <div th:text="${post.content}"></div>
+                
                 <p th:text="'Published on the: ' + ${post.formattedDate}"></p>
             </li>
         </ul>

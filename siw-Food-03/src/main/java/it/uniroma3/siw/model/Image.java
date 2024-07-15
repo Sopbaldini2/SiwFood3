@@ -24,6 +24,9 @@ public class Image {
     @OneToOne(mappedBy = "imageI")
     private Ingredient ingredient;
     
+    @OneToOne(mappedBy = "imageP")
+    private Post post;
+    
     public Image(){
 
     }
@@ -70,6 +73,14 @@ public class Image {
 
 	public void setIngredient(Ingredient ingredient) {
 		this.ingredient = ingredient;
+	}
+
+	public Post getPost() {
+		return post;
+	}
+
+	public void setPost(Post post) {
+		this.post = post;
 	}
     
     

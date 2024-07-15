@@ -7,6 +7,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.PrePersist;
 import jakarta.persistence.Transient;
 
@@ -22,7 +24,9 @@ public class Post {
     @Column(columnDefinition = "TEXT")
     private String content;
     
-    private String image;
+    @OneToOne
+	@JoinColumn(name = "image_id", referencedColumnName = "id")
+    private Image imageP;
     
     private LocalDateTime createdAt;
     
@@ -60,12 +64,12 @@ public class Post {
 		this.content = content;
 	}
 
-	public String getImage() {
-		return image;
+	public Image getImageP() {
+		return imageP;
 	}
 
-	public void setImage(String image) {
-		this.image = image;
+	public void setImageP(Image imageP) {
+		this.imageP = imageP;
 	}
 
 	public LocalDateTime getCreatedAt() {

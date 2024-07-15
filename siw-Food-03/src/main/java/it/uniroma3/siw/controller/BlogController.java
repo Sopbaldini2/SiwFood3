@@ -11,8 +11,12 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
+import it.uniroma3.siw.model.Image;
 import it.uniroma3.siw.model.Post;
+import it.uniroma3.siw.service.ImageService;
 import it.uniroma3.siw.service.PostService;
 
 @Controller
@@ -20,6 +24,9 @@ public class BlogController {
 	
 	@Autowired
     private PostService postService;
+	
+	@Autowired
+    private ImageService imageService;
 
     /*@GetMapping("/blog")
     public String blogAdmin(Model model) {
@@ -45,7 +52,14 @@ public class BlogController {
     }
 
     @PostMapping("/save")
-    public String savePost(@ModelAttribute("post") Post post) {
+    public String savePost(@ModelAttribute("post") Post post,
+    		               @RequestParam("imageB") MultipartFile imageB) {
+    	
+    	if (!imageB.isEmpty()) {
+            Image image = imageService.saveImagePost(imageB);
+            post.setImageP(image);
+        }
+    	
         postService.savePost(post);
         return "redirect:/blog";
     }
