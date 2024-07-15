@@ -85,21 +85,21 @@
 		    </div>
 		    
 		    <div class="image">
-    <label>Image: </label>
-    <!-- Controlla se l'immagine è presente -->
-    <div th:if="${ingredient.imageI != null}">
-        <img th:src="@{'/display/image/' + ${ingredient.imageI.id}}" width="100" height="100" />
-    </div>
-    <!-- Se l'immagine è null, mostra un messaggio o un'azione alternativa -->
-    <div th:unless="${ingredient.imageI != null}">
-        <label>No image available</label>
-    </div>
+				<label>Image: </label>
+                <!-- Controlla se l'immagine è presente -->
+                <div th:if="${ingredient.imageI != null}">
+					<img th:src="@{'/display/image/' + ${ingredient.imageI.id}}" width="100" height="100" />
+                </div>
+                <!-- Se l'immagine è null, mostra un messaggio o un'azione alternativa -->
+                <div th:unless="${ingredient.imageI != null}">
+					<label>No image available</label>
+                </div>
     
-    <!-- Pulsante per modificare l'immagine -->
-    <a th:href="@{'/admin/formUpdateImage/' + ${ingredient.id}}">
-        <button type="button">Edit Image</button>
-    </a>
-</div>
+                <!-- Pulsante per modificare l'immagine -->
+                <a th:href="@{'/admin/formUpdateImage/' + ${ingredient.id}}">
+					<button type="button">Edit Image</button>
+               </a>
+           </div>
 		   
 		   <div th:unless="${ingredient}">The ingredient doesn't exist</div>
 	</div>
