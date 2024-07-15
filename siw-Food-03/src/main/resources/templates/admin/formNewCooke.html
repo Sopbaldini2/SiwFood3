@@ -64,7 +64,7 @@
 	
 	<!-- New Cookes starts -->
 	
-    <form th:action="@{/admin/saveCooke}" th:object="${cooke}" method="post">
+    <form th:action="@{/admin/saveCooke}" th:object="${cooke}" method="post" enctype="multipart/form-data">
         <div>
             <label for="name">Name:</label>
             <input type="text" id="name" th:field="*{name}" required/>
@@ -87,7 +87,7 @@
         </div>
         <div>
             <label for="image">Image:</label>
-            <input type="file" id="image" th:field="*{image}" required/>
+            <input type="file" id="image" name="imageC" required/>
         </div>
         <div>
             <label for="dateOfBirth">Date of Birth:</label>

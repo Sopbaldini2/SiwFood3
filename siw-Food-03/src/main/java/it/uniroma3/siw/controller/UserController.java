@@ -160,7 +160,12 @@ public class UserController {
     }
 
     @PostMapping("/admin/saveCooke")
-    public String savePost(@ModelAttribute("user") User user) {
+    public String savePost(@ModelAttribute("user") User user,
+    		@RequestParam("imageC") MultipartFile imageC) {
+    	if (!imageC.isEmpty()) {
+            Image image = imageService.saveImagePost(imageC);
+            user.setImage(image);
+        }
         userService.saveUser(user);
         return "redirect:/admin/manageCookes";
     }
