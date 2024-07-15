@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -13,6 +14,7 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import jakarta.validation.constraints.NotBlank;
 
 @Entity
@@ -21,13 +23,15 @@ public class Recipe {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
+	@NotBlank(message = "{recipe.name.notblank}")
 	private String name;
 	@Column(columnDefinition = "TEXT")
 	private String description;
 	@Column(columnDefinition = "TEXT")
 	private String preparation;
-	@NotBlank(message = "{recipe.image.notblank}")
-	private String image;
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "image_id", referencedColumnName = "id")
+	private Image imageR;
 	@ManyToOne
 	@JoinColumn(name = "cooke_id", nullable = false)
 	private User cooke;
@@ -69,11 +73,11 @@ public class Recipe {
 	public void setCooke(User cooke) {
 		this.cooke = cooke;
 	}
-	public String getImage() {
-		return image;
+	public Image getImageR() {
+		return imageR;
 	}
-	public void setImage(String image) {
-		this.image = image;
+	public void setImageR(Image imageR) {
+		this.imageR = imageR;
 	}
 	public Set<Ingredient> getIngredients() {
 		return ingredients;

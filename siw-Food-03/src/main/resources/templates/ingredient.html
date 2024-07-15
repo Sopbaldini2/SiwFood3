@@ -81,7 +81,15 @@
 				<span th:text=" ${ingredient.quantita} ">200</span>
 			</div>
 			
-			<span><img th:src="@{'/images/ingredients/' + ${ingredient.image}}" alt="Ingredient Image"></span>
+			<div th:if="${ingredient.imageI != null}" class="ingredient_image">
+				<span><img th:src="@{'/display/image/' + ${ingredient.imageI.id}}" alt="Ingredient Image"></span>
+			</div>
+			
+			<div th:unless="${ingredient.imageI != null}" class="ingredient_image">
+				<!-- Gestione alternativa nel caso in cui image sia null -->
+                <img th:src="@{'/images/cookes/profilo.png' }" alt="">
+			</div>
+			
             <span th:text=" ${ingredient.description} ">UP!</span>
 			
        </div>

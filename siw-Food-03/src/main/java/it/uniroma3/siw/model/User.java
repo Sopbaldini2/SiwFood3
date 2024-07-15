@@ -13,7 +13,9 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.PrePersist;
 import jakarta.persistence.PreUpdate;
 import jakarta.persistence.Table;
@@ -43,7 +45,9 @@ public class User {
 	@Column(columnDefinition = "TEXT")
 	private String biography;
 	
-	private String image;
+	@OneToOne
+	@JoinColumn(name = "image_id", referencedColumnName = "id")
+	private Image image;
 	
 	@Column(columnDefinition = "TEXT")
 	private String phrase;
@@ -127,11 +131,11 @@ public class User {
 		this.job = job;
 	}
 	
-	public String getImage() {
+	public Image getImage() {
 		return image;
 	}
 	
-	public void setImage(String image) {
+	public void setImage(Image image) {
 		this.image = image;
 	}
 		

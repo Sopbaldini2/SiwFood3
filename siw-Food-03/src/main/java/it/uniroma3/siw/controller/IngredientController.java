@@ -1,6 +1,8 @@
 package it.uniroma3.siw.controller;
 
 
+import java.io.IOException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,10 +12,12 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
-
+import it.uniroma3.siw.model.Image;
 import it.uniroma3.siw.model.Ingredient;
 import it.uniroma3.siw.model.Recipe;
+import it.uniroma3.siw.service.ImageService;
 import it.uniroma3.siw.service.IngredientService;
 
 @Controller
@@ -21,6 +25,9 @@ public class IngredientController {
 
 	@Autowired
 	private IngredientService ingredientService;
+	
+	@Autowired
+	private ImageService imageService;
 	
 	@GetMapping("/usAd/indexIngredient")
 	public String indexIngredient() {
@@ -34,8 +41,21 @@ public class IngredientController {
 	}
 	
 	@PostMapping("/usAd/ingredient")
-	public String newIngredient(@ModelAttribute("ingredient") Ingredient ingredient, Model model) {
+	public String newIngredient(@ModelAttribute("ingredient") Ingredient ingredient,
+			                    @RequestParam("imageIi") MultipartFile imageIi, Model model) {
 		if (!ingredientService.existsByName(ingredient.getName())) {
+			
+			if (!imageIi.isEmpty()) {
+	            try {
+	                Image image = new Image();
+	                image.setBytes(imageIi.getBytes());
+	                Image savedImage = imageService.saveImage(image);
+	                ingredient.setImageI(savedImage); // Assicurati di usare lo stesso nome dell'attributo nella classe Recipe
+	            } catch (IOException e) {
+	                e.printStackTrace();
+	            }
+	        }
+			
 			this.ingredientService.save(ingredient); 
 			model.addAttribute("ingredient", ingredient);
 			return "ingredient.html";

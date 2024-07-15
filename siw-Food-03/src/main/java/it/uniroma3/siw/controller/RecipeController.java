@@ -1,5 +1,6 @@
 package it.uniroma3.siw.controller;
 
+import java.io.IOException;
 //import java.security.Principal;
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -18,14 +19,16 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-
+import org.springframework.web.multipart.MultipartFile;
 
 import it.uniroma3.siw.controller.validator.RecipeValidator;
 import it.uniroma3.siw.model.Credentials;
+import it.uniroma3.siw.model.Image;
 import it.uniroma3.siw.model.Ingredient;
 import it.uniroma3.siw.model.Recipe;
 import it.uniroma3.siw.model.User;
 import it.uniroma3.siw.service.CredentialsService;
+import it.uniroma3.siw.service.ImageService;
 import it.uniroma3.siw.service.IngredientService;
 import it.uniroma3.siw.service.RecipeService;
 import it.uniroma3.siw.service.UserService;
@@ -48,6 +51,9 @@ public class RecipeController {
 	
 	@Autowired
     private CredentialsService credentialsService;
+	
+	@Autowired
+    private ImageService imageService;
 	
 	
 	@GetMapping("/usAd/indexRecipe")
@@ -89,11 +95,23 @@ public class RecipeController {
 	
 	@PostMapping("usAd/recipe")
 	public String newRecipe(@Valid @ModelAttribute("recipe") Recipe recipe, BindingResult bindingResult, 
-	                        @RequestParam(value = "ingredientIds", required = false) List<Long> ingredientIds, Model model) {
+	                        @RequestParam(value = "ingredientIds", required = false) List<Long> ingredientIds,
+	                        @RequestParam("imageI") MultipartFile imageI, Model model) {
 	    
 	    this.recipeValidator.validate(recipe, bindingResult);
 	    
 	    if (!bindingResult.hasErrors()) {
+	    	
+	    	if (!imageI.isEmpty()) {
+	            try {
+	                Image image = new Image();
+	                image.setBytes(imageI.getBytes());
+	                Image savedImage = imageService.saveImage(image);
+	                recipe.setImageR(savedImage); // Assicurati di usare lo stesso nome dell'attributo nella classe Recipe
+	            } catch (IOException e) {
+	                e.printStackTrace();
+	            }
+	        }
 	      
 	            Set<Ingredient> ingredients = new HashSet<>();
 	            for (Long ingredientId : ingredientIds) {
@@ -103,7 +121,8 @@ public class RecipeController {
 	                }
 	            }
 	            recipe.setIngredients(ingredients);
-	   
+	            
+	            
 	        
 	        this.recipeService.save(recipe); 
 	        model.addAttribute("recipe", recipe);

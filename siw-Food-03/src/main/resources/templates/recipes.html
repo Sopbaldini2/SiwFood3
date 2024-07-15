@@ -99,8 +99,12 @@
 		<div th:each="recipe : ${recipes}">
 			<div class="recipe_box anim">
 				<div class="recipe_card">
-					<div class="recipe_img">
-						<img th:src="@{'/images/recipes/' + ${recipe.image}}" alt="Immagine della ricetta">
+					<div th:if="${recipe.imageR != null}" class="recipe_img">
+						<img th:src="@{'/display/image/' + ${recipe.imageR.id}}" alt="Immagine della ricetta">
+                    </div>
+                    <div th:unless="${recipe.imageR != null}" class="recipe_img">
+						<!-- Gestione alternativa nel caso in cui image sia null -->
+                        <img th:src="@{'/images/cookes/profilo.png' }" alt="">
                     </div>
                     <div class="recipe_text">
 						<h2 th:text="${recipe.name}">Recipe Name</h2>

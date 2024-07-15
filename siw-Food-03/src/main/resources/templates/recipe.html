@@ -81,7 +81,14 @@
 				<span th:text=" ${recipe.description} ">UP!</span>
             </div>
 			
-			<span><img th:src="@{'/images/recipes/' + ${recipe.image}}" alt="Recipe Image"></span>
+			<div th:if="${recipe.imageR != null}">
+				<span><img th:src="@{'/display/image/' + ${recipe.imageR.id}}" alt="Recipe Image"></span>
+			</div>
+			
+			<div th:unless="${recipe.imageR != null}">
+				<!-- Gestione alternativa nel caso in cui image sia null -->
+                <img th:src="@{'/images/cookes/profilo.png' }" alt="">
+			</div>
 			
 			<div class="ingredients">
 				<h2>Ingredients:</h2>
@@ -115,7 +122,14 @@
 				<div th:each="review : ${recipe.reviews}" class="box">
 					
 					<div class="user">
-						<img th:src="@{'/images/cookes/' + ${review.user.image}}">
+						<div th:if="${review.user.image != null}">
+							<img th:src="@{'/display/image/' + ${review.user.image.id}}">
+						</div>
+						
+						<div th:unless="${review.user.image != null}">
+							<!-- Gestione alternativa nel caso in cui image sia null -->
+                            <img th:src="@{'/images/cookes/profilo.png' }" alt="">
+						</div>
 						
 						<div class="user-info">
 							<h3 th:text="${review.user.name} + ' ' + ${review.user.surname}">Joao Ratao</h3>

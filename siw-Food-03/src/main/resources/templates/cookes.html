@@ -88,8 +88,12 @@
 		<li th:each="user : ${users}">
 			<div class="community_box">
 				<div class="community_card">
-					<div class="community_img">
-						<img th:src="@{'/images/cookes/' + ${user.image}}" alt="Immagine del cuoco">
+					<div th:if="${image != null}" class="community_img">
+						<img th:src="@{'/display/image/' + ${user.image.id}}" alt="Immagine del cuoco">
+					</div>
+					<div th:unless="${image != null}" class="community_img">
+						<!-- Gestione alternativa nel caso in cui image sia null -->
+                        <img th:src="@{'/images/cookes/profilo.png' }" alt="">
 					</div>
 					<div class="community_tag">
 						<a th:href="@{'/cookess' + '/' + ${user.id}}" th:text="${user.name} + ' ' + ${user.surname}">

@@ -9,7 +9,9 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToOne;
 import jakarta.validation.constraints.NotBlank;
 
 @Entity
@@ -27,8 +29,9 @@ public class Ingredient {
 	@Column(columnDefinition = "TEXT")
 	private String description;
 	
-	@NotBlank(message = "{ingredient.image.notblank}")
-	private String image;
+	@OneToOne
+	@JoinColumn(name = "image_id", referencedColumnName = "id")
+	private Image imageI;
 	
 	@ManyToMany(mappedBy="ingredients")
 	private Set<Recipe> recipes;
@@ -71,12 +74,12 @@ public class Ingredient {
 		this.description = description;
 	}
 	
-	public String getImage() {
-		return image;
+	public Image getImageI() {
+		return imageI;
 	}
 
-	public void setImage(String image) {
-		this.image = image;
+	public void setImageI(Image imageI) {
+		this.imageI = imageI;
 	}	
 
 	public Set<Recipe> getRecipes() {

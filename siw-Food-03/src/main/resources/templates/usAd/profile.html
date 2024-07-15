@@ -62,9 +62,14 @@
 	        <!--Profile section starts -->
 	        
 	        <div class="profile_main">
-				<div class="image">
-					<img th:src="@{'/images/cookes/' + ${image}}" alt="Immagine del cuoco">
+				<div th:if="${image != null}" class="image">
+					<img th:src="@{'/display/image/' + ${image.id}}" alt="Immagine del cuoco">
 				</div>
+				
+				<div th:unless="${image != null}" class="image">
+					<!-- Gestione alternativa nel caso in cui image sia null -->
+                    <img th:src="@{'/images/cookes/profilo.png' }" alt="">
+                </div>
 				
 				<div class="job">
 					<p><strong>Job:</strong> <span th:text="${job}"></span></p>

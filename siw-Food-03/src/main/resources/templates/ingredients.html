@@ -99,8 +99,13 @@
 					
                     <div class="ingredient_card">
 						
-                        <div class="ingredient_image">
-                            <img th:src="@{'/images/ingredients/' + ${ingredient.image}}" alt="Immagine dell'ingrediente">
+                        <div th:if="${ingredient.imageI != null}" class="ingredient_image">
+                            <img th:src="@{'/display/image/' + ${ingredient.imageI.id}}" alt="Immagine dell'ingrediente">
+                        </div>
+                        
+                        <div th:unless="${ingredient.imageI != null}" class="ingredient_image">
+                            <!-- Gestione alternativa nel caso in cui image sia null -->
+                            <img th:src="@{'/images/cookes/profilo.png' }" alt="">
                         </div>
                         
                         <div class="ingredient_tag">
