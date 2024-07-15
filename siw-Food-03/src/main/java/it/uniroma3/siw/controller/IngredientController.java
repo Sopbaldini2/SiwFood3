@@ -111,6 +111,47 @@ public class IngredientController {
             return "admin/manageIngredients"; // Gestisci il caso in cui l'ingrediente non sia trovato
         }
     }
+    
+    @GetMapping("/admin/formUpdateImage/{id}")
+    public String formUpdateImage(@PathVariable("id") Long id, Model model) {
+        Ingredient ingredient = ingredientService.findById(id);
+        model.addAttribute("ingredient", ingredient);
+        return "admin/updateImageIngredient"; // Assicura che questo nome corrisponda al tuo file HTML
+    }
+
+    @PostMapping("/admin/updateImage/{id}")
+    public String updateImageIngredient(@PathVariable("id") Long id,
+                                        @RequestParam("imageIi") MultipartFile imageIi,
+                                        Model model) {
+        Ingredient ingredient = ingredientService.findById(id);
+        if (ingredient != null) {
+            try {
+                if (imageIi != null && !imageIi.isEmpty()) {
+                    // Salva la nuova immagine
+                    Image newImage = new Image();
+                    newImage.setBytes(imageIi.getBytes());
+                    Image savedImage = imageService.saveImage(newImage);
+
+                    // Aggiorna l'immagine dell'ingrediente solo se è già presente
+                    if (ingredient.getImageI() != null) {
+                        ingredient.getImageI().setBytes(savedImage.getBytes());
+                    } else {
+                        // Se l'immagine non esiste ancora, la inizializzi
+                        ingredient.setImageI(savedImage);
+                    }
+                    // Salva l'ingrediente aggiornato
+                    ingredientService.save(ingredient);
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            model.addAttribute("ingredient", ingredient);
+            return "redirect:/admin/manageIngredients"; // Redirect alla pagina di gestione ingredienti
+        } else {
+            model.addAttribute("messaggioErrore", "Ingredient not found");
+            return "admin/manageIngredients"; // Gestisci il caso in cui l'ingrediente non sia trovato
+        }
+    }
 	
 	/*@GetMapping("/formSearchIngredients")
 	public String formSearchIngredients() {
