@@ -1,5 +1,6 @@
 package it.uniroma3.siw.model;
 
+import java.util.HashSet;
 import java.util.List;
 import java.util.Objects;
 import java.util.Set;
@@ -11,7 +12,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToMany;
+//import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
@@ -35,10 +36,13 @@ public class Recipe {
 	@ManyToOne
 	@JoinColumn(name = "cooke_id", nullable = false)
 	private User cooke;
-	@ManyToMany
-	private Set<Ingredient> ingredients;
+	/*@ManyToMany
+	private Set<Ingredient> ingredients;*/
 	
-	@OneToMany(mappedBy="recipe")
+	@OneToMany(mappedBy = "recipe", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<RecipeIngredient> recipeIngredients = new HashSet<>();
+	
+	@OneToMany(mappedBy="recipe", cascade = CascadeType.ALL)
 	private List<Review> reviews;
     
 	//Aggiungo i metodi Getter e Setter
@@ -79,12 +83,12 @@ public class Recipe {
 	public void setImageR(Image imageR) {
 		this.imageR = imageR;
 	}
-	public Set<Ingredient> getIngredients() {
+	/*public Set<Ingredient> getIngredients() {
 		return ingredients;
 	}
 	public void setIngredients(Set<Ingredient> ingredients) {
 		this.ingredients = ingredients;
-	}
+	}*/
 	
 	public List<Review> getReviews() {
 		return reviews;
@@ -93,8 +97,16 @@ public class Recipe {
 		this.reviews = reviews;
 	}
 	
+	public Set<RecipeIngredient> getRecipeIngredients() {
+		return recipeIngredients;
+	}
+	public void setRecipeIngredients(Set<RecipeIngredient> recipeIngredients) {
+		this.recipeIngredients = recipeIngredients;
+	}
+	
 	//Aggiungo i metodi Equals() e HashCode() 
 	//Due oggetti Recipe sono uguali se hanno lo stesso id,lo stesso nome e lo stesso cuoco
+	
 	
 	@Override
 	public int hashCode() {

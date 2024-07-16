@@ -27,6 +27,7 @@ import it.uniroma3.siw.model.Credentials;
 import it.uniroma3.siw.model.Image;
 import it.uniroma3.siw.model.Ingredient;
 import it.uniroma3.siw.model.Recipe;
+import it.uniroma3.siw.model.RecipeIngredient;
 import it.uniroma3.siw.model.User;
 import it.uniroma3.siw.service.CredentialsService;
 import it.uniroma3.siw.service.ImageService;
@@ -94,7 +95,7 @@ public class RecipeController {
 	}
 
 	
-	@PostMapping("usAd/recipe")
+	/*@PostMapping("usAd/recipe")
 	public String newRecipe(@Valid @ModelAttribute("recipe") Recipe recipe, BindingResult bindingResult, 
 	                        @RequestParam(value = "ingredientIds", required = false) List<Long> ingredientIds,
 	                        @RequestParam("imageI") MultipartFile imageI, Model model) {
@@ -122,14 +123,58 @@ public class RecipeController {
 	                }
 	            }
 	            recipe.setIngredients(ingredients);
-	            
-	            
 	        
 	        this.recipeService.save(recipe); 
 	        model.addAttribute("recipe", recipe);
 	        return "recipe.html";
 	    } else {
 	        return "/usAd/formNewRecipe.html"; 
+	    }
+	}*/
+	
+	@PostMapping("usAd/recipe")
+	public String newRecipe(@Valid @ModelAttribute("recipe") Recipe recipe, BindingResult bindingResult,
+	                        @RequestParam(value = "ingredientIds", required = false) List<Long> ingredientIds,
+	                        @RequestParam("imageI") MultipartFile imageI, Model model) {
+
+	    this.recipeValidator.validate(recipe, bindingResult);
+
+	    if (!bindingResult.hasErrors()) {
+
+	        // Save image if present
+	        if (!imageI.isEmpty()) {
+	            try {
+	                Image image = new Image();
+	                image.setBytes(imageI.getBytes());
+	                Image savedImage = imageService.saveImage(image);
+	                recipe.setImageR(savedImage);
+	            } catch (IOException e) {
+	                e.printStackTrace();
+	            }
+	        }
+
+	        // Manage ingredients using RecipeIngredient
+	        Set<RecipeIngredient> recipeIngredients = new HashSet<>();
+	        if (ingredientIds != null) {
+	            for (Long ingredientId : ingredientIds) {
+	                Ingredient ingredient = ingredientService.findById(ingredientId);
+	                if (ingredient != null) {
+	                    RecipeIngredient recipeIngredient = new RecipeIngredient();
+	                    recipeIngredient.setRecipe(recipe);
+	                    recipeIngredient.setIngredient(ingredient);
+	                    // Set other properties like quantity if needed
+	                    // recipeIngredient.setQuantita(...);
+	                    recipeIngredients.add(recipeIngredient);
+	                }
+	            }
+	        }
+	        recipe.setRecipeIngredients(recipeIngredients);
+
+	        this.recipeService.save(recipe);
+	        model.addAttribute("recipe", recipe);
+	        return "recipe.html";
+	    } else {
+	        return "/usAd/formNewRecipe.html";
 	    }
 	}
 
@@ -147,7 +192,10 @@ public class RecipeController {
 	
 	@GetMapping("/usAd/formNewRecipe")
 	public String formNewRecipe(Model model) {
-		model.addAttribute("recipe", new Recipe());
+		Recipe newRecipe = new Recipe();
+	    newRecipe.setRecipeIngredients(new HashSet<>());
+	    
+		model.addAttribute("recipe", newRecipe);
 		model.addAttribute("user", userService.getCurrentUser()); 
 	    model.addAttribute("users", userService.getAllUsers());
 	    model.addAttribute("ingredients", ingredientService.findAll());
@@ -267,7 +315,7 @@ public class RecipeController {
 		return "usAd/ingredientsToAdd.html";
 	}
 
-	@GetMapping("/usAd/addIngredientToRecipe/{ingredientId}/{recipeId}")
+	/*@GetMapping("/usAd/addIngredientToRecipe/{ingredientId}/{recipeId}")
 	public String addIngredientToRecipe(@PathVariable("ingredientId") Long ingredientId, @PathVariable("recipeId") Long recipeId, Model model) {
 		Recipe recipe = this.recipeService.findById(recipeId);
 		Ingredient ingredient = this.ingredientService.findById(ingredientId);
@@ -301,16 +349,78 @@ public class RecipeController {
 	    model.addAttribute("ingredientsToAdd", ingredientsToAdd);
 
 	    return "usAd/ingredientsToAdd.html";
-	}
+	}*/
 
-	private List<Ingredient> ingredientsToAdd(Long recipeId) {
+	/*private List<Ingredient> ingredientsToAdd(Long recipeId) {
 		List<Ingredient> ingredientsToAdd = new ArrayList<>();
 
 		for (Ingredient i : ingredientService.findIngredientsNotInRecipe(recipeId)) {
 			ingredientsToAdd.add(i);
 		}
 		return ingredientsToAdd;
+	}*/
+	
+	@GetMapping("/usAd/addIngredientToRecipe/{ingredientId}/{recipeId}")
+	public String addIngredientToRecipe(@PathVariable("ingredientId") Long ingredientId, @PathVariable("recipeId") Long recipeId, Model model) {
+	    Recipe recipe = this.recipeService.findById(recipeId);
+	    Ingredient ingredient = this.ingredientService.findById(ingredientId);
+	    if (recipe != null && ingredient != null) {
+	        RecipeIngredient recipeIngredient = new RecipeIngredient();
+	        recipeIngredient.setRecipe(recipe);
+	        recipeIngredient.setIngredient(ingredient);
+	        recipe.getRecipeIngredients().add(recipeIngredient);
+	        this.recipeService.save(recipe);
+	    }
+	    List<Ingredient> ingredientsToAdd = ingredientsToAdd(recipeId);
+	    model.addAttribute("recipe", recipe);
+	    model.addAttribute("ingredientsToAdd", ingredientsToAdd);
+	    return "usAd/ingredientsToAdd.html";
 	}
+
+	// Esempio per il metodo removeIngredientFromRecipe
+	@GetMapping("/admin/removeIngredientFromRecipe/{ingredientId}/{recipeId}")
+	public String removeIngredientFromRecipe(@PathVariable("ingredientId") Long ingredientId, 
+	                                         @PathVariable("recipeId") Long recipeId, 
+	                                         Model model) {
+	    Recipe recipe = this.recipeService.findById(recipeId);
+	    Ingredient ingredient = this.ingredientService.findById(ingredientId);
+	    if (recipe != null && ingredient != null) {
+	        recipe.getRecipeIngredients().removeIf(ri -> ri.getIngredient().equals(ingredient));
+	        this.recipeService.save(recipe);
+	    }
+	    List<Ingredient> ingredientsToAdd = ingredientsToAdd(recipeId);
+	    model.addAttribute("recipe", recipe);
+	    model.addAttribute("ingredientsToAdd", ingredientsToAdd);
+	    return "usAd/ingredientsToAdd.html";
+	}
+	
+	private List<Ingredient> ingredientsToAdd(Long recipeId) {
+	    List<Ingredient> ingredientsToAdd = new ArrayList<>();
+
+	    // Trova la ricetta con l'ID specificato
+	    Recipe recipe = recipeService.findById(recipeId);
+
+	    if (recipe != null) {
+	        // Ottieni tutti gli ingredienti esistenti
+	        List<Ingredient> allIngredients = (List<Ingredient>) ingredientService.findAll();
+
+	        // Ottieni gli ingredienti già associati alla ricetta
+	        Set<Ingredient> existingIngredients = new HashSet<>();
+	        for (RecipeIngredient ri : recipe.getRecipeIngredients()) {
+	            existingIngredients.add(ri.getIngredient());
+	        }
+
+	        // Trova gli ingredienti che non sono ancora associati alla ricetta
+	        for (Ingredient ingredient : allIngredients) {
+	            if (!existingIngredients.contains(ingredient)) {
+	                ingredientsToAdd.add(ingredient);
+	            }
+	        }
+	    }
+
+	    return ingredientsToAdd;
+	}
+
 	
 	@PostMapping("/usAd/updateImage/{id}")
 	public String updateRecipeImage(@PathVariable("id") Long id,
@@ -345,5 +455,50 @@ public class RecipeController {
 
 	    return "redirect:/usAd/formUpdateRecipe/" + id; // Reindirizzamento alla pagina di aggiornamento della ricetta
 	}
+	
+	 @GetMapping("/usAd/updateIngredientQuantity/{recipeId}/{ingredientId}")
+	    public String showUpdateIngredientQuantityForm(@PathVariable("recipeId") Long recipeId,
+	                                                   @PathVariable("ingredientId") Long ingredientId,
+	                                                   Model model) {
+	        Recipe recipe = recipeService.findById(recipeId);
+	        Ingredient ingredient = ingredientService.findById(ingredientId);
+	        
+	        if (recipe != null && ingredient != null) {
+	            for (RecipeIngredient ri : recipe.getRecipeIngredients()) {
+	                if (ri.getIngredient().getId().equals(ingredientId)) {
+	                    model.addAttribute("recipeIngredient", ri);
+	                    model.addAttribute("recipeId", recipeId);
+	                    model.addAttribute("ingredientId", ingredientId);
+	                    return "usAd/updateIngredientQuantityForm.html";
+	                }
+	            }
+	        }
+	        
+	        return "redirect:/usAd/manageRecipes";
+	    }
+
+	    @PostMapping("/usAd/updateIngredientQuantity/{recipeId}/{ingredientId}")
+	    public String updateIngredientQuantity(@PathVariable("recipeId") Long recipeId,
+	                                           @PathVariable("ingredientId") Long ingredientId,
+	                                           @RequestParam("quantity") Float quantity,
+	                                           RedirectAttributes redirectAttributes) {
+	        Recipe recipe = recipeService.findById(recipeId);
+	        Ingredient ingredient = ingredientService.findById(ingredientId);
+	        
+	        if (recipe != null && ingredient != null) {
+	            for (RecipeIngredient ri : recipe.getRecipeIngredients()) {
+	                if (ri.getIngredient().getId().equals(ingredientId)) {
+	                    ri.setQuantita(quantity);
+	                    recipeService.save(recipe);
+	                    redirectAttributes.addFlashAttribute("message", "Ingredient quantity updated successfully!");
+	                    return "redirect:/recipe/" + recipeId;
+	                }
+	            }
+	        }
+	        
+	        redirectAttributes.addFlashAttribute("error", "Failed to update ingredient quantity");
+	        return "redirect:/usAd/manageRecipes";
+	    }
+
 	
 }

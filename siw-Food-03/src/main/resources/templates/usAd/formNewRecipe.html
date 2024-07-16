@@ -69,16 +69,17 @@
 				</span>
 	        </div>
             
-            <div>
+          <div>
 				<label>Ingredients:</label>
 				<div class="ingredients-container">
 					<div th:each="ingredient : ${ingredients}" class="ingredient">
 						<input type="checkbox" name="ingredientIds" th:value="${ingredient.id}" id="ingredient_${ingredient.id}">
-                        <label th:for="${'ingredient_' + ingredient.id}" th:text="${ingredient.name + ' ' + ingredient.quantita + ' g'}"></label>
+                        <label th:for="${'ingredient_' + ingredient.id}" th:text="${ingredient.name }"></label>
                     </div>
-                    <span th:if="${#fields.hasErrors('ingredients')}" th:errors="*{ingredients}"></span>
+                    <span th:if="${#fields.hasErrors('recipeIngredients')}" th:errors="*{recipeIngredients}"></span>
 				</div>    
            </div>
+           
 	  
            <div>
 				<label for="cooke">Cooke:</label>
@@ -91,7 +92,7 @@
             </div>
 
 	        <div>
-				<label>Immage:</label> <span><span><input type="file" id="imageI" name="imageI" accept="image/jpeg" /></span>
+				<label>Image:</label> <span><span><input type="file" id="imageI" name="imageI" accept="image/jpeg" /></span>
 	        </div>
 	  
 	        <div>

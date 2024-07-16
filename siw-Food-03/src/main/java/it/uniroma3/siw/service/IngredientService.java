@@ -3,7 +3,7 @@ package it.uniroma3.siw.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.repository.query.Param;
+//import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Service;
 
 import it.uniroma3.siw.model.Ingredient;
@@ -28,9 +28,9 @@ public class IngredientService {
 		ingredientRepository.save(ingredient);
 	}
 
-	public Iterable<Ingredient> findIngredientsNotInRecipe(@Param ("recipeId") Long recipeId) {
+	/*public Iterable<Ingredient> findIngredientsNotInRecipe(@Param ("recipeId") Long recipeId) {
         return ingredientRepository.findIngredientsNotInRecipe(recipeId);
-	}
+	}*/
 
 	public boolean existsByName(String name) {
 		return ingredientRepository.existsByName(name);

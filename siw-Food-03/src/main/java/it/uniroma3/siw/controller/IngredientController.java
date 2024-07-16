@@ -17,6 +17,7 @@ import org.springframework.web.multipart.MultipartFile;
 import it.uniroma3.siw.model.Image;
 import it.uniroma3.siw.model.Ingredient;
 import it.uniroma3.siw.model.Recipe;
+import it.uniroma3.siw.model.RecipeIngredient;
 import it.uniroma3.siw.service.ImageService;
 import it.uniroma3.siw.service.IngredientService;
 
@@ -164,7 +165,7 @@ public class IngredientController {
 		return "foundIngredients.html";
 	}
 	
-	@GetMapping("/admin/deleteIngredient/{id}")
+	/*@GetMapping("/admin/deleteIngredient/{id}")
 	public String deleteIngredient(@PathVariable("id") Long id, Model model) {
 	    Ingredient ingredient = ingredientService.findById(id);
 	    if (ingredient != null) {
@@ -180,6 +181,29 @@ public class IngredientController {
 	        return "redirect:/ingredient";
 	    } else {
 	        // Nel caso in cui l'ingrediente non esista
+	        model.addAttribute("messaggioErrore", "Ingredient not found");
+	        return "usAd/indexIngredient.html";
+	    }
+	}*/
+	
+	@GetMapping("/admin/deleteIngredient/{id}")
+	public String deleteIngredient(@PathVariable("id") Long id, Model model) {
+	    Ingredient ingredient = ingredientService.findById(id);
+	    if (ingredient != null) {
+	        // Remove the ingredient from all recipes
+	        for (RecipeIngredient recipeIngredient : ingredient.getRecipeIngredients()) {
+	            Recipe recipe = recipeIngredient.getRecipe();
+	            recipe.getRecipeIngredients().remove(recipeIngredient);
+	        }
+	        ingredient.getRecipeIngredients().clear(); // Clear references from the ingredient itself
+
+	        // Delete the ingredient
+	        ingredientService.deleteById(id);
+
+	        // Redirect to the ingredient index page after deletion
+	        return "redirect:/ingredient";
+	    } else {
+	        // If the ingredient does not exist
 	        model.addAttribute("messaggioErrore", "Ingredient not found");
 	        return "usAd/indexIngredient.html";
 	    }

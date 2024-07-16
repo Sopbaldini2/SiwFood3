@@ -76,10 +76,10 @@
 				<span th:text="${ingredient.name}">Up!</span>
 			</div>
 			
-			<div class="quantity">
+			<!--<div class="quantity">
 				Quantity:
 				<span th:text=" ${ingredient.quantita} ">200</span>
-			</div>
+			</div>-->
 			
 			<div th:if="${ingredient.imageI != null}" class="ingredient_image">
 				<span><img th:src="@{'/display/image/' + ${ingredient.imageI.id}}" alt="Ingredient Image"></span>

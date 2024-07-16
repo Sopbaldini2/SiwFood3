@@ -83,8 +83,8 @@
 		    
 		    <div class="ingredient_recipe">
 				<span>Ingredients: </span>
-			    <div th:each="ingredient: ${recipe.ingredients}">
-					<span th:text="${ingredient.name} + ' ' + ${ingredient.quantita +' '+ 'g'}">mais 500g</span>
+			    <div th:each="recipeIngredient: ${recipe.recipeIngredients}">
+					<span th:text="${recipeIngredient.ingredient.name} + ' ' + ${recipeIngredient.quantita +' '+ 'g'}">mais 500g</span>
 			    </div>
 			    <a th:href="@{'/usAd/updateIngredients/' + ${recipe.id}}">
 					<button type="button">Edit</button>

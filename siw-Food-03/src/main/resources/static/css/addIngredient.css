@@ -251,6 +251,14 @@ h2::after {
     box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25);
 }
 
+.quantity-input {
+    width: 70px;
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid rgb(226, 152, 29);
+    margin-right: 10px;
+}
+
 ::-webkit-scrollbar{
 	width: 10px;
 }

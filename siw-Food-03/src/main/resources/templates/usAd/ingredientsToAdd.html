@@ -74,14 +74,14 @@
             <thead>
                 <tr>
                     <th>Ingredient Name</th>
-                    <th>Quantity</th>
+                    <!--<th>Quantity</th>-->
                     <th>Action</th>
                 </tr>
             </thead>
             <tbody>
                 <tr th:each="ingredient : ${ingredientsToAdd}">
                     <td th:text="${ingredient.name}">Ingredient Name</td>
-                    <td th:text="${ingredient.quantita +'' + 'g'}">1 g</td>
+                    <!--<td th:text="${ingredient.quantita +'' + 'g'}">1 g</td>-->
                     <td>
                         <a th:href="@{/usAd/addIngredientToRecipe/{ingredientId}/{recipeId}(ingredientId=${ingredient.id}, recipeId=${recipe.id})}" class="btn btn-primary">Add to Recipe</a>
                     </td>
@@ -99,12 +99,18 @@
                 </tr>
             </thead>
             <tbody>
-                <tr th:each="ingredient : ${recipe.ingredients}">
+                <tr th:each="recipeIngredient : ${recipe.recipeIngredients}">
                     
-                    <td th:text="${ingredient.name}">Ingredient Name</td>
-                    <td th:text="${ingredient.quantita +'' + 'g'}">1 g</td>
+                    <td th:text="${recipeIngredient.ingredient.name}">Ingredient Name</td>
+                    <!--<td th:text="${ingredient.quantita +'' + 'g'}">1 g</td>-->
                     <td>
-                        <a th:href="@{/admin/removeIngredientFromRecipe/{ingredientId}/{recipeId}(ingredientId=${ingredient.id}, recipeId=${recipe.id})}" class="btn btn-danger">Remove from Recipe</a>
+                        <form th:action="@{'/usAd/updateIngredientQuantity/' + ${recipe.id} + '/' + ${recipeIngredient.ingredient.id}}" method="post">
+							<input type="number" id="quantity" name="quantity" th:value="${recipeIngredient.quantita}" step="0.01" required class="quantity-input" />
+							<button type="submit" class="btn btn-primary">Update</button>
+						</form>
+                    </td>
+                    <td>
+                        <a th:href="@{/admin/removeIngredientFromRecipe/{ingredientId}/{recipeId}(ingredientId=${recipeIngredient.ingredient.id}, recipeId=${recipe.id})}" class="btn btn-danger">Remove from Recipe</a>
                     </td>
                 </tr>
             </tbody>

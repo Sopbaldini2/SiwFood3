@@ -93,7 +93,11 @@
 			<div class="ingredients">
 				<h2>Ingredients:</h2>
                 <ul>
-					<li th:each="ingredient : ${recipe.ingredients}" th:text="${ingredient.name} + ' ' + ${ingredient.quantita + ' ' + 'g'}"> Ingrediente 20 g</li>
+					<!--<li th:each="ingredient : ${recipe.ingredients}" th:text="${ingredient.name} + ' ' + ${recipeIngredients.quantita + ' ' + 'g'}"> Ingrediente 20 g</li>-->
+					 <li th:each="recipeIngredient : ${recipe.recipeIngredients}">
+						 <span th:text="${recipeIngredient.ingredient.name}"></span> <!-- Nome dell'ingrediente -->
+                         <span th:text="${recipeIngredient.quantita + ' g'}"></span> <!-- Quantità -->
+                     </li>
                 </ul>
             </div>
             

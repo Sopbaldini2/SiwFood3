@@ -69,7 +69,7 @@
 	    <div th:if="${ingredients.isEmpty()}">There are no ingredients in the system</div>
 	    <ul>
 			<li th:each="ingredient : ${ingredients}">
-				<span th:text="${ingredient.name} +' '+ ${ingredient.quantita + ' ' + 'g'}">Up! </span>
+				<span th:text="${ingredient.name}">Up! </span>
 			    <a th:href="@{'/admin/formUpdateIngredient' + '/' + ${ingredient.id}}" class="update_btn">Update</a>
 			     <form th:action="@{'/admin/deleteIngredient/' + ${ingredient.id}}" method="get" onsubmit="return confirm('Are you sure you want to delete this ingredient?');">
 					 <button type="submit" class="btn">Delete</button>

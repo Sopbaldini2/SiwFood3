@@ -92,8 +92,8 @@
 			   <li th:each="ingredient: ${ingredients}">
 				   
 				   <a href="ingredient.html" th:href="@{'/ingredient' + '/' + ${ingredient.id}}"
-				       th:text="${ingredient.name + ' (' + ingredient.quantita + ')'}">
-				       <img th:src="@{'/images/ingredients/' + ${ingredient.image}}" alt="Ingredient Image"> Up! (2000)</a>
+				       th:text="${ingredient.name}">
+				       <img th:src="@{'/display/image/' + ${ingredient.imageI}}" alt="Ingredient Image"> Up! (2000)</a>
                
                </li>
            

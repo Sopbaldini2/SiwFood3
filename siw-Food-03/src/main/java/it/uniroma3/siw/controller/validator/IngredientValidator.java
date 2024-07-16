@@ -19,8 +19,8 @@ public class IngredientValidator implements Validator{
 	@Override
 	public void validate(Object o, Errors errors) {
 		Ingredient ingredient = (Ingredient)o;
-		if (ingredient.getName()!=null && ingredient.getRecipes()!=null 
-				&& ingredientRepository.existsByNameAndRecipes(ingredient.getName(), ingredient.getRecipes())) {
+		if (ingredient.getName()!=null 
+				&& ingredientRepository.existsByName(ingredient.getName())) {
 			errors.reject("ingredient.duplicate");
 		}
 	}
