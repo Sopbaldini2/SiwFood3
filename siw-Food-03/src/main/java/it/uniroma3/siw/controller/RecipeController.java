@@ -321,51 +321,6 @@ public class RecipeController {
 
 		return "usAd/ingredientsToAdd.html";
 	}
-
-	/*@GetMapping("/usAd/addIngredientToRecipe/{ingredientId}/{recipeId}")
-	public String addIngredientToRecipe(@PathVariable("ingredientId") Long ingredientId, @PathVariable("recipeId") Long recipeId, Model model) {
-		Recipe recipe = this.recipeService.findById(recipeId);
-		Ingredient ingredient = this.ingredientService.findById(ingredientId);
-		Set<Ingredient> ingredients = recipe.getIngredients();
-		ingredients.add(ingredient);
-		this.recipeService.save(recipe);
-		
-		List<Ingredient> ingredientsToAdd = ingredientsToAdd(recipeId);
-		
-		model.addAttribute("recipe", recipe);
-		model.addAttribute("ingredientsToAdd", ingredientsToAdd);
-
-		return "usAd/ingredientsToAdd.html";
-	}
-	
-	@GetMapping("/admin/removeIngredientFromRecipe/{ingredientId}/{recipeId}")
-	public String removeIngredientFromRecipe(@PathVariable("ingredientId") Long ingredientId, 
-	                                         @PathVariable("recipeId") Long recipeId, 
-	                                         Model model) {
-	    Recipe recipe = this.recipeService.findById(recipeId);
-	    Ingredient ingredient = this.ingredientService.findById(ingredientId);
-	    Set<Ingredient> ingredients = recipe.getIngredients();
-	    ingredients.remove(ingredient);
-	    this.recipeService.save(recipe);
-
-	    // Aggiorna gli ingredienti disponibili per l'aggiunta
-	    List<Ingredient> ingredientsToAdd = this.ingredientsToAdd(recipeId);
-
-	    // Aggiorna il modello con gli attributi corretti
-	    model.addAttribute("recipe", recipe);
-	    model.addAttribute("ingredientsToAdd", ingredientsToAdd);
-
-	    return "usAd/ingredientsToAdd.html";
-	}*/
-
-	/*private List<Ingredient> ingredientsToAdd(Long recipeId) {
-		List<Ingredient> ingredientsToAdd = new ArrayList<>();
-
-		for (Ingredient i : ingredientService.findIngredientsNotInRecipe(recipeId)) {
-			ingredientsToAdd.add(i);
-		}
-		return ingredientsToAdd;
-	}*/
 	
 	@GetMapping("/usAd/addIngredientToRecipe/{ingredientId}/{recipeId}")
 	public String addIngredientToRecipe(@PathVariable("ingredientId") Long ingredientId, @PathVariable("recipeId") Long recipeId, Model model) {
