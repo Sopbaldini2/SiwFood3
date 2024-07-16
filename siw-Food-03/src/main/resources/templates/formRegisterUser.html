@@ -44,6 +44,8 @@
                 </div>
                 <div>
                     <input type="date" class="field" placeholder="Date of Birth" required th:field="${user.dateOfBirth}" >
+                    <span th:if="${#fields.hasErrors('user.dateOfBirth')}" th:errors="${user.dateOfBirth}"
+					th:style="'color:red'"></span>
                 </div> 
                 <div>
                     <input type="checkbox" class="check_box"><label>Remember Password</label>
