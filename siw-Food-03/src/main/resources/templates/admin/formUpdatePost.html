@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+	
+	<head>
+		
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Gostoso - Post Update</title>
+		<link rel="stylesheet" href="/css/updatePost.css">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+		<link rel="shortcut icon" href="/images/IconaSF.png ">
+		
+	</head>
+    <body>
+	
+	<!-- Navigation Bar -->
+	
+	<nav>
+		
+		<div class="nav-toggle">
+			<details>
+				<summary>Menu</summary>
+				<ul>
+					<li><a href="/success" >Home</a></li>
+			        <li><a href="/blog" class="action">Blog</a></li>
+                </ul>
+            </details>
+        </div> 
+		
+		<div class="logo">
+			<a href="/admin/manageIngredients"><img src="/images/LogoSF.png" ></a>
+		</div>
+		
+		<ul class="nav-link">
+			
+			<li><a href="/success" >Home</a></li>
+			<li><a href="/blog" class="action">Blog</a></li>
+
+		</ul>
+		
+		<div class="login">
+			<details>
+				<summary th:text="${userDetails.username}">Gostoso</summary>
+                <ul>
+					<li><a href="/usAd/profile">Your Profile</a></li>
+                    <li><a href="/logout">Logout</a></li>
+                </ul>
+             </details>
+		</div>
+
+	</nav>
+	
+	<!-- Navigation Bar ends -->
+	
+	<!-- Banner starts -->
+	
+	<div class="banner_bg">
+		<h1>Posts<span>Update</span></h1>
+
+	</div>
+	
+	<!-- Banner ends -->
+	
+	<!-- Update post starts -->
+	
+	<div class="post_update">
+		
+	    <div th:if="${post}">
+			
+			<div class="title">
+				<span th:text="${post.title}">Up!</span>
+		    </div>
+		   
+		   <div th:if="${post.content}" class="content">
+				<label>Content: </label>
+				<span th:text="${post.content} ">UP!</span>
+				<a th:href="@{'/admin/formUpdateContentPost/' + ${post.id}}">
+					<button type="button">Edit</button>
+			    </a>
+		    </div>
+		    
+		    <div class="image">
+				<label>Image: </label>
+                <!-- Controlla se l'immagine è presente -->
+                <div th:if="${post.imageP != null}">
+					<img th:src="@{'/display/image/' + ${post.imageP.id}}" width="100" height="100" />
+                </div>
+                <!-- Se l'immagine è null, mostra un messaggio o un'azione alternativa -->
+                <div th:unless="${post.imageP != null}">
+					<label>No image available</label>
+                </div>
+    
+                <!-- Pulsante per modificare l'immagine -->
+                <a th:href="@{'/admin/formUpdateImagePost/' + ${post.id}}">
+					<button type="button">Edit Image</button>
+               </a>
+           </div>
+		   
+		   <div th:unless="${post}">The ingredient doesn't exist</div>
+	</div>
+	
+	<!-- Update post ends -->
+	
+   </body>
+
+</html>

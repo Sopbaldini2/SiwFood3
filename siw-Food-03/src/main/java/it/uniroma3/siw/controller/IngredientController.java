@@ -94,7 +94,7 @@ public class IngredientController {
     public String formUpdateDescription(@PathVariable("id") Long id, Model model) {
         Ingredient ingredient = ingredientService.findById(id);
         model.addAttribute("ingredient", ingredient);
-        return "admin/updateDescriptionIngredient.html"; // Nome del file HTML senza estensione
+        return "admin/updateDescriptionIngredient.html"; 
     }
 
     @PostMapping("/admin/updateDescriptionIngredient/{id}")

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+	
+	<head>
+		
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Gostoso - Edit content post</title>
+		<link rel="stylesheet" href="/css/editContentpost.css">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+		<link rel="shortcut icon" href="/images/IconaSF.png ">
+		
+	</head>
+    <body>
+	
+	<!-- Navigation Bar -->
+	
+	<nav>
+		
+		<div class="nav-toggle">
+			<details>
+				<summary>Menu</summary>
+				<ul>
+					<li><a href="/success" >Home</a></li>
+			        <li><a href="/blog" class="action">Blog</a></li>
+                </ul>
+            </details>
+        </div>
+		
+		<div class="logo">
+			<a href="/admin/managePosts"><img src="/images/LogoSF.png" ></a>
+		</div>
+		
+		<ul class="nav-link">
+			
+			<li><a href="/success" >Home</a></li>
+			<li><a href="/blog" class="action">Blog</a></li>
+
+		</ul>
+		
+		<div class="login">
+			<details>
+				<summary th:text="${userDetails.username}">Gostoso</summary>
+                <ul>
+					<li><a href="/usAd/profile">Your Profile</a></li>
+                    <li><a href="/logout">Logout</a></li>
+                </ul>
+             </details>
+		</div>
+
+	</nav>
+	
+	<!-- Navigation Bar ends -->
+	
+	<!-- Banner starts -->
+	
+	<div class="banner_bg">
+		
+		<h1>Post<span>Edit</span> Content</h1>
+
+	</div>
+	
+	<!-- Banner ends -->
+	
+	<!-- Edit post starts -->
+	
+	<div class="contentPost">
+		
+        <form th:action="@{'/admin/updateContentPost/' + ${post.id}}" method="post">
+			<label for="content">New Content:</label>
+            <textarea id="content" name="content" th:text="${post.content}"></textarea>
+            <button type="submit">Save</button>
+        </form>
+    
+	</div>
+    <!-- Edit post ends -->
+	
+   </body>
+
+</html>
