@@ -1,15 +1,15 @@
 INSERT INTO image (id, bytes) VALUES (nextval('image_seq'), 'Joao Ratao.png');
 
 
-INSERT INTO ingredient (id, name, quantita, description, image_id) VALUES(nextval('ingredient_seq'), 'Granoturco', 500, ' Il granoturco colorato è ricco di antiossidanti che combattono lo stress ossidativo e proteggono le cellule dai radicali liberi, promuovendo la salute.', 1);
-INSERT INTO ingredient (id, name, quantita, description, image_id) VALUES(nextval('ingredient_seq'), 'Prezzemolo', 500, 'Un erba aromatica comune utilizzata in molte cucine.', null);
-INSERT INTO ingredient (id, name, quantita, description, image_id) VALUES(nextval('ingredient_seq'), 'Basilico', 200, 'Foglie verdi aromatiche utilizzate soprattutto nella cucina italiana.', null);
-INSERT INTO ingredient (id, name, quantita, description, image_id) VALUES(nextval('ingredient_seq'), 'Rosmarino', 100, 'Una pianta aromatica con foglie aghiformi, usata per insaporire.', null);
-INSERT INTO ingredient (id, name, quantita, description, image_id) VALUES(nextval('ingredient_seq'), 'Fagioli', 200, 'I fagioli sono legumi commestibili di forma generalmente ovale o tondeggiante, di colore variegato dal bianco al nero passando per il verde, il giallo e il rosso. Sono una importante fonte di proteine vegetali, fibre, vitamine e minerali. I fagioli vengono utilizzati in moltissime cucine del mondo, sia freschi che secchi, e sono alla base di numerosi piatti tradizionali come minestre, zuppe, insalate e piatti principali.', null);
-INSERT INTO ingredient (id, name, quantita, description, image_id) VALUES(nextval('ingredient_seq'), 'Origano', 50, 'Erba mediterranea usata essenzialmente nella cucina italiana.', null);
-INSERT INTO ingredient (id, name, quantita, description, image_id) VALUES(nextval('ingredient_seq'), 'Maiale', 200, 'La carne di maiale è ottenuta dal suino domestico ed è ampiamente consumata per il suo sapore ricco e la sua versatilità in cucina. È una buona fonte di proteine di alta qualità e contiene vitamine del gruppo B, ferro e zinco. È utilizzata fresca o trasformata in prodotti come salsicce e prosciutto.', null);
-INSERT INTO ingredient (id, name, quantita, description, image_id) VALUES(nextval('ingredient_seq'), 'Pepe di Caienna', 20, 'Il pepe di Caienna è una spezia molto piccante ottenuta dalla macinazione dei peperoncini secchi della specie Capsicum annuum. Ha un colore rosso brillante e un aroma intenso. È utilizzato per aggiungere piccantezza ai piatti e può essere trovato in forma di polvere o fiocchi. Il pepe di Caienna è noto anche per i suoi potenziali benefici per la salute, tra cui proprietà antiossidanti e capacità di migliorare la circolazione sanguigna.', null);
-INSERT INTO ingredient (id, name, quantita, description, image_id) VALUES(nextval('ingredient_seq'), 'Brodo di pollo', 500, 'Il brodo di pollo è un liquido aromatico e nutriente ottenuto dalla cottura lenta di ossa di pollo con acqua, verdure e aromi come sedano, carote e cipolle. È utilizzato come base per zuppe, risotti e salse, donando profondità di sapore e arricchendo i piatti con sostanze nutritive come collagene, minerali e vitamine.', null);
+INSERT INTO ingredient (id, name, description, image_id) VALUES(nextval('ingredient_seq'), 'Granoturco', ' Il granoturco colorato è ricco di antiossidanti che combattono lo stress ossidativo e proteggono le cellule dai radicali liberi, promuovendo la salute.', 1);
+INSERT INTO ingredient (id, name, description, image_id) VALUES(nextval('ingredient_seq'), 'Prezzemolo', 'Un erba aromatica comune utilizzata in molte cucine.', null);
+INSERT INTO ingredient (id, name, description, image_id) VALUES(nextval('ingredient_seq'), 'Basilico', 'Foglie verdi aromatiche utilizzate soprattutto nella cucina italiana.', null);
+INSERT INTO ingredient (id, name, description, image_id) VALUES(nextval('ingredient_seq'), 'Rosmarino', 'Una pianta aromatica con foglie aghiformi, usata per insaporire.', null);
+INSERT INTO ingredient (id, name, description, image_id) VALUES(nextval('ingredient_seq'), 'Fagioli', 'I fagioli sono legumi commestibili di forma generalmente ovale o tondeggiante, di colore variegato dal bianco al nero passando per il verde, il giallo e il rosso. Sono una importante fonte di proteine vegetali, fibre, vitamine e minerali. I fagioli vengono utilizzati in moltissime cucine del mondo, sia freschi che secchi, e sono alla base di numerosi piatti tradizionali come minestre, zuppe, insalate e piatti principali.', null);
+INSERT INTO ingredient (id, name, description, image_id) VALUES(nextval('ingredient_seq'), 'Origano', 'Erba mediterranea usata essenzialmente nella cucina italiana.', null);
+INSERT INTO ingredient (id, name, description, image_id) VALUES(nextval('ingredient_seq'), 'Maiale', 'La carne di maiale è ottenuta dal suino domestico ed è ampiamente consumata per il suo sapore ricco e la sua versatilità in cucina. È una buona fonte di proteine di alta qualità e contiene vitamine del gruppo B, ferro e zinco. È utilizzata fresca o trasformata in prodotti come salsicce e prosciutto.', null);
+INSERT INTO ingredient (id, name, description, image_id) VALUES(nextval('ingredient_seq'), 'Pepe di Caienna', 'Il pepe di Caienna è una spezia molto piccante ottenuta dalla macinazione dei peperoncini secchi della specie Capsicum annuum. Ha un colore rosso brillante e un aroma intenso. È utilizzato per aggiungere piccantezza ai piatti e può essere trovato in forma di polvere o fiocchi. Il pepe di Caienna è noto anche per i suoi potenziali benefici per la salute, tra cui proprietà antiossidanti e capacità di migliorare la circolazione sanguigna.', null);
+INSERT INTO ingredient (id, name, description, image_id) VALUES(nextval('ingredient_seq'), 'Brodo di pollo', 'Il brodo di pollo è un liquido aromatico e nutriente ottenuto dalla cottura lenta di ossa di pollo con acqua, verdure e aromi come sedano, carote e cipolle. È utilizzato come base per zuppe, risotti e salse, donando profondità di sapore e arricchendo i piatti con sostanze nutritive come collagene, minerali e vitamine.', null);
 
 
 INSERT INTO users (id, name, surname, email, date_of_birth, job, phrase, biography, image_id) VALUES (nextval('users_seq'), 'Joao', 'Ratao', 'joao@example.com', '08-11-1974', 'Architetto', 'La nostra tradizione culinaria è il filo che tiene unita la nostra famiglia: ogni piatto è un ricordo gustoso di tempo trascorso insieme!', 'Ciao, sono Joao Ratao, un architetto portoghese di Lisbona con una passione profonda per la cucina, ereditata da mia nonna. Quando non progetto edifici moderni, mi dedico a cucinare e sperimentare nuove ricette. La cucina è per me un''arte che unisce creatività e precisione, proprio come l''architettura.', null);
@@ -22,29 +22,31 @@ INSERT INTO recipe (id, name, description, preparation, image_id, cooke_id) VALU
 INSERT INTO recipe (id, name, description, preparation, image_id, cooke_id) VALUES (nextval('recipe_seq'), 'Kari Zourit', 'Il Kari Zourit è un piatto iconico delle Seychelles, dove il tenero polpo viene lentamente cotto con cipolle, pomodori e una varietà di spezie esotiche. La cremosità della noce di cocco si intreccia con il piccante del peperoncino, creando un''esplosione di sapori in ogni boccone.', 'In una pentola capiente, scaldate l''olio vegetale a fuoco medio. Aggiungete le cipolle tritate e cuocete finché non diventano trasparenti. Aggiungete i pomodori tritati alla pentola e cuocete per circa 5 minuti, mescolando di tanto in tanto, finché non diventano una salsa densa. Aggiungete il polpo alla pentola. Aggiungete anche il peperoncino fresco (se usato) e le spezie: polvere di peperoncino, cumino, coriandolo, sale e pepe nero. Mescolate bene per distribuire le spezie uniformemente. Versate il latte di cocco nella pentola e portate a ebollizione. Riducete poi il fuoco e lasciate cuocere a fuoco lento, coperto, per circa 45-60 minuti, finché il polpo non diventa tenero e il sugo si è ristretto e densificato. Assaggiate e aggiustate di sale e pepe se necessario. Servite il Kari Zourit caldo, accompagnato con riso bianco e guarnito con prezzemolo fresco o coriandolo. Questo piatto delizioso e ricco di sapori rappresenta perfettamente la cucina delle Seychelles, offrendo un''esperienza culinaria indimenticabile con il suo mix di spezie esotiche e ingredienti locali freschi.', null, 1);
 INSERT INTO recipe (id, name, description, preparation, image_id, cooke_id) VALUES (nextval('recipe_seq'), 'Moka Créole', 'Mokà crèole, ovvero la mattonella creola. Di tutte le incredibili e meravigliose ricette tratte dal libro di Brigitte Grondin, La cuisine réunionnaise, ho scelto questa perché è la più casalinga, quella nel cuore dell’autrice', 'Per la pastorizzazione: Versate i tuorli, dopo averli separati dagli albumi, all’interno di una ciotola a bordi alti; Servendovi delle fruste elettriche o a mano, montate i tuorli con metà della dose di zucchero (60g); In un pentolino, preparate lo sciroppo, unendo il rimanente zucchero all’acqua e ponendolo su un fornello a fuoco medio; Mescolate bene lo sciroppo e, quando avrà raggiunto la temperatura di 121 °C, (dovete utilizzare un termometro da cucina), levatelo dal fuoco e versatelo a filo sul composto di tuorli e zucchero continuando a montare finché il composto non assumerà una consistenza liscia e omogenea. Per la mattonella: Montate il burro con lo zucchero al velo. Aggiungete poco alla volta i tuorli pastorizzati e montate. Aggiungete in ultimo il cioccolato. Amalgamate bene, dovrete avere una crema morbida. In una ciotola bassa e larga mescolate il caffè (freddo) con il rum, vi suggerisco di versare il rum un poco alla volta e di assaggiare secondo il vostro gusto. Immergetevi i biscotti e posizionateli in uno strato su un piatto o vassoio da portata. Distribuite la crema e poi rifinite con il cocco. Preparate un altro strato e così via fino al termine dei biscotti. Dovrete terminare con uno strato di crema e di cocco per finitura. Posizionate la mattonella in frigorifero per almeno 12h. Servite freddo.', null, 101)
 
+
 -- Cachupa
 
-INSERT INTO recipe_ingredients (recipes_id, ingredients_id) VALUES (1, 201); 
-INSERT INTO recipe_ingredients (recipes_id, ingredients_id) VALUES (1, 301);
-INSERT INTO recipe_ingredients (recipes_id, ingredients_id) VALUES (1, 1); 
+INSERT INTO recipe_ingredient (id, ingredient_id, recipe_id, quantita) VALUES (nextval('recipe_ingredient_seq'), 201, 1, 500);
+INSERT INTO recipe_ingredient (id, ingredient_id, recipe_id, quantita) VALUES (nextval('recipe_ingredient_seq'), 301, 1, 200);
+INSERT INTO recipe_ingredient (id, ingredient_id, recipe_id, quantita) VALUES (nextval('recipe_ingredient_seq'), 1, 1, 300);
 
 -- Gumbo
 
-INSERT INTO recipe_ingredients (recipes_id, ingredients_id) VALUES (51, 1); 
-INSERT INTO recipe_ingredients (recipes_id, ingredients_id) VALUES (51, 351);
-INSERT INTO recipe_ingredients (recipes_id, ingredients_id) VALUES (51, 401); 
+INSERT INTO recipe_ingredient (id, ingredient_id, recipe_id, quantita) VALUES (nextval('recipe_ingredient_seq'), 1, 51, 400);
+INSERT INTO recipe_ingredient (id, ingredient_id, recipe_id, quantita) VALUES (nextval('recipe_ingredient_seq'), 351, 51, 20);
+INSERT INTO recipe_ingredient (id, ingredient_id, recipe_id, quantita) VALUES (nextval('recipe_ingredient_seq'), 401, 51, 600);
 
 -- Kari
 
-INSERT INTO recipe_ingredients (recipes_id, ingredients_id) VALUES (101, 1); 
-INSERT INTO recipe_ingredients (recipes_id, ingredients_id) VALUES (101, 351);
-INSERT INTO recipe_ingredients (recipes_id, ingredients_id) VALUES (101, 401); 
+INSERT INTO recipe_ingredient (id, ingredient_id, recipe_id, quantita) VALUES (nextval('recipe_ingredient_seq'), 1, 101, 500);
+INSERT INTO recipe_ingredient (id, ingredient_id, recipe_id, quantita) VALUES (nextval('recipe_ingredient_seq'), 351, 101, 20);
+INSERT INTO recipe_ingredient (id, ingredient_id, recipe_id, quantita) VALUES (nextval('recipe_ingredient_seq'), 401, 101, 10);
 
 -- Moka
 
-INSERT INTO recipe_ingredients (recipes_id, ingredients_id) VALUES (151, 1); 
-INSERT INTO recipe_ingredients (recipes_id, ingredients_id) VALUES (151, 351);
-INSERT INTO recipe_ingredients (recipes_id, ingredients_id) VALUES (151, 401); 
+INSERT INTO recipe_ingredient (id, ingredient_id, recipe_id, quantita) VALUES (nextval('recipe_ingredient_seq'), 1, 151, 30);
+INSERT INTO recipe_ingredient (id, ingredient_id, recipe_id, quantita) VALUES (nextval('recipe_ingredient_seq'), 351, 151, 100);
+INSERT INTO recipe_ingredient (id, ingredient_id, recipe_id, quantita) VALUES (nextval('recipe_ingredient_seq'), 401, 151, 500);
+
 
 -- Inserimento di esempi di post
 
