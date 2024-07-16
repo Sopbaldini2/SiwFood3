@@ -10,6 +10,8 @@ INSERT INTO ingredient (id, name, description, image_id) VALUES(nextval('ingredi
 INSERT INTO ingredient (id, name, description, image_id) VALUES(nextval('ingredient_seq'), 'Maiale', 'La carne di maiale è ottenuta dal suino domestico ed è ampiamente consumata per il suo sapore ricco e la sua versatilità in cucina. È una buona fonte di proteine di alta qualità e contiene vitamine del gruppo B, ferro e zinco. È utilizzata fresca o trasformata in prodotti come salsicce e prosciutto.', null);
 INSERT INTO ingredient (id, name, description, image_id) VALUES(nextval('ingredient_seq'), 'Pepe di Caienna', 'Il pepe di Caienna è una spezia molto piccante ottenuta dalla macinazione dei peperoncini secchi della specie Capsicum annuum. Ha un colore rosso brillante e un aroma intenso. È utilizzato per aggiungere piccantezza ai piatti e può essere trovato in forma di polvere o fiocchi. Il pepe di Caienna è noto anche per i suoi potenziali benefici per la salute, tra cui proprietà antiossidanti e capacità di migliorare la circolazione sanguigna.', null);
 INSERT INTO ingredient (id, name, description, image_id) VALUES(nextval('ingredient_seq'), 'Brodo di pollo', 'Il brodo di pollo è un liquido aromatico e nutriente ottenuto dalla cottura lenta di ossa di pollo con acqua, verdure e aromi come sedano, carote e cipolle. È utilizzato come base per zuppe, risotti e salse, donando profondità di sapore e arricchendo i piatti con sostanze nutritive come collagene, minerali e vitamine.', null);
+INSERT INTO ingredient (id, name, description, image_id) VALUES(nextval('ingredient_seq'), 'Cioccolato Fondente', 'Il cioccolato fondente è un tipo di cioccolato con alto contenuto di cacao e basso contenuto di zucchero e latticini. Ha un gusto ricco e amaro, ed è noto per i suoi benefici per la salute grazie agli antiossidanti e ai flavonoidi presenti nel cacao. È utilizzato in vari dolci e come snack salutare.', null);
+INSERT INTO ingredient (id, name, description, image_id) VALUES(nextval('ingredient_seq'), 'Latte di cocco', 'Il latte di cocco è un liquido estratto dalla polpa grattugiata dei cocchi maturi. È bianco e cremoso, con un sapore dolce di cocco. Ricco di grassi saturi e nutrienti come vitamine e minerali, è utilizzato in cucina sia per piatti salati come curry e zuppe, sia per dolci e bevande. Il latte di cocco può essere intero, light o sotto forma di crema, ed è anche un popolare sostituto del latte per vegani e persone intolleranti al lattosio.', null);
 
 
 INSERT INTO users (id, name, surname, email, date_of_birth, job, phrase, biography, image_id) VALUES (nextval('users_seq'), 'Joao', 'Ratao', 'joao@example.com', '08-11-1974', 'Architetto', 'La nostra tradizione culinaria è il filo che tiene unita la nostra famiglia: ogni piatto è un ricordo gustoso di tempo trascorso insieme!', 'Ciao, sono Joao Ratao, un architetto portoghese di Lisbona con una passione profonda per la cucina, ereditata da mia nonna. Quando non progetto edifici moderni, mi dedico a cucinare e sperimentare nuove ricette. La cucina è per me un''arte che unisce creatività e precisione, proprio come l''architettura.', null);
@@ -25,27 +27,24 @@ INSERT INTO recipe (id, name, description, preparation, image_id, cooke_id) VALU
 
 -- Cachupa
 
-INSERT INTO recipe_ingredient (id, ingredient_id, recipe_id, quantita) VALUES (nextval('recipe_ingredient_seq'), 201, 1, 500);
+INSERT INTO recipe_ingredient (id, ingredient_id, recipe_id, quantita) VALUES (nextval('recipe_ingredient_seq'), 201, 1, 250);
 INSERT INTO recipe_ingredient (id, ingredient_id, recipe_id, quantita) VALUES (nextval('recipe_ingredient_seq'), 301, 1, 200);
-INSERT INTO recipe_ingredient (id, ingredient_id, recipe_id, quantita) VALUES (nextval('recipe_ingredient_seq'), 1, 1, 300);
+INSERT INTO recipe_ingredient (id, ingredient_id, recipe_id, quantita) VALUES (nextval('recipe_ingredient_seq'), 1, 1, 500);
 
 -- Gumbo
 
 INSERT INTO recipe_ingredient (id, ingredient_id, recipe_id, quantita) VALUES (nextval('recipe_ingredient_seq'), 1, 51, 400);
-INSERT INTO recipe_ingredient (id, ingredient_id, recipe_id, quantita) VALUES (nextval('recipe_ingredient_seq'), 351, 51, 20);
-INSERT INTO recipe_ingredient (id, ingredient_id, recipe_id, quantita) VALUES (nextval('recipe_ingredient_seq'), 401, 51, 600);
+INSERT INTO recipe_ingredient (id, ingredient_id, recipe_id, quantita) VALUES (nextval('recipe_ingredient_seq'), 351, 51, 10);
+INSERT INTO recipe_ingredient (id, ingredient_id, recipe_id, quantita) VALUES (nextval('recipe_ingredient_seq'), 401, 51, 1000);
 
 -- Kari
 
-INSERT INTO recipe_ingredient (id, ingredient_id, recipe_id, quantita) VALUES (nextval('recipe_ingredient_seq'), 1, 101, 500);
-INSERT INTO recipe_ingredient (id, ingredient_id, recipe_id, quantita) VALUES (nextval('recipe_ingredient_seq'), 351, 101, 20);
-INSERT INTO recipe_ingredient (id, ingredient_id, recipe_id, quantita) VALUES (nextval('recipe_ingredient_seq'), 401, 101, 10);
+INSERT INTO recipe_ingredient (id, ingredient_id, recipe_id, quantita) VALUES (nextval('recipe_ingredient_seq'), 351, 101, 10);
+INSERT INTO recipe_ingredient (id, ingredient_id, recipe_id, quantita) VALUES (nextval('recipe_ingredient_seq'), 501, 101, 200);
 
 -- Moka
 
-INSERT INTO recipe_ingredient (id, ingredient_id, recipe_id, quantita) VALUES (nextval('recipe_ingredient_seq'), 1, 151, 30);
-INSERT INTO recipe_ingredient (id, ingredient_id, recipe_id, quantita) VALUES (nextval('recipe_ingredient_seq'), 351, 151, 100);
-INSERT INTO recipe_ingredient (id, ingredient_id, recipe_id, quantita) VALUES (nextval('recipe_ingredient_seq'), 401, 151, 500);
+INSERT INTO recipe_ingredient (id, ingredient_id, recipe_id, quantita) VALUES (nextval('recipe_ingredient_seq'), 451, 151, 100);
 
 
 -- Inserimento di esempi di post
