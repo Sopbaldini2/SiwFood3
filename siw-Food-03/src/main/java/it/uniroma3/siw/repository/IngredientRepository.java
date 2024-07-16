@@ -16,6 +16,7 @@ public interface IngredientRepository extends CrudRepository <Ingredient, Long>{
 
 	public boolean existsByName(String name);
 	public List<Ingredient> findByName(String name);
+	public List<Ingredient> findByNameIgnoreCaseContaining(String name);
 
 	/*boolean existsByNameAndRecipes(String name, Set<Recipe> recipes);*/
 

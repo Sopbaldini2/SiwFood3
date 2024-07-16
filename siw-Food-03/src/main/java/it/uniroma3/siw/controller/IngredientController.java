@@ -2,6 +2,7 @@ package it.uniroma3.siw.controller;
 
 
 import java.io.IOException;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -159,11 +160,18 @@ public class IngredientController {
 		return "formSearchIngredients.html";
 	}*/
 
-	@PostMapping("/searchIngredients")
+	/*@PostMapping("/searchIngredients")
 	public String searchIngredients(Model model, @RequestParam String name) {
 		model.addAttribute("ingredients", this.ingredientService.findByName(name));
 		return "foundIngredients.html";
-	}
+	}*/
+    
+    @PostMapping("/searchIngredients")
+    public String searchIngredients(Model model, @RequestParam String name) {
+        List<Ingredient> foundIngredients = this.ingredientService.findByNameIgnoreCaseContaining(name);
+        model.addAttribute("ingredients", foundIngredients);
+        return "foundIngredients.html";
+    }
 	
 	/*@GetMapping("/admin/deleteIngredient/{id}")
 	public String deleteIngredient(@PathVariable("id") Long id, Model model) {

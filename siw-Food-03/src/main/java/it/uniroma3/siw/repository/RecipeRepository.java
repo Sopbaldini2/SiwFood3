@@ -11,5 +11,5 @@ public interface RecipeRepository extends CrudRepository <Recipe, Long>{
 
 	public boolean existsByNameAndCooke(String name, User cooke);
 	public List<Recipe> findByName(String name);
-
+	public List<Recipe> findByNameIgnoreCaseContaining(String name);
 }

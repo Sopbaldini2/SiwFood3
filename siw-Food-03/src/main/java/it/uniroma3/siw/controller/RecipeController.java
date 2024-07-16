@@ -299,11 +299,18 @@ public class RecipeController {
 		return "formSearchRecipes.html";
 	}*/
 
-	@PostMapping("/searchRecipes")
+	/*@PostMapping("/searchRecipes")
 	public String searchRecipes(Model model, @RequestParam String name) {
 		model.addAttribute("recipes", this.recipeService.findByName(name));
 		return "foundRecipes.html";
-	}
+	}*/
+    
+    @PostMapping("/searchRecipes")
+    public String searchRecipes(Model model, @RequestParam String name) {
+        List<Recipe> foundRecipes = this.recipeService.findByNameIgnoreCaseContaining(name);
+        model.addAttribute("recipes", foundRecipes);
+        return "foundRecipes.html";
+    }
 	
 	@GetMapping("/usAd/updateIngredients/{id}")
 	public String updateIngredients(@PathVariable("id") Long id, Model model) {

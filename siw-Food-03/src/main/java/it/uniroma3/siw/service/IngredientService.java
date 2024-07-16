@@ -47,4 +47,8 @@ public class IngredientService {
             throw new RuntimeException("L'ingrediente con ID " + id + " non esiste", e);
         }
     }
+
+	public List<Ingredient> findByNameIgnoreCaseContaining(String name) {
+		return ingredientRepository.findByNameIgnoreCaseContaining(name);
+	}
 }
