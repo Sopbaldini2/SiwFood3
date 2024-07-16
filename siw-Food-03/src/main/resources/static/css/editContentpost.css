@@ -112,7 +112,7 @@ nav .login ul li a:hover {
 .banner_bg{
 	width: 100%;
 	height: 50vh;
-	background-image: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), url(/images/banner4.png);
+	background-image: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), url(/images/banner20.png);
 	background-size: cover;
 	background-position: center;
 }
